@@ -35,5 +35,7 @@ export default defineConfig({
   output: "hybrid",
   adapter: vercel({
     analytics: true,
+    functionPerRoute: true, // optional
+    runtime: "nodejs18",
   }),
 });
