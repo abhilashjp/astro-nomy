@@ -26,7 +26,11 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     simpleStackForm(),
-    db(),
+    db( {
+      adapter: "turso",
+      dbUrl: import.meta.env.DB_URL,
+      authToken: import.meta.env.DB_AUTH_TOKEN,
+    }),
   ],
   output: "hybrid",
   adapter: vercel({
