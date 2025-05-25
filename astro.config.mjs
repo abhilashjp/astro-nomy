@@ -8,7 +8,7 @@ import { defineConfig } from "astro/config";
 import simpleStackForm from "simple-stack-form";
 import db from "@astrojs/db";
 
-// https://astro.build/config
+//// https://astro.build/config
 export default defineConfig({
   site: "https://astro-nomy.vercel.app",
   integrations: [
