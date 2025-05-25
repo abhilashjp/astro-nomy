@@ -26,6 +26,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     simpleStackForm(),
+    
     db( {
       adapter: "turso",
       dbUrl: import.meta.env.DB_URL,

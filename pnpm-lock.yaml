@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@astrojs/db':
-        specifier: ^0.11.4
-        version: 0.11.4(@types/react@18.3.3)(react@18.3.1)
+        specifier: ^0.11.7
+        version: 0.11.7(@types/react@18.3.3)(react@18.3.1)
       '@astrojs/mdx':
         specifier: ^2.3.1
-        version: 2.3.1(astro@4.9.2)
+        version: 2.3.1(astro@4.9.2(@types/node@22.15.21))
       '@astrojs/react':
         specifier: ^3.4.0
-        version: 3.4.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.2.12)
+        version: 3.4.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.2.12(@types/node@22.15.21))
       '@astrojs/rss':
         specifier: ^4.0.6
         version: 4.0.6
@@ -25,10 +25,10 @@ importers:
         version: 3.1.5
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.9.2)(tailwindcss@3.4.3)
+        version: 5.1.0(astro@4.9.2(@types/node@22.15.21))(tailwindcss@3.4.3)
       '@astrojs/vercel':
         specifier: ^7.6.0
-        version: 7.6.0(astro@4.9.2)(react@18.3.1)
+        version: 7.6.0(astro@4.9.2(@types/node@22.15.21))(react@18.3.1)
       '@hookform/resolvers':
         specifier: ^3.4.2
         version: 3.4.2(react-hook-form@7.51.5(react@18.3.1))
@@ -73,7 +73,7 @@ importers:
         version: 18.3.0
       astro:
         specifier: ^4.9.2
-        version: 4.9.2
+        version: 4.9.2(@types/node@22.15.21)
       astro-icon:
         specifier: ^1.1.0
         version: 1.1.0
@@ -112,7 +112,7 @@ importers:
         version: 0.33.4
       simple-stack-form:
         specifier: ^0.1.12
-        version: 0.1.12(astro@4.9.2)(zod@3.23.8)
+        version: 0.1.12(astro@4.9.2(@types/node@22.15.21))(zod@3.23.8)
       sonner:
         specifier: ^1.4.41
         version: 1.4.41(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -161,8 +161,8 @@ packages:
   '@astrojs/compiler@2.8.0':
     resolution: {integrity: sha512-yrpD1WRGqsJwANaDIdtHo+YVjvIOFAjC83lu5qENIgrafwZcJgSXDuwVMXOgok4tFzpeKLsFQ6c3FoUdloLWBQ==}
 
-  '@astrojs/db@0.11.4':
-    resolution: {integrity: sha512-PuVej9DNu5ZzlRGS0NUl3iH/5BRo/eG3XRywXbHIQvA0sdI7UZSFisbpUQYJU9iKK9Bxow/FWrqfw2jwqXaC8Q==}
+  '@astrojs/db@0.11.7':
+    resolution: {integrity: sha512-upJfu/GpW0AwFIIkWPmIzLRrXibmyKdtjUB+T/9FvuH25Bgk4ym62d87clh+0acBgGQw98mezSOtBCenWTAT0Q==}
 
   '@astrojs/internal-helpers@0.4.0':
     resolution: {integrity: sha512-6B13lz5n6BrbTqCTwhXjJXuR1sqiX/H6rTxzlXx+lN1NnV4jgnq/KJldCQaUWJzPL5SiWahQyinxAbxQtwgPHA==}
@@ -195,8 +195,8 @@ packages:
   '@astrojs/sitemap@3.1.5':
     resolution: {integrity: sha512-GLdzJ01387Uzb8RKYpsYLlg/GzoPnGbmDeQNkarSE11i2+l9Qp8Nj/WoTEy9nkTS25fxxy0kxDfJmreeVleCqg==}
 
-  '@astrojs/studio@0.1.0':
-    resolution: {integrity: sha512-pjggMFgtZHPem6RWall02DTa54VCQ4fjqj4bLV0CpQEi0ydgDlughb81PtLhpQPTV0IUtTFOnHbzx6rcKMBAzg==}
+  '@astrojs/studio@0.1.1':
+    resolution: {integrity: sha512-X4PxYQZmkXhgw9rlNKVeCzU6q+U9Cy3k3J5oP4jOTmqTE8TyjCadAad3NweDJCY9Rhgv/w+qhGfjl2JG2lcTaw==}
 
   '@astrojs/tailwind@5.1.0':
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
@@ -811,53 +811,54 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@libsql/client@0.6.0':
-    resolution: {integrity: sha512-qhQzTG/y2IEVbL3+9PULDvlQFWJ/RnjFXECr/Nc3nRngGiiMysDaOV5VUzYk7DulUX98EA4wi+z3FspKrUplUA==}
+  '@libsql/client@0.6.2':
+    resolution: {integrity: sha512-xRNfRLv/dOCbV4qd+M0baQwGmvuZpMd2wG2UAPs8XmcdaPvu5ErkcaeITkxlm3hDEJVabQM1cFhMBxsugWW9fQ==}
 
-  '@libsql/core@0.6.0':
-    resolution: {integrity: sha512-affAB8vSqQwqI9NBDJ5uJCVaHoOAS2pOpbv1kWConh1SBbmJBnHHd4KG73RAJ2sgd2+NbT9WA+XJBqxgp28YSw==}
+  '@libsql/core@0.6.2':
+    resolution: {integrity: sha512-c2P4M+4u/4b2L02A0KjggO3UW51rGkhxr/7fzJO0fEAqsqrWGxuNj2YtRkina/oxfYvAof6xjp8RucNoIV/Odw==}
 
-  '@libsql/darwin-arm64@0.3.10':
-    resolution: {integrity: sha512-RaexEFfPAFogd6dJlqkpCkTxdr6K14Z0286lodIJ8Ny77mWuWyBkWKxf70OYWXXAMxMJFUW+6al1F3/Osf/pTg==}
+  '@libsql/darwin-arm64@0.3.19':
+    resolution: {integrity: sha512-rmOqsLcDI65zzxlUOoEiPJLhqmbFsZF6p4UJQ2kMqB+Kc0Rt5/A1OAdOZ/Wo8fQfJWjR1IbkbpEINFioyKf+nQ==}
     cpu: [arm64]
     os: [darwin]
 
-  '@libsql/darwin-x64@0.3.10':
-    resolution: {integrity: sha512-SNVN6n4qNUdMW1fJMFmx4qn4n5RnXsxjFbczpkzG/V7m/5VeTFt1chhGcrahTHCr3+K6eRJWJUEQHRGqjBwPkw==}
+  '@libsql/darwin-x64@0.3.19':
+    resolution: {integrity: sha512-q9O55B646zU+644SMmOQL3FIfpmEvdWpRpzubwFc2trsa+zoBlSkHuzU9v/C+UNoPHQVRMP7KQctJ455I/h/xw==}
     cpu: [x64]
     os: [darwin]
 
-  '@libsql/hrana-client@0.6.0':
-    resolution: {integrity: sha512-k+fqzdjqg3IvWfKmVJK5StsbjeTcyNAXFelUbXbGNz3yH1gEVT9mZ6kmhsIXP30ZSyVV0AE1Gi25p82mxC9hwg==}
+  '@libsql/hrana-client@0.6.2':
+    resolution: {integrity: sha512-MWxgD7mXLNf9FXXiM0bc90wCjZSpErWKr5mGza7ERy2FJNNMXd7JIOv+DepBA1FQTIfI8TFO4/QDYgaQC0goNw==}
 
-  '@libsql/isomorphic-fetch@0.2.1':
-    resolution: {integrity: sha512-Sv07QP1Aw8A5OOrmKgRUBKe2fFhF2hpGJhtHe3d1aRnTESZCGkn//0zDycMKTGamVWb3oLYRroOsCV8Ukes9GA==}
+  '@libsql/isomorphic-fetch@0.2.5':
+    resolution: {integrity: sha512-8s/B2TClEHms2yb+JGpsVRTPBfy1ih/Pq6h6gvyaNcYnMVJvgQRY7wAa8U2nD0dppbCuDU5evTNMEhrQ17ZKKg==}
+    engines: {node: '>=18.0.0'}
 
   '@libsql/isomorphic-ws@0.1.5':
     resolution: {integrity: sha512-DtLWIH29onUYR00i0GlQ3UdcTRC6EP4u9w/h9LxpUZJWRMARk6dQwZ6Jkd+QdwVpuAOrdxt18v0K2uIYR3fwFg==}
 
-  '@libsql/linux-arm64-gnu@0.3.10':
-    resolution: {integrity: sha512-2uXpi9d8qtyIOr7pyG4a88j6YXgemyIHEs2Wbp+PPletlCIPsFS+E7IQHbz8VwTohchOzcokGUm1Bc5QC+A7wg==}
+  '@libsql/linux-arm64-gnu@0.3.19':
+    resolution: {integrity: sha512-mgeAUU1oqqh57k7I3cQyU6Trpdsdt607eFyEmH5QO7dv303ti+LjUvh1pp21QWV6WX7wZyjeJV1/VzEImB+jRg==}
     cpu: [arm64]
     os: [linux]
 
-  '@libsql/linux-arm64-musl@0.3.10':
-    resolution: {integrity: sha512-72SN1FUavLvzHddCS861ynSpQndcW5oLGKA3U8CyMfgIZIwJAPc7+48Uj1plW00htXBx4GBpcntFp68KKIx3YQ==}
+  '@libsql/linux-arm64-musl@0.3.19':
+    resolution: {integrity: sha512-VEZtxghyK6zwGzU9PHohvNxthruSxBEnRrX7BSL5jQ62tN4n2JNepJ6SdzXp70pdzTfwroOj/eMwiPt94gkVRg==}
     cpu: [arm64]
     os: [linux]
 
-  '@libsql/linux-x64-gnu@0.3.10':
-    resolution: {integrity: sha512-hXyNqVRi7ONuyWZ1SX6setxL0QaQ7InyS3bHLupsi9s7NpOGD5vcpTaYicJOqmIIm+6kt8vJfmo7ZxlarIHy7Q==}
+  '@libsql/linux-x64-gnu@0.3.19':
+    resolution: {integrity: sha512-2t/J7LD5w2f63wGihEO+0GxfTyYIyLGEvTFEsMO16XI5o7IS9vcSHrxsvAJs4w2Pf907uDjmc7fUfMg6L82BrQ==}
     cpu: [x64]
     os: [linux]
 
-  '@libsql/linux-x64-musl@0.3.10':
-    resolution: {integrity: sha512-kNmIRxomVwt9S+cLyYS497F/3gXFF4r8wW12YSBQgxG75JYft07AHVd8J7HINg+oqRkLzT0s+mVX5dM6nk68EQ==}
+  '@libsql/linux-x64-musl@0.3.19':
+    resolution: {integrity: sha512-BLsXyJaL8gZD8+3W2LU08lDEd9MIgGds0yPy5iNPp8tfhXx3pV/Fge2GErN0FC+nzt4DYQtjL+A9GUMglQefXQ==}
     cpu: [x64]
     os: [linux]
 
-  '@libsql/win32-x64-msvc@0.3.10':
-    resolution: {integrity: sha512-c/6rjdtGULKrJkLgfLobFefObfOtxjXGmCfPxv6pr0epPCeUEssfDbDIeEH9fQUgzogIMWEHwT8so52UJ/iT1Q==}
+  '@libsql/win32-x64-msvc@0.3.19':
+    resolution: {integrity: sha512-ay1X9AobE4BpzG0XPw1gplyLZPGHIgJOovvW23gUrukRegiUP62uzhpRbKNogLlUOynyXeq//prHgPXiebUfWg==}
     cpu: [x64]
     os: [win32]
 
@@ -1393,6 +1394,9 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
+  '@types/node@22.15.21':
+    resolution: {integrity: sha512-EV/37Td6c+MgKAbkcLG6vqZ2zEYHD7bvSrzqqs2RIhbA6w3x+Dqz8MZM3sP6kGTeLrdoOgKZe+Xja7tUB2DNkQ==}
+
   '@types/prop-types@15.7.5':
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
 
@@ -1417,8 +1421,8 @@ packages:
   '@types/unist@3.0.0':
     resolution: {integrity: sha512-MFETx3tbTjE7Uk6vvnWINA/1iJ7LuMdO4fcq8UfF0pRbj01aGLduVvQcRyswuACJdpnHgg8E3rQLhaRdNEJS0w==}
 
-  '@types/ws@8.5.10':
-    resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+  '@types/ws@8.18.1':
+    resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
@@ -1850,8 +1854,8 @@ packages:
   domutils@3.1.0:
     resolution: {integrity: sha512-H78uMmQtI2AhgDJjWeQmHwJJ2bLPD3GMmO7Zja/ZZh84wkm+4ut+IUnUdRa8uCGX88DiVx1j6FRe1XfxEgjEZA==}
 
-  drizzle-orm@0.30.10:
-    resolution: {integrity: sha512-IRy/QmMWw9lAQHpwbUh1b8fcn27S/a9zMIzqea1WNOxK9/4EB8gIo+FZWLiPXzl2n9ixGSv8BhsLZiOppWEwBw==}
+  drizzle-orm@0.31.4:
+    resolution: {integrity: sha512-VGD9SH9aStF2z4QOTnVlVX/WghV/EnuEzTmsH3fSVp2E4fFgc8jl3viQrS/XUJx1ekW4rVVLJMH42SfGQdjX3Q==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -1861,6 +1865,8 @@ packages:
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
+      '@prisma/client': '*'
+      '@tidbcloud/serverless': '*'
       '@types/better-sqlite3': '*'
       '@types/pg': '*'
       '@types/react': '>=18'
@@ -1875,6 +1881,7 @@ packages:
       mysql2: '>=2'
       pg: '>=8'
       postgres: '>=3'
+      prisma: '*'
       react: '>=18'
       sql.js: '>=1'
       sqlite3: '>=5'
@@ -1894,6 +1901,10 @@ packages:
       '@opentelemetry/api':
         optional: true
       '@planetscale/database':
+        optional: true
+      '@prisma/client':
+        optional: true
+      '@tidbcloud/serverless':
         optional: true
       '@types/better-sqlite3':
         optional: true
@@ -1922,6 +1933,8 @@ packages:
       pg:
         optional: true
       postgres:
+        optional: true
+      prisma:
         optional: true
       react:
         optional: true
@@ -2398,8 +2411,8 @@ packages:
   kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
 
-  libsql@0.3.10:
-    resolution: {integrity: sha512-/8YMTbwWFPmrDWY+YFK3kYqVPFkMgQre0DGmBaOmjogMdSe+7GHm1/q9AZ61AWkEub/vHmi+bA4tqIzVhKnqzg==}
+  libsql@0.3.19:
+    resolution: {integrity: sha512-Aj5cQ5uk/6fHdmeW0TiXK42FqUlwx7ytmMLPSaUQPin5HKKKuUPD62MAbN4OEweGBBI7q1BekoEN4gPUEL6MZA==}
     cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
@@ -2723,6 +2736,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -3366,6 +3380,9 @@ packages:
   ultrahtml@1.5.3:
     resolution: {integrity: sha512-GykOvZwgDWZlTQMtp5jrD4BVL+gNn2NVlVafjcFUJ7taY20tqYdwdoWBFy6GBJsNTZe1GkGPkSl5knQAjtgceg==}
 
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
+
   unherit@3.0.1:
     resolution: {integrity: sha512-akOOQ/Yln8a2sgcLj4U0Jmx0R5jpIg2IUyRrWOzmEbjBtGzBdHtSeFKgoEcoH4KYIG/Pb8GQ/BwtYm0GCq1Sqg==}
 
@@ -3551,8 +3568,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  ws@8.16.0:
-    resolution: {integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==}
+  ws@8.18.2:
+    resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -3617,14 +3634,14 @@ snapshots:
 
   '@astrojs/compiler@2.8.0': {}
 
-  '@astrojs/db@0.11.4(@types/react@18.3.3)(react@18.3.1)':
+  '@astrojs/db@0.11.7(@types/react@18.3.3)(react@18.3.1)':
     dependencies:
-      '@astrojs/studio': 0.1.0
-      '@libsql/client': 0.6.0
+      '@astrojs/studio': 0.1.1
+      '@libsql/client': 0.6.2
       async-listen: 3.0.1
       ci-info: 4.0.0
       deep-diff: 1.0.2
-      drizzle-orm: 0.30.10(@libsql/client@0.6.0)(@types/react@18.3.3)(react@18.3.1)
+      drizzle-orm: 0.31.4(@libsql/client@0.6.2)(@types/react@18.3.3)(react@18.3.1)
       github-slugger: 2.0.0
       kleur: 4.1.5
       nanoid: 5.0.7
@@ -3642,6 +3659,8 @@ snapshots:
       - '@op-engineering/op-sqlite'
       - '@opentelemetry/api'
       - '@planetscale/database'
+      - '@prisma/client'
+      - '@tidbcloud/serverless'
       - '@types/better-sqlite3'
       - '@types/pg'
       - '@types/react'
@@ -3657,6 +3676,7 @@ snapshots:
       - mysql2
       - pg
       - postgres
+      - prisma
       - react
       - sql.js
       - sqlite3
@@ -3687,12 +3707,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@2.3.1(astro@4.9.2)':
+  '@astrojs/mdx@2.3.1(astro@4.9.2(@types/node@22.15.21))':
     dependencies:
       '@astrojs/markdown-remark': 5.1.0
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.3
-      astro: 4.9.2
+      astro: 4.9.2(@types/node@22.15.21)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -3712,11 +3732,11 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/react@3.4.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.2.12)':
+  '@astrojs/react@3.4.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.2.12(@types/node@22.15.21))':
     dependencies:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
-      '@vitejs/plugin-react': 4.2.1(vite@5.2.12)
+      '@vitejs/plugin-react': 4.2.1(vite@5.2.12(@types/node@22.15.21))
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       ultrahtml: 1.5.3
@@ -3735,15 +3755,15 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.23.8
 
-  '@astrojs/studio@0.1.0':
+  '@astrojs/studio@0.1.1':
     dependencies:
       ci-info: 4.0.0
       kleur: 4.1.5
       ora: 8.0.1
 
-  '@astrojs/tailwind@5.1.0(astro@4.9.2)(tailwindcss@3.4.3)':
+  '@astrojs/tailwind@5.1.0(astro@4.9.2(@types/node@22.15.21))(tailwindcss@3.4.3)':
     dependencies:
-      astro: 4.9.2
+      astro: 4.9.2(@types/node@22.15.21)
       autoprefixer: 10.4.15(postcss@8.4.32)
       postcss: 8.4.32
       postcss-load-config: 4.0.2(postcss@8.4.32)
@@ -3763,13 +3783,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@7.6.0(astro@4.9.2)(react@18.3.1)':
+  '@astrojs/vercel@7.6.0(astro@4.9.2(@types/node@22.15.21))(react@18.3.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.4.0
       '@vercel/analytics': 1.2.2(react@18.3.1)
       '@vercel/edge': 1.1.1
       '@vercel/nft': 0.26.5
-      astro: 4.9.2
+      astro: 4.9.2(@types/node@22.15.21)
       esbuild: 0.21.4
       fast-glob: 3.3.2
       set-cookie-parser: 2.6.0
@@ -4269,29 +4289,29 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@libsql/client@0.6.0':
+  '@libsql/client@0.6.2':
     dependencies:
-      '@libsql/core': 0.6.0
-      '@libsql/hrana-client': 0.6.0
+      '@libsql/core': 0.6.2
+      '@libsql/hrana-client': 0.6.2
       js-base64: 3.7.7
-      libsql: 0.3.10
+      libsql: 0.3.19
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@libsql/core@0.6.0':
+  '@libsql/core@0.6.2':
     dependencies:
       js-base64: 3.7.7
 
-  '@libsql/darwin-arm64@0.3.10':
+  '@libsql/darwin-arm64@0.3.19':
     optional: true
 
-  '@libsql/darwin-x64@0.3.10':
+  '@libsql/darwin-x64@0.3.19':
     optional: true
 
-  '@libsql/hrana-client@0.6.0':
+  '@libsql/hrana-client@0.6.2':
     dependencies:
-      '@libsql/isomorphic-fetch': 0.2.1
+      '@libsql/isomorphic-fetch': 0.2.5
       '@libsql/isomorphic-ws': 0.1.5
       js-base64: 3.7.7
       node-fetch: 3.3.2
@@ -4299,29 +4319,29 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@libsql/isomorphic-fetch@0.2.1': {}
+  '@libsql/isomorphic-fetch@0.2.5': {}
 
   '@libsql/isomorphic-ws@0.1.5':
     dependencies:
-      '@types/ws': 8.5.10
-      ws: 8.16.0
+      '@types/ws': 8.18.1
+      ws: 8.18.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@libsql/linux-arm64-gnu@0.3.10':
+  '@libsql/linux-arm64-gnu@0.3.19':
     optional: true
 
-  '@libsql/linux-arm64-musl@0.3.10':
+  '@libsql/linux-arm64-musl@0.3.19':
     optional: true
 
-  '@libsql/linux-x64-gnu@0.3.10':
+  '@libsql/linux-x64-gnu@0.3.19':
     optional: true
 
-  '@libsql/linux-x64-musl@0.3.10':
+  '@libsql/linux-x64-musl@0.3.19':
     optional: true
 
-  '@libsql/win32-x64-msvc@0.3.10':
+  '@libsql/win32-x64-msvc@0.3.19':
     optional: true
 
   '@mapbox/node-pre-gyp@1.0.11':
@@ -4901,6 +4921,10 @@ snapshots:
 
   '@types/node@17.0.45': {}
 
+  '@types/node@22.15.21':
+    dependencies:
+      undici-types: 6.21.0
+
   '@types/prop-types@15.7.5': {}
 
   '@types/react-dom@18.3.0':
@@ -4927,9 +4951,9 @@ snapshots:
 
   '@types/unist@3.0.0': {}
 
-  '@types/ws@8.5.10':
+  '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 22.15.21
 
   '@types/yauzl@2.10.3':
     dependencies:
@@ -4964,14 +4988,14 @@ snapshots:
       - encoding
       - supports-color
 
-  '@vitejs/plugin-react@4.2.1(vite@5.2.12)':
+  '@vitejs/plugin-react@4.2.1(vite@5.2.12(@types/node@22.15.21))':
     dependencies:
       '@babel/core': 7.24.5
       '@babel/plugin-transform-react-jsx-self': 7.23.3(@babel/core@7.24.5)
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.24.5)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.2.12
+      vite: 5.2.12(@types/node@22.15.21)
     transitivePeerDependencies:
       - supports-color
 
@@ -5049,7 +5073,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@4.9.2:
+  astro@4.9.2(@types/node@22.15.21):
     dependencies:
       '@astrojs/compiler': 2.8.0
       '@astrojs/internal-helpers': 0.4.0
@@ -5108,8 +5132,8 @@ snapshots:
       tsconfck: 3.0.3
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.2.12
-      vitefu: 0.2.5(vite@5.2.12)
+      vite: 5.2.12(@types/node@22.15.21)
+      vitefu: 0.2.5(vite@5.2.12(@types/node@22.15.21))
       which-pm: 2.1.1
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -5424,9 +5448,9 @@ snapshots:
       domelementtype: 2.3.0
       domhandler: 5.0.3
 
-  drizzle-orm@0.30.10(@libsql/client@0.6.0)(@types/react@18.3.3)(react@18.3.1):
+  drizzle-orm@0.31.4(@libsql/client@0.6.2)(@types/react@18.3.3)(react@18.3.1):
     optionalDependencies:
-      '@libsql/client': 0.6.0
+      '@libsql/client': 0.6.2
       '@types/react': 18.3.3
       react: 18.3.1
 
@@ -5996,18 +6020,18 @@ snapshots:
 
   kolorist@1.8.0: {}
 
-  libsql@0.3.10:
+  libsql@0.3.19:
     dependencies:
       '@neon-rs/load': 0.0.4
       detect-libc: 2.0.2
     optionalDependencies:
-      '@libsql/darwin-arm64': 0.3.10
-      '@libsql/darwin-x64': 0.3.10
-      '@libsql/linux-arm64-gnu': 0.3.10
-      '@libsql/linux-arm64-musl': 0.3.10
-      '@libsql/linux-x64-gnu': 0.3.10
-      '@libsql/linux-x64-musl': 0.3.10
-      '@libsql/win32-x64-msvc': 0.3.10
+      '@libsql/darwin-arm64': 0.3.19
+      '@libsql/darwin-x64': 0.3.19
+      '@libsql/linux-arm64-gnu': 0.3.19
+      '@libsql/linux-arm64-musl': 0.3.19
+      '@libsql/linux-x64-gnu': 0.3.19
+      '@libsql/linux-x64-musl': 0.3.19
+      '@libsql/win32-x64-msvc': 0.3.19
 
   lilconfig@2.1.0: {}
 
@@ -7137,10 +7161,10 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  simple-stack-form@0.1.12(astro@4.9.2)(zod@3.23.8):
+  simple-stack-form@0.1.12(astro@4.9.2(@types/node@22.15.21))(zod@3.23.8):
     dependencies:
       '@clack/prompts': 0.7.0
-      astro: 4.9.2
+      astro: 4.9.2(@types/node@22.15.21)
       fs-extra: 11.2.0
       just-map-values: 3.2.0
       kleur: 4.1.5
@@ -7332,6 +7356,8 @@ snapshots:
 
   ultrahtml@1.5.3: {}
 
+  undici-types@6.21.0: {}
+
   unherit@3.0.1: {}
 
   unified@10.1.2:
@@ -7482,17 +7508,18 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.2.12:
+  vite@5.2.12(@types/node@22.15.21):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.17.2
     optionalDependencies:
+      '@types/node': 22.15.21
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.2.12):
+  vitefu@0.2.5(vite@5.2.12(@types/node@22.15.21)):
     optionalDependencies:
-      vite: 5.2.12
+      vite: 5.2.12(@types/node@22.15.21)
 
   web-namespaces@2.0.1: {}
 
@@ -7539,7 +7566,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.16.0: {}
+  ws@8.18.2: {}
 
   yallist@3.1.1: {}
 
