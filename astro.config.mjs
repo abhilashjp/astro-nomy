@@ -36,6 +36,6 @@ export default defineConfig({
   adapter: vercel({
     analytics: true,
     functionPerRoute: true, // optional
-    runtime: "nodejs18",
+   // runtime: "nodejs18",
   }),
 });
