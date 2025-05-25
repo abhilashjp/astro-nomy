@@ -6,6 +6,7 @@ import vercel from "@astrojs/vercel/serverless";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 import simpleStackForm from "simple-stack-form";
+import db from "@astrojs/db";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,6 +26,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     simpleStackForm(),
+    db(),
   ],
   output: "hybrid",
   adapter: vercel({
