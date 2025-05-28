@@ -1,14 +1,14 @@
 import type { SidebarNavItem, SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-  name: "Astronomy",
+  name: "UsagePricing",
   description:
-    "An modern example app built using Astro v4 & shadcn/ui. Inspired by shadcn/taxonomy.",
-  url: "https://astro-nomy.vercel.app",
+    "The Ultimate One-Stop Resource Hub for Everything You Need to Know About Usage Based Pricing Models.",
+  url: "https://usagepricing.com/",
   ogImage: "https://astro-nomy.vercel.app/og.jpg",
   links: {
-    twitter: "https://twitter.com/miickasmt",
-    github: "https://github.com/mickasmt/astro-nomy",
+    twitter: "https://x.com/usagepricing",
+    github: "",
   },
 };
 
