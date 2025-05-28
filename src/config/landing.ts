@@ -2,25 +2,37 @@ import type { InfoLdg } from "@/types";
 
 export const infos: InfoLdg[] = [
   {
-    title: "Usage Pricing",
+    title: "Transform Complex AI Pricing Into Clear, Interactive Experiences",
     description:
-      "Unlock the full potential of your projects with our open-source SaaS platform. Collaborate seamlessly, innovate effortlessly, and scale limitlessly.",
+      "UsagePricing.com provides embeddable calculators specifically designed for AI companies using usage-based pricing models. Help prospects understand costs, generate qualified leads, and accelerate your sales cycle",
     image: "/images/blog/placeholder-about.jpg",
     list: [
       {
-        title: "Collaborative",
-        description: "Work together with your team members in real-time.",
+        title: "Purpose built",
+        description: "AI-specific calculation logic for tokens, compute, and API calls",
         icon: "lucide:laptop",
       },
       {
-        title: "Innovative",
-        description: "Stay ahead of the curve with access constant updates.",
+        title: "Go live in mins",
+        description: "Embeddable widgets that match your brand.",
         icon: "lucide:settings",
       },
       {
-        title: "Scalable",
+        title: "High Conversion",
         description:
-          "Our platform offers the scalability needed to adapt to your needs.",
+          "Lead capture with qualified prospect data.",
+        icon: "lucide:search",
+      },
+        {
+        title: "Insights",
+        description:
+          "Real-time pricing analytics and insights",
+        icon: "lucide:search",
+      },
+        {
+        title: "Responsive",
+        description:
+          "Mobile-responsive and lightning-fast.",
         icon: "lucide:search",
       },
     ],
@@ -54,40 +66,42 @@ export const infos: InfoLdg[] = [
 
 export const features = [
   {
-    title: "Feature 1",
+    title: "AI-Powered Pricing Parser",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Our advanced AI automatically extracts pricing tiers, usage metrics, and value propositions from any SaaS pricing page, saving you hours of manual configuration",
+    link: "/",
+  },
+{
+    title: "Human in the loop",
+    description:
+      "Review the AI-generated pricing calculator and make adjustments as needed. Our intuitive interface allows you to fine-tune the calculator to match your exact pricing structure.",
+    link: "/",
+  },
+
+  {
+    title: "Instant Widget Generation",
+    description:
+      "From URL to embedded calculator in under 60 seconds. Our AI understands complex pricing models including tiered, usage-based, and hybrid pricing structures.",
     link: "/",
   },
   {
-    title: "Feature 2",
+    title: "Fully Customizable",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Match your brand perfectly with custom themes, colors, fonts, and layouts. No coding required for customizations.",
     link: "/",
   },
   {
-    title: "Feature 3",
+    title: "Interactive ROI Calculators",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
+      "Generate compelling ROI estimators that show prospects the exact value they'll get from your product based on their specific usage patterns and business metrics.",
     link: "/",
   },
   {
-    title: "Feature 4",
+    title: "Easy Integration",
     description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
-    link: "/",
+      "Embed anywhere with a simple script tag, iframe, or npm package. Works seamlessly with your existing website, landing pages, and marketing tools",
   },
-  {
-    title: "Feature 5",
-    description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
-  },
-  {
-    title: "Feature 6",
-    description:
-      "Amet praesentium deserunt ex commodi tempore fuga voluptatem. Sit, sapiente.",
-    link: "/",
-  },
+ 
 ];
 
 export const testimonials = [
