@@ -98,11 +98,12 @@ export const navMenuConfig: NavMenuConfig = {
     },
   ],
   links: [
-    // {
-    //   title: "Example",
-    //   href: "/example",
-    //   description: "Example description",
-    //   image: "/images/examples/image.jpg",
-    // },
+    {
+      title: "Community",
+       href: "/community",
+       description: "Example description",
+       image: "/images/examples/image.jpg",
+       
+     },
   ],
 };
