@@ -3,12 +3,13 @@ import ExampleGrid from "@/components/example-grid.astro";
 import PageHeader from "@/components/page-header.astro";
 import { navMenuConfig } from "@/config/nav-menu";
 import MainLayout from "@/layouts/main-layout.astro";
-
+import HeroLanding from "@/components/sections/community-landing.astro";
 const examples = navMenuConfig.examplesNav[0].items;
 const pages = navMenuConfig.pagesNav[0].items;
 ---
 
 <MainLayout title="">
+    <HeroLanding />
   <div class="bg-background-200">
     <section class="container py-12">
       <PageHeader
