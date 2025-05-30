@@ -3,36 +3,32 @@ import { MdxComponents } from "@/components/content/mdx-components";
 import GuidePostLayout from "@/layouts/guide-post.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
-import { getPublishedPosts } from '@/lib/content.js';
+import { getPublishedGuides } from '@/lib/content.js'; // Changed from getPublishedPosts
 
 export async function getStaticPaths() {
-  const posts = await getPublishedPosts();
-  return posts.map((guide) => ({
+  const guides = await getPublishedGuides(); // Changed from getPublishedPosts
+  return guides.map((guide) => ({
     params: { slug: guide.slug },
-    props: { guide },
+    props: { guide }, // Keep the object structure
   }));
-
-
-// export async function getStaticPaths() {
- // const guides = await getCollection("guides");
-  // return guides.map((guide) => ({
-  //  params: { slug: guide.slug },
-   // props: guide,
-  // }));
 }
 
-type Props = CollectionEntry<"guides">;
+type Props = {
+  guide: CollectionEntry<"guides">;
+};
 
-const guide = Astro.props;
-const slug = Astro.params.slug;
-const { Content } = await guide.render();
+const { guide } = Astro.props; // Destructure the guide from props
+const { slug } = Astro.params;
 
+// Check if guide exists first
 if (!slug || !guide) {
   return new Response(null, {
     status: 404,
     statusText: "Not found",
   });
 }
+
+const { Content } = await guide.render();
 ---
 
 <GuidePostLayout {...guide}>
