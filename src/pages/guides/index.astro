@@ -4,7 +4,11 @@ import DocsPageHeader from "@/components/page-header.astro";
 import DocsLayout from "@/layouts/docs-layout.astro";
 import { getGuides } from "@/lib/fetchers";
 
-const guides = await getGuides();
+// src/pages/guides/index.astro
+import { getPublishedGuides } from '@/lib/content.js';
+const guides = await getPublishedGuides();
+
+//const guides = await getGuides();
 ---
 
 <DocsLayout title="Blog" description="Lorem ipsum dolor sit amet">

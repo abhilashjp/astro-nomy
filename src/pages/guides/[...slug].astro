@@ -3,12 +3,22 @@ import { MdxComponents } from "@/components/content/mdx-components";
 import GuidePostLayout from "@/layouts/guide-post.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
+import { getPublishedPosts } from '@/lib/content.js';
+
 export async function getStaticPaths() {
-  const guides = await getCollection("guides");
-  return guides.map((guide) => ({
+  const posts = await getPublishedPosts();
+  return posts.map((guide) => ({
     params: { slug: guide.slug },
-    props: guide,
+    props: { guide },
   }));
+
+
+// export async function getStaticPaths() {
+ // const guides = await getCollection("guides");
+  // return guides.map((guide) => ({
+  //  params: { slug: guide.slug },
+   // props: guide,
+  // }));
 }
 
 type Props = CollectionEntry<"guides">;

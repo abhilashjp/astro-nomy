@@ -3,8 +3,10 @@ import BlogHeader from "@/components/blog-header.astro";
 import BlogCard from "@/components/cards/blog-card.astro";
 import MainLayout from "@/layouts/main-layout.astro";
 import { getPosts } from "@/lib/fetchers";
+import { getPublishedPosts } from '@/lib/content.js';
 
-const posts = await getPosts();
+const posts = await getPublishedPosts();
+//const posts = await getPosts();
 ---
 
 <MainLayout title="Static Blog">
@@ -18,3 +20,4 @@ const posts = await getPosts();
     </div>
   </section>
 </MainLayout>
+

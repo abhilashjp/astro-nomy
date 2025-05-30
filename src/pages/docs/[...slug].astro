@@ -11,17 +11,19 @@ import { getTableOfContents } from "@/lib/toc";
 import { Icon } from "astro-icon/components";
 import { getCollection, type CollectionEntry } from "astro:content";
 
+import { getPublishedDocs } from '@/lib/content.js'; // Changed from getPublishedPosts
+
 export async function getStaticPaths() {
-  const docs = await getCollection("docs");
+  const docs = await getPublishedDocs(); // Changed from getPublishedPosts
   return docs.map((doc) => ({
     params: { slug: doc.slug },
-    props: doc,
+    props: { doc },
   }));
 }
 
 type Props = CollectionEntry<"docs">;
 
-const doc = Astro.props;
+const { doc } = Astro.props; // Added destructuring like we fixed in blog
 const slug = Astro.params.slug;
 const toc = await getTableOfContents(doc.body);
 

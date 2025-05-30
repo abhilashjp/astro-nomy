@@ -17,6 +17,10 @@ const blog = defineCollection({
         .string()
         .optional()
         .transform((str) => (str ? new Date(str) : undefined)),
+      // Add draft support fields
+      draft: z.boolean().optional(),
+      excludeFromBuild: z.boolean().optional(),
+      devOnly: z.boolean().optional(),
     }),
 });
 
@@ -24,6 +28,10 @@ const docs = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    // Add draft support fields
+    draft: z.boolean().optional(),
+    excludeFromBuild: z.boolean().optional(),
+    devOnly: z.boolean().optional(),
   }),
 });
 
@@ -37,6 +45,10 @@ const guides = defineCollection({
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
+    // Add draft support fields
+    draft: z.boolean().optional(),
+    excludeFromBuild: z.boolean().optional(),
+    devOnly: z.boolean().optional(),
   }),
 });
 
@@ -53,6 +65,10 @@ const releases = defineCollection({
       }),
       // Transform string to Date object
       date: z.date({ coerce: true }),
+      // Add draft support fields
+      draft: z.boolean().optional(),
+      excludeFromBuild: z.boolean().optional(),
+      devOnly: z.boolean().optional(),
     }),
 });
 
