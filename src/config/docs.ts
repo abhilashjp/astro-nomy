@@ -21,7 +21,7 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-    {
+   /* {
       title: "Documentation",
       items: [
         {
@@ -35,16 +35,16 @@ export const docsConfig: DocsConfig = {
         {
           title: "Configuration  Astro DB",
           href: "/docs/documentation/components",
-          disabled: true,
+          disabled: false,
         },
         {
           title: "Search (Fuse.js)",
           href: "/docs/in-progress",
-          disabled: true,
+          disabled: false,
         },
       ],
-    },
-    {
+    },*/
+   /* {
       title: "Pages",
       items: [
         {
@@ -63,8 +63,8 @@ export const docsConfig: DocsConfig = {
           disabled: true,
         },
       ],
-    },
-    {
+    },*/
+ /*   {
       title: "Examples",
       items: [
         // {
@@ -103,6 +103,6 @@ export const docsConfig: DocsConfig = {
           disabled: true,
         },
       ],
-    },
+    },*/
   ],
 };

@@ -3,15 +3,23 @@ import type { NavMenuConfig } from "@/types";
 export const navMenuConfig: NavMenuConfig = {
   pagesNav: [
     {
-      title: "Pages",
+      title: "Products",
       items: [
         {
-          title: "Landing",
+          title: "Pricing calculator",
           href: "/landing",
-          description: "A landing page template with differents sections.",
+          description: "Simplify Usage Based Pricing with Pricing Calculators.",
           image: "/images/examples/landing.jpg",
         },
+
         {
+          title: "ROI calculator",
+          href: "/landing",
+          description: "Simplify Usage Based Pricing with Pricing Calculators.",
+          image: "/images/examples/landing.jpg",
+          disabled: true,
+        },
+      /* {
           title: "Changelog",
           href: "/releases",
           description: "A reproduction of Starlog template with Tailwind CSS.",
@@ -25,13 +33,14 @@ export const navMenuConfig: NavMenuConfig = {
           image: "/images/examples/waitlist.jpg",
           forceReload: true,
         },
+        */
         {
           title: "Pricing",
           href: "/pricing",
           description: "Pricing cards, FAQs and more content with price.",
           image: "/images/examples/pricing.jpg",
         },
-        {
+       /* {
           title: "About",
           href: "/about",
           description: "A simple page with a masonry gallery and little text.",
@@ -43,16 +52,24 @@ export const navMenuConfig: NavMenuConfig = {
           description:
             "A newsletter form using Astro DB & Simple Stack Form. Counter display!",
           image: "/images/examples/newsletter.jpg",
+        },*/
+        {
+          title: "Templates",
+          href: "/animes",
+          description:
+            "Fetch anime content from an graphql endpoint. Tabs component.",
+          image: "/images/examples/animes.jpg",
+          launched: true,
         },
       ],
     },
   ],
   examplesNav: [
     {
-      title: "Examples",
+      title: "Resources",
       items: [
         {
-          title: "Static Blog",
+          title: "Blog",
           href: "/blog",
           description: "A Markdown/MDX blog built using Content Collections.",
           image: "/images/examples/static-blog.jpg",
@@ -107,7 +124,7 @@ export const navMenuConfig: NavMenuConfig = {
      },
       {
       title: "Guides",
-       href: "#",
+       href: "/docs",
        description: "Example description",
        image: "/images/examples/image.jpg",
        
