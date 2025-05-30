@@ -76,7 +76,7 @@ export const navMenuConfig: NavMenuConfig = {
         },
         {
           title: "Docs",
-          href: "/docs/getting-started",
+          href: "/docs/introduction-usage-based-pricing",
           description:
             "A Markdown/MDX docs site built using Content Collections.",
           image: "/images/examples/documentation.jpg",
@@ -124,7 +124,7 @@ export const navMenuConfig: NavMenuConfig = {
      },
       {
       title: "Guides",
-       href: "/docs",
+       href: "/guides",
        description: "Example description",
        image: "/images/examples/image.jpg",
        
