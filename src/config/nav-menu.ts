@@ -99,8 +99,22 @@ export const navMenuConfig: NavMenuConfig = {
   ],
   links: [
     {
-      title: "Community",
-       href: "/community",
+      title: "Ask Community",
+       href: "#",
+       description: "Example description",
+       image: "/images/examples/image.jpg",
+       
+     },
+      {
+      title: "Guides",
+       href: "#",
+       description: "Example description",
+       image: "/images/examples/image.jpg",
+       
+     },
+      {
+      title: "Pricing explained",
+       href: "#",
        description: "Example description",
        image: "/images/examples/image.jpg",
        
