@@ -53,7 +53,7 @@ const count = waiting[0].count;
 
 <MainLayout
   title="Newsletter"
-  description="A waiting list page with form using Astro DB."
+  description="A waiting list page."
   mainClass="bg-background-200"
 >
   <div class="relative flex w-full min-h-svh items-center justify-center">
@@ -69,11 +69,10 @@ const count = waiting[0].count;
           <p class="text-sm text-muted-foreground">
             <b>{count} people</b> already joined the newsletter!
             <br />
-            Fill out the form below to obtain a monthly summary of information around
-            UX/UI!
-            <br />
+            Subscribe for the latest industry trends.
+            <!-- <br />
             Check <a href="/waitlist" class="underline">here</a> for use React Hook
-            Form and Sonner.
+            Form and Sonner.-->
           </p>
         </div>
 
@@ -92,7 +91,7 @@ const count = waiting[0].count;
           <Input
             id="email"
             autoComplete="off"
-            placeholder="janedoe@example.com"
+            placeholder="example@example.com"
             {...newsletterForm.inputProps.email}
           />
           <p class="text-muted-foreground text-[13px]">

@@ -55,7 +55,7 @@ export const navMenuConfig: NavMenuConfig = {
         },*/
         {
           title: "Templates",
-          href: "/animes",
+          href: "#",
           description:
             "Choose from our calculator templates library to get started quickly.",
           image: "/images/examples/animes.jpg",
@@ -71,17 +71,17 @@ export const navMenuConfig: NavMenuConfig = {
         {
           title: "Blog",
           href: "/blog",
-          description: "A Markdown/MDX blog built using Content Collections.",
+          description: "Learn from industry experts.Stay upto date with the latest trends.",
           image: "/images/examples/static-blog.jpg",
         },
         {
           title: "Guides",
           href: "/guides/introduction-usage-based-pricing",
           description:
-            "Learn everything about usage based pricing with our guides.",
+            "Learn everything about usage based pricing from our guides.",
           image: "/images/examples/documentation.jpg",
         },
-        {
+       /* {
           title: "Anime List",
           href: "/animes",
           description:
@@ -111,28 +111,29 @@ export const navMenuConfig: NavMenuConfig = {
           // image: "/images/examples/auth.jpg",
           disabled: true,
         },
+        */
       ],
     },
   ],
   links: [
-    {
+   /* {
       title: "Ask Community",
        href: "#",
        description: "Example description",
        image: "/images/examples/image.jpg",
        
-     },
+     },*/
       {
       title: "Guides",
-       href: "/guides",
-       description: "Example description",
+       href: "/guides/introduction-usage-based-pricing",
+       description: "Learn everything about usage based pricing from our guides.",
        image: "/images/examples/image.jpg",
        
      },
       {
       title: "Pricing explained",
-       href: "#",
-       description: "Example description",
+       href: "/explained",
+       description: "Learn how AI companies at the forefront innovation are pricing thier products.",
        image: "/images/examples/image.jpg",
        
      },
