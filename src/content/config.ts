@@ -24,7 +24,7 @@ const blog = defineCollection({
     }),
 });
 
-const docs = defineCollection({
+const guides = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -35,7 +35,25 @@ const docs = defineCollection({
   }),
 });
 
-const guides = defineCollection({
+const docs = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    published: z.boolean().default(true),
+    featured: z.boolean().default(false),
+    pubDate: z
+      .string()
+      .or(z.date())
+      .transform((val) => new Date(val)),
+    // Add draft support fields
+    draft: z.boolean().optional(),
+    excludeFromBuild: z.boolean().optional(),
+    devOnly: z.boolean().optional(),
+  }),
+});
+
+
+const explained = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -72,4 +90,4 @@ const releases = defineCollection({
     }),
 });
 
-export const collections = { blog, docs, guides, releases };
+export const collections = { blog, docs, guides, releases, explained };

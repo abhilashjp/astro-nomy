@@ -18,6 +18,9 @@ export async function getPublishedContent(collectionName) {
     
     // For guides collection, also respect the existing 'published' field
     if (collectionName === 'guides' && data.published === false) return false;
+
+    // For explained collection, also respect the existing 'published' field
+    if (collectionName === 'explained' && data.published === false) return false;
     
     return true;
   });
@@ -28,3 +31,5 @@ export const getPublishedPosts = () => getPublishedContent('blog');
 export const getPublishedDocs = () => getPublishedContent('docs');
 export const getPublishedGuides = () => getPublishedContent('guides');
 export const getPublishedReleases = () => getPublishedContent('releases');
+export const getPublishedExplained = () => getPublishedContent('explained');
+

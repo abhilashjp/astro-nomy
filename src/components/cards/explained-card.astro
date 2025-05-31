@@ -1,0 +1,115 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props extends CollectionEntry<'explained'> {}
+
+const { data, slug } = Astro.props;
+const { title, description, pubDate, updatedDate, company, difficulty, tags } = data;
+
+// Format date
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  }).format(date);
+};
+
+const displayDate = updatedDate || pubDate;
+
+// Difficulty colors
+const difficultyColors = {
+  beginner: 'bg-green-50 text-green-700 ring-green-700/10',
+  intermediate: 'bg-yellow-50 text-yellow-700 ring-yellow-700/10',
+  advanced: 'bg-red-50 text-red-700 ring-red-700/10'
+};
+---
+
+<article class="group relative rounded-lg border p-6 hover:shadow-md transition-all duration-200 hover:border-blue-200">
+  <div class="flex flex-col space-y-4">
+    {/* Header with company and difficulty */}
+    <div class="flex items-center justify-between">
+      {company && (
+        <div class="flex items-center space-x-2">
+          <span class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+            {company}
+          </span>
+        </div>
+      )}
+      {difficulty && (
+        <span class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset ${difficultyColors[difficulty] || difficultyColors.intermediate}`}>
+          {difficulty}
+        </span>
+      )}
+    </div>
+
+    {/* Title and description */}
+    <div class="flex-1">
+      <h3 class="font-semibold text-lg leading-6 group-hover:text-blue-600 transition-colors">
+        <a href={`/explained/${slug}`} class="stretched-link">
+          {title}
+        </a>
+      </h3>
+      {description && (
+        <p class="text-muted-foreground text-sm mt-2 line-clamp-3">
+          {description}
+        </p>
+      )}
+    </div>
+
+    {/* Tags */}
+    {tags && tags.length > 0 && (
+      <div class="flex flex-wrap gap-1">
+        {tags.slice(0, 3).map((tag) => (
+          <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+            {tag}
+          </span>
+        ))}
+        {tags.length > 3 && (
+          <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+            +{tags.length - 3} more
+          </span>
+        )}
+      </div>
+    )}
+
+    {/* Footer with date and read more arrow */}
+    <div class="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t">
+      {displayDate && (
+        <span>
+          {updatedDate ? 'Updated' : 'Published'} {formatDate(displayDate)}
+        </span>
+      )}
+      <div class="flex items-center space-x-1 group-hover:text-blue-600 transition-colors">
+        <span class="text-xs font-medium">Read Analysis</span>
+        <svg 
+          class="h-4 w-4 group-hover:translate-x-1 transition-transform" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+  }
+</style>

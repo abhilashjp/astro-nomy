@@ -4,7 +4,7 @@ export const docsConfig: DocsConfig = {
   mainNav: [
     {
       title: "Documentation",
-      href: "/docs/getting-started/",
+      href: "/guides/getting-started/",
     },
     {
       title: "Guides",
@@ -17,7 +17,7 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Introduction",
-          href: "/docs/getting-started/",
+          href: "/guides/getting-started/",
         },
       ],
     },

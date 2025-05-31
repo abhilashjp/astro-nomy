@@ -15,7 +15,7 @@ export const navMenuConfig: NavMenuConfig = {
         {
           title: "ROI calculator",
           href: "/landing",
-          description: "Simplify Usage Based Pricing with Pricing Calculators.",
+          description: "Easily communicate the value delivered with ROI calculators",
           image: "/images/examples/landing.jpg",
           disabled: true,
         },
@@ -37,7 +37,7 @@ export const navMenuConfig: NavMenuConfig = {
         {
           title: "Pricing",
           href: "/pricing",
-          description: "Pricing cards, FAQs and more content with price.",
+          description: "Start free. Simple pricing with no hidden fees.",
           image: "/images/examples/pricing.jpg",
         },
        /* {
@@ -57,7 +57,7 @@ export const navMenuConfig: NavMenuConfig = {
           title: "Templates",
           href: "/animes",
           description:
-            "Fetch anime content from an graphql endpoint. Tabs component.",
+            "Choose from our calculator templates library to get started quickly.",
           image: "/images/examples/animes.jpg",
           launched: true,
         },
@@ -75,10 +75,10 @@ export const navMenuConfig: NavMenuConfig = {
           image: "/images/examples/static-blog.jpg",
         },
         {
-          title: "Docs",
-          href: "/docs/introduction-usage-based-pricing",
+          title: "Guides",
+          href: "/guides/introduction-usage-based-pricing",
           description:
-            "A Markdown/MDX docs site built using Content Collections.",
+            "Learn everything about usage based pricing with our guides.",
           image: "/images/examples/documentation.jpg",
         },
         {

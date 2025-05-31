@@ -1,0 +1,29 @@
+---
+import GuideCard from "@/components/cards/docs-card.astro";
+import DocsPageHeader from "@/components/page-header.astro";
+import DocsLayout from "@/layouts/docs-layout.astro";
+import { getPublishedDocs } from '@/lib/content.js';
+
+const docs = await getPublishedDocs();
+---
+
+<DocsLayout title="Documentation" description="Comprehensive documentation and guides">
+  <section class="container max-w-6xl py-10">
+    <DocsPageHeader
+      heading="Documentation"
+      text="This section includes comprehensive documentation for developing with our platform."
+    />
+
+    {
+      docs?.length ? (
+        <div class="grid gap-4 md:grid-cols-2 md:gap-6">
+          {docs.map((doc) => (
+            <GuideCard {...doc} />
+          ))}
+        </div>
+      ) : (
+        <p>No documentation published.</p>
+      )
+    }
+  </section>
+</DocsLayout>
