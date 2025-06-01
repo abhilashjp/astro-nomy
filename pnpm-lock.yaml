@@ -98,6 +98,9 @@ importers:
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      partytown:
+        specifier: ^0.0.0
+        version: 0.0.0
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -2856,6 +2859,9 @@ packages:
 
   parse5@7.1.2:
     resolution: {integrity: sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==}
+
+  partytown@0.0.0:
+    resolution: {integrity: sha512-SrBEhwsjx5NeVZMuOdNgUKoKXVDDk2a+GTQmN0hbThc8KsvRp9D5HCidgMwuvUrUiG4XFvNnbS3Nj/Q5j6xLtg==}
 
   path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
@@ -6742,6 +6748,8 @@ snapshots:
   parse5@7.1.2:
     dependencies:
       entities: 4.5.0
+
+  partytown@0.0.0: {}
 
   path-exists@4.0.0: {}
 

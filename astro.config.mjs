@@ -10,7 +10,7 @@ import db from "@astrojs/db";
 
 //// https://astro.build/config
 export default defineConfig({
-  site: "https://astro-nomy.vercel.app",
+  site: "https://usagepricing.com",
   integrations: [
     mdx({
       syntaxHighlight: "shiki",
@@ -26,6 +26,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     simpleStackForm(),
+    partytown({ config: { forward: ['dataLayer.push'] } }),
     
     db( {
       adapter: "turso",
