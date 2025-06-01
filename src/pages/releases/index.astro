@@ -3,9 +3,9 @@ import PageHeader from "@/components/page-header.astro";
 import { Badge } from "@/components/ui/badge";
 import MainLayout from "@/layouts/main-layout.astro";
 import { formatDate } from "@/lib/utils";
-import { getCollection } from "astro:content";
+import { getPublishedReleases } from "@/lib/content"; // Update this path to match your content.js location
 
-const posts = await getCollection("releases");
+const posts = await getPublishedReleases();
 posts.sort((a, b) => +b.data.date - +a.data.date);
 ---
 
@@ -13,7 +13,7 @@ posts.sort((a, b) => +b.data.date - +a.data.date);
   <section class="container max-w-screen-lg space-y-6 pt-12">
     <PageHeader
       heading="Changelog"
-      text="Reproduce Astro Starlog template with Tailwind CSS & shadcn/ui."
+      text="Checkout latest releases from usagepricing."
     />
 
     <ul class="pt-6">

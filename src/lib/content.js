@@ -22,6 +22,9 @@ export async function getPublishedContent(collectionName) {
     // For explained collection, also respect the existing 'published' field
     if (collectionName === 'explained' && data.published === false) return false;
     
+    // For releases collection, also respect the existing 'published' field
+    if (collectionName === 'releases' && data.published === false) return false;
+    
     return true;
   });
 }
@@ -32,4 +35,3 @@ export const getPublishedDocs = () => getPublishedContent('docs');
 export const getPublishedGuides = () => getPublishedContent('guides');
 export const getPublishedReleases = () => getPublishedContent('releases');
 export const getPublishedExplained = () => getPublishedContent('explained');
-

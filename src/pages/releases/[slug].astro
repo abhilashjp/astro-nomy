@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getPublishedReleases } from "@/lib/content"; // Update this path to match your content.js location
 import MainLayout from "@/layouts/main-layout.astro";
 import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
-  const releases = await getCollection("releases");
+  const releases = await getPublishedReleases();
 
   return releases.map((release) => ({
     params: { slug: release.slug },
