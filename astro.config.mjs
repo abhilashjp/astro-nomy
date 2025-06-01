@@ -7,6 +7,7 @@ import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 import simpleStackForm from "simple-stack-form";
 import db from "@astrojs/db";
+import partytown from "@astrojs/partytown"
 
 //// https://astro.build/config
 export default defineConfig({
