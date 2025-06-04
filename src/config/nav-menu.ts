@@ -7,14 +7,14 @@ export const navMenuConfig: NavMenuConfig = {
       items: [
         {
           title: "Pricing calculator",
-          href: "/landing",
+          href: "/calculator",
           description: "Simplify Usage Based Pricing with Pricing Calculators.",
           image: "/images/examples/landing.jpg",
         },
 
         {
           title: "ROI calculator",
-          href: "/landing",
+          href: "/calculator",
           description: "Easily communicate the value delivered with ROI calculators",
           image: "/images/examples/landing.jpg",
           disabled: true,
