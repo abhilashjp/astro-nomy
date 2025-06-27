@@ -1,0 +1,32 @@
+---
+---
+
+<dialog id="newsletter-modal" class="p-0 rounded-lg shadow-lg backdrop:bg-black backdrop:opacity-50">
+  <div class="relative">
+    <button id="close-newsletter-modal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
+    <iframe src="https://usagepricing.substack.com/embed" width="480" height="150" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+  </div>
+</dialog>
+
+<script is:inline client:load>
+  const openButton = document.getElementById('open-newsletter-modal');
+  const closeButton = document.getElementById('close-newsletter-modal');
+  const modal = document.getElementById('newsletter-modal');
+
+  if (openButton) {
+    openButton.addEventListener('click', () => {
+      modal.showModal();
+    });
+  }
+
+  closeButton.addEventListener('click', () => {
+    modal.close();
+  });
+
+  // Close modal when clicking outside of it
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.close();
+    }
+  });
+</script>

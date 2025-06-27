@@ -45,9 +45,6 @@ const { className } = Astro.props;
 
   <div class="border-t py-4">
     <div class="container flex items-center justify-between">
-      <!-- <span class="text-muted-foreground text-sm">
-        Copyright &copy; 2024. All rights reserved.
-      </span> -->
       <p class="text-left text-sm text-muted-foreground">
         Built by{" "}
         <a
@@ -58,27 +55,8 @@ const { className } = Astro.props;
         >
           UsagePricing
         </a>
-        . <!-- Made with love {" "}
-        <a
-          href="https://usagepricing.com"
-          target="_blank"
-          rel="noreferrer"
-          class="font-medium underline underline-offset-4"
-        >
-          for the world
-        </a>.-->
+        .
       </p>
-<!-- 
-      <div class="flex items-center gap-3">
-        <a
-          href={siteConfig.links.github}
-          target="_blank"
-          rel="noreferrer"
-          class="font-medium underline underline-offset-4"
-        >
-          <Icon name="github" class="size-5" />
-        </a>
-        -->
         <ThemeToggle client:load />
       </div>
     </div>
