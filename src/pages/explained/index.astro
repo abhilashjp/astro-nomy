@@ -63,7 +63,8 @@ const regularExplained = sortedExplained.filter(article => !article.data.feature
                   Featured
                 </span>
               </div>
-              <ExplainedCard article={article} />
+              <ExplainedCard {...article} />
+
             </div>
           ))}
         </div>
@@ -85,7 +86,8 @@ const regularExplained = sortedExplained.filter(article => !article.data.feature
       {explained.length > 0 ? (
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {sortedExplained.map((article) => (
-            <ExplainedCard article={article} />
+            <ExplainedCard {...article} />
+
           ))}
         </div>
       ) : (

@@ -21,6 +21,7 @@ const blog = defineCollection({
       draft: z.boolean().optional(),
       excludeFromBuild: z.boolean().optional(),
       devOnly: z.boolean().optional(),
+      tags: z.array(z.string()).optional(),
     }),
 });
 
@@ -32,6 +33,7 @@ const guides = defineCollection({
     draft: z.boolean().optional(),
     excludeFromBuild: z.boolean().optional(),
     devOnly: z.boolean().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 
@@ -49,6 +51,7 @@ const docs = defineCollection({
     draft: z.boolean().optional(),
     excludeFromBuild: z.boolean().optional(),
     devOnly: z.boolean().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 
@@ -67,6 +70,7 @@ const explained = defineCollection({
     draft: z.boolean().optional(),
     excludeFromBuild: z.boolean().optional(),
     devOnly: z.boolean().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 
@@ -87,6 +91,7 @@ const releases = defineCollection({
       draft: z.boolean().optional(),
       excludeFromBuild: z.boolean().optional(),
       devOnly: z.boolean().optional(),
+      tags: z.array(z.string()).optional(),
     }),
 });
 

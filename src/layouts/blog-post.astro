@@ -7,10 +7,10 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "./main-layout.astro";
 
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<any>;
 
 const slug = Astro.props.slug;
-const { title, description, pubDate, updatedDate, cover, category } =
+const { title, description, pubDate, updatedDate, cover, category, tags } =
   Astro.props.data;
 ---
 
@@ -64,6 +64,17 @@ const { title, description, pubDate, updatedDate, cover, category } =
       <p>{description}</p>
       <hr class="my-6" />
       <slot />
+      {tags && (
+        <div class="mt-2 flex flex-wrap gap-2">
+          {tags.map((tag: string) => (
+            <a href={`/topic/${tag}/`}>
+              <Badge variant="secondary" radius="md" className="capitalize">
+                {tag}
+              </Badge>
+            </a>
+          ))}
+        </div>
+      )}
     </article>
   </div>
 </MainLayout>

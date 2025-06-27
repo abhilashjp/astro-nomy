@@ -9,28 +9,20 @@ import { SheetMobileNav } from "@/components/layout/sheet-mobile-nav";
 import { navMenuConfig } from "@/config/nav-menu";
 import { docsConfig } from "@/config/docs";
 import { ThemeToggle } from "@/components/theme-toggle";
-// import MainNav from "@/components/layout/main-nav.astro";
+import { Badge } from "@/components/ui/badge";
+import { slugify } from "@/lib/utils";
 
 type Props = {
   title: string;
   description: string;
+  tags?: string[];
 };
 
-const { title, description } = Astro.props;
+const { title, description, tags } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <Header className="border-b">
-    <!-- if using only normals links  -->
-    <!-- <MainNav items={docsConfig.mainNav} slot="left-header" />
-    <SheetMobileNav
-      mainNavItems={[...docsConfig.mainNav]}
-      sidebarNavItems={[...docsConfig.sidebarNav]}
-      slot="mobile-nav-header"
-      client:load
-    /> -->
-
-    <!-- if use Navigation Menu on desktop -->
     <MainNavigationMenu slot="left-header" client:load />
     <SheetMobileNav
       mainNavItems={[...navMenuConfig.links]}
@@ -65,6 +57,18 @@ const { title, description } = Astro.props;
   </Header>
 
   <slot />
+
+  {tags && (
+    <div class="mt-4 flex flex-wrap gap-2 p-4">
+      {tags.map((tag: string) => (
+        <a href={`/topic/${slugify(tag)}/`}>
+          <Badge variant="secondary" radius="md" className="capitalize">
+            {tag}
+          </Badge>
+        </a>
+      ))}
+    </div>
+  )}
 
   <Footer className="border-t" />
 </BaseLayout>

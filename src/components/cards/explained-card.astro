@@ -3,21 +3,27 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props extends CollectionEntry<'explained'> {}
 
-const { data, slug } = Astro.props;
-const { title, description, pubDate, updatedDate, company, difficulty, tags } = data;
+const { data = {}, slug = '' } = Astro.props ?? {};
 
-// Format date
-const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  }).format(date);
-};
+const {
+  title = 'Untitled',
+  description = '',
+  pubDate,
+  updatedDate,
+  company = '',
+  difficulty = '',
+  tags = []
+} = data;
+
+// Format for display and ISO format for metadata
+const formatDate = (date: Date | string | undefined) =>
+  date ? new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).format(new Date(date)) : '';
+
+const isoDate = (date: Date | string | undefined) =>
+  date ? new Date(date).toISOString() : '';
 
 const displayDate = updatedDate || pubDate;
 
-// Difficulty colors
 const difficultyColors = {
   beginner: 'bg-green-50 text-green-700 ring-green-700/10',
   intermediate: 'bg-yellow-50 text-yellow-700 ring-yellow-700/10',
@@ -25,16 +31,25 @@ const difficultyColors = {
 };
 ---
 
-<article class="group relative rounded-lg border p-6 hover:shadow-md transition-all duration-200 hover:border-blue-200">
+<article 
+  class="group relative rounded-lg border p-6 hover:shadow-md transition-all duration-200 hover:border-blue-200"
+  itemscope 
+  itemtype="https://schema.org/BlogPosting"
+>
+  <meta itemprop="mainEntityOfPage" content={`https://yourdomain.com/explained/${slug}`} />
+  <meta itemprop="datePublished" content={isoDate(pubDate)} />
+  {updatedDate && <meta itemprop="dateModified" content={isoDate(updatedDate)} />}
+  <meta itemprop="author" content="Your Author Name or Brand" />
+  <meta itemprop="publisher" content="Your Company or Brand Name" />
+
   <div class="flex flex-col space-y-4">
-    {/* Header with company and difficulty */}
+    
+    <!-- Company + Difficulty -->
     <div class="flex items-center justify-between">
       {company && (
-        <div class="flex items-center space-x-2">
-          <span class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-            {company}
-          </span>
-        </div>
+        <span class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+          {company}
+        </span>
       )}
       {difficulty && (
         <span class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset ${difficultyColors[difficulty] || difficultyColors.intermediate}`}>
@@ -43,23 +58,23 @@ const difficultyColors = {
       )}
     </div>
 
-    {/* Title and description */}
+    <!-- Title & Description -->
     <div class="flex-1">
-      <h3 class="font-semibold text-lg leading-6 group-hover:text-blue-600 transition-colors">
-        <a href={`/explained/${slug}`} class="stretched-link">
+      <h3 class="font-semibold text-lg leading-6 group-hover:text-blue-600 transition-colors" itemprop="headline">
+        <a href={`/explained/${slug}`} class="stretched-link" itemprop="url">
           {title}
         </a>
       </h3>
       {description && (
-        <p class="text-muted-foreground text-sm mt-2 line-clamp-3">
+        <p class="text-muted-foreground text-sm mt-2 line-clamp-3" itemprop="description">
           {description}
         </p>
       )}
     </div>
 
-    {/* Tags */}
-    {tags && tags.length > 0 && (
-      <div class="flex flex-wrap gap-1">
+    <!-- Tags -->
+    {tags?.length > 0 && (
+      <div class="flex flex-wrap gap-1" itemprop="keywords">
         {tags.slice(0, 3).map((tag) => (
           <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
             {tag}
@@ -73,12 +88,12 @@ const difficultyColors = {
       </div>
     )}
 
-    {/* Footer with date and read more arrow */}
+    <!-- Footer -->
     <div class="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t">
       {displayDate && (
-        <span>
+        <time datetime={isoDate(displayDate)} itemprop="datePublished">
           {updatedDate ? 'Updated' : 'Published'} {formatDate(displayDate)}
-        </span>
+        </time>
       )}
       <div class="flex items-center space-x-1 group-hover:text-blue-600 transition-colors">
         <span class="text-xs font-medium">Read Analysis</span>
@@ -102,7 +117,7 @@ const difficultyColors = {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .stretched-link::after {
     position: absolute;
     top: 0;

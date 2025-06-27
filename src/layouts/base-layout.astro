@@ -3,15 +3,17 @@ import BaseHead from "@/components/layout/base-head.astro";
 import TailwindIndicator from "@/components/tailwind-indicator.astro";
 // NOTE: work with { Toaster } from "@/components/ui/sonner" but need to update dark theme
 import { Toaster } from "sonner";
-import { cn } from "@/lib/utils";
+import { cn, slugify } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
   title: string;
   description?: string;
   bodyClass?: string;
+  tags?: string[];
 };
 
-const { title, description, bodyClass } = Astro.props;
+const { title, description, bodyClass, tags } = Astro.props;
 ---
 
 <!doctype html>
@@ -42,6 +44,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     <slot />
+    {tags && (
+      <div class="mt-4 flex flex-wrap gap-2 p-4">
+        {tags.map((tag: string) => (
+          <a href={`/topic/${slugify(tag)}/`}>
+            <Badge variant="secondary" radius="md" className="capitalize">
+              {tag}
+            </Badge>
+          </a>
+        ))}
+      </div>
+    )}
     <TailwindIndicator />
     <Toaster richColors client:only="react" />
   </body>
