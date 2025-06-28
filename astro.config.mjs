@@ -27,9 +27,10 @@ export default defineConfig({
           page.includes("/docs/") ||
           page.includes("/guides/") ||
           page.includes("/explained/") ||
-          page.includes("/releases/")
+          page.includes("/releases/") ||
+          page.includes("/newsletter")
         ) {
-          return true; // rely on getStaticPaths to skip drafts
+          return false; // rely on getStaticPaths to skip drafts
         }
         return true;
       },
