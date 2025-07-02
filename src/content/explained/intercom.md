@@ -1,8 +1,8 @@
 ---
-title: Getting started
-description: Welcome to the Astronomy documentation.
-draft: true
-pubDate: 23 Aug 2024
+title: Intercom Pricing
+description: Detailed analysis on Intercom's Pricing strategy 
+draft: false
+pubDate: 28 Jun 2025
 slug : intercom-pricing
 tags: ["pricing", "usage based pricing", "Intercom", "Customer support"] 
 ---
@@ -79,7 +79,7 @@ Something a wise person once told me about typography is:
 It's probably important that images look okay here by default as well:
 
 <Image
-  src="/images/blog/placeholder-4.jpg"
+  src="/images/explained/intercom-pricing.png"
   width="718"
   height="404"
   alt="Image"
