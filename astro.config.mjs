@@ -3,7 +3,7 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import icon from "astro-icon";
 import simpleStackForm from "simple-stack-form";
 import db from "@astrojs/db";
@@ -47,7 +47,7 @@ export default defineConfig({
       authToken: import.meta.env.DB_AUTH_TOKEN,
     }),
   ],
-  output: "hybrid",
+  output: "server",
   adapter: vercel({
     analytics: true,
     functionPerRoute: false, // reduce cold starts & limits
