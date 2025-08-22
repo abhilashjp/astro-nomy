@@ -24,6 +24,9 @@ export async function getPublishedContent(collectionName) {
     
     // For releases collection, also respect the existing 'published' field
     if (collectionName === 'releases' && data.published === false) return false;
+
+    // For docs collection, also respect the existing 'published' field
+    if (collectionName === 'docs' && data.published === false) return false;
     
     return true;
   });

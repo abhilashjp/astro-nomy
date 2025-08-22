@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 // src/pages/guides/[...slug].astro
 import { MdxComponents } from "@/components/content/mdx-components";
 import DocsSidebarNav from "@/components/layout/sidebar-nav.astro";
@@ -16,6 +17,7 @@ import { getPublishedGuides } from '@/lib/content.js'; // New function for guide
 
 export async function getStaticPaths() {
   const guides = await getPublishedGuides(); // Get guides instead of docs
+  console.log("Guides entries in getStaticPaths:", guides.map(g => g.slug)); // Add this line for debugging
   return guides.map((guide) => ({
     params: { slug: guide.slug },
     props: { guide },
@@ -26,9 +28,6 @@ type Props = CollectionEntry<"guides">; // Change to guides collection
 
 const { guide } = Astro.props; // Use guide instead of doc
 const slug = Astro.params.slug;
-const toc = await getTableOfContents(guide.body);
-
-const { Content } = await guide.render();
 
 if (!slug || !guide) {
   return new Response(null, {
@@ -36,6 +35,10 @@ if (!slug || !guide) {
     statusText: "Not found",
   });
 }
+
+const toc = await getTableOfContents(guide.body);
+
+const { Content } = await guide.render();
 ---
 
 <DocsLayout title={guide.data.title} description={guide.data.description} tags={guide.data.tags}>

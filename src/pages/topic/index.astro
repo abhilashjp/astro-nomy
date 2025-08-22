@@ -3,11 +3,15 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/tag-layout.astro";
 import { slugify } from "../../lib/utils";
 
-const blogEntries = await getCollection("blog");
-const docsEntries = await getCollection("docs");
-const guidesEntries = await getCollection("guides");
-const explainedEntries = await getCollection("explained");
-const releasesEntries = await getCollection("releases");
+import { getPublishedPosts, getPublishedDocs, getPublishedGuides, getPublishedExplained, getPublishedReleases } from '../../lib/content.js';
+
+const blogEntries = await getPublishedPosts();
+let docsEntries = await getPublishedDocs();
+// Manually filter docsEntries to ensure only published ones are included
+docsEntries = docsEntries.filter(entry => entry.data.published !== false);
+const guidesEntries = await getPublishedGuides();
+const explainedEntries = await getPublishedExplained();
+const releasesEntries = await getPublishedReleases();
 
 const allEntries = [
   ...blogEntries,
@@ -15,10 +19,14 @@ const allEntries = [
   ...guidesEntries,
   ...explainedEntries,
   ...releasesEntries,
-].filter(entry => !entry.data.draft);
+];
 
 const allTags = allEntries.flatMap((entry) => entry.data.tags || []);
 const uniqueTags = [...new Set(allTags)];
+
+console.log("index.astro - docsEntries slugs:", docsEntries.map(e => e.slug));
+console.log("index.astro - allEntries slugs:", allEntries.map(e => e.slug));
+console.log("index.astro - uniqueTags:", uniqueTags);
 
 const tagCounts = allTags.reduce((acc, tag) => {
   acc[tag] = (acc[tag] || 0) + 1;

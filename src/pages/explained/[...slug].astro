@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import { MdxComponents } from "@/components/content/mdx-components";
 import GuidePostLayout from "@/layouts/guide-post.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -7,6 +8,7 @@ import { getPublishedExplained } from '@/lib/content.js'; // Changed from getPub
 
 export async function getStaticPaths() {
   const explained = await getPublishedExplained(); // Changed from getPublishedPosts
+  console.log("Explained entries in getStaticPaths:", explained.map(e => e.slug)); // Add this line for debugging
   return explained.map((explained) => ({
     params: { slug: explained.slug },
     props: { explained }, // Keep the object structure
