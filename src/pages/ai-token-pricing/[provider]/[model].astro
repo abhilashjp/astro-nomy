@@ -1,0 +1,217 @@
+---
+import { db, Provider, Model, PriceHistory, eq, desc } from "astro:db";
+import Layout from "../../../layouts/main-layout.astro";
+import { Calculator } from "lucide-react";
+
+export const prerender = false;
+
+// Get slugs from URL
+const modelSlug = Astro.params.model;
+
+// Fetch model with provider data
+const models = await db
+    .select({
+        id: Model.id,
+        name: Model.name,
+        slug: Model.slug,
+        inputPrice: Model.inputPrice,
+        outputPrice: Model.outputPrice,
+        contextWindow: Model.contextWindow,
+        description: Model.description,
+        knowledgeCutoff: Model.knowledgeCutoff,
+        providerId: Model.providerId,
+        providerName: Provider.name,
+        providerSlug: Provider.slug,
+        providerWebsite: Provider.website,
+    })
+    .from(Model)
+    .innerJoin(Provider, eq(Model.providerId, Provider.id))
+    .where(eq(Model.slug, modelSlug || ""));
+
+if (!models || models.length === 0) {
+    return Astro.redirect("/ai-token-pricing");
+}
+
+const model = models[0];
+
+const history = await db
+    .select()
+    .from(PriceHistory)
+    .where(eq(PriceHistory.modelId, model.id))
+    .orderBy(desc(PriceHistory.date));
+
+const title = `${model.name} Pricing & Cost Calculator (2025) | UsagePricing.com`;
+const description = `Current pricing for ${model.name} by ${model.providerName}. Input cost: $${model.inputPrice}/1M tokens. Output cost: $${model.outputPrice}/1M tokens. Calculate your monthly bill here.`;
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: model.name,
+    brand: { "@type": "Brand", name: model.providerName },
+    description:
+        model.description ||
+        `AI Large Language Model with ${model.contextWindow} context window.`,
+    offers: {
+        "@type": "Offer",
+        price: model.inputPrice,
+        priceCurrency: "USD",
+        unitText: "per 1M tokens",
+    },
+};
+---
+
+<Layout title={title} description={description}>
+    <main class="container mx-auto px-4 py-12 max-w-4xl">
+        <div class="mb-8">
+            <nav class="flex items-center gap-2 text-sm text-gray-400 mb-6">
+                <a href="/ai-token-pricing" class="hover:text-white">Pricing</a>
+                <span>/</span>
+                <a
+                    href={`/ai-token-pricing/${model.providerSlug}`}
+                    class="hover:text-white">{model.providerName}</a
+                >
+                <span>/</span>
+                <span class="text-white">{model.name}</span>
+            </nav>
+
+            <div
+                class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+            >
+                <div>
+                    <h1 class="text-4xl font-bold text-white mb-2">
+                        {model.name} Pricing
+                    </h1>
+                    <p class="text-xl text-gray-400">
+                        by <a
+                            href={`/ai-token-pricing/${model.providerSlug}`}
+                            class="text-blue-400 hover:underline"
+                            >{model.providerName}</a
+                        >
+                    </p>
+                </div>
+                <a
+                    href="/calculator"
+                    class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                >
+                    <Calculator className="w-5 h-5" />
+                    Calculate ROI
+                </a>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white/5 p-8 rounded-xl border border-white/10">
+                <h2 class="text-lg font-semibold text-gray-300 mb-6">
+                    Token Costs (per 1M)
+                </h2>
+                <div class="space-y-6">
+                    <div>
+                        <div class="text-sm text-gray-400 mb-1">
+                            Input Price
+                        </div>
+                        <div class="text-4xl font-bold text-emerald-400">
+                            ${model.inputPrice.toFixed(2)}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-400 mb-1">
+                            Output Price
+                        </div>
+                        <div class="text-4xl font-bold text-emerald-400">
+                            ${model.outputPrice.toFixed(2)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/5 p-8 rounded-xl border border-white/10">
+                <h2 class="text-lg font-semibold text-gray-300 mb-6">
+                    Technical Specs
+                </h2>
+                <div class="space-y-4">
+                    <div
+                        class="flex justify-between border-b border-white/5 pb-4"
+                    >
+                        <span class="text-gray-400">Context Window</span>
+                        <span class="font-mono text-white"
+                            >{model.contextWindow.toLocaleString()} tokens</span
+                        >
+                    </div>
+                    <div
+                        class="flex justify-between border-b border-white/5 pb-4"
+                    >
+                        <span class="text-gray-400">Last Updated</span>
+                        <span class="font-mono text-white"
+                            >{
+                                history.length > 0
+                                    ? history[0].date.toLocaleDateString()
+                                    : "Unknown"
+                            }</span
+                        >
+                    </div>
+                    <div class="flex justify-between pt-2">
+                        <span class="text-gray-400">Provider</span>
+                        <span class="text-white">{model.providerName}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {
+            history.length > 0 && (
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-white mb-6">
+                        Price History
+                    </h2>
+                    <div class="bg-white/5 rounded-xl border border-white/10 overflow-hidden">
+                        <table class="w-full text-sm text-left text-gray-300">
+                            <thead class="text-xs text-gray-400 uppercase bg-white/5">
+                                <tr>
+                                    <th class="px-6 py-3">Date</th>
+                                    <th class="px-6 py-3">Input Price</th>
+                                    <th class="px-6 py-3">Output Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {history.map((entry) => (
+                                    <tr class="border-b border-white/5 last:border-0">
+                                        <td class="px-6 py-4">
+                                            {entry.date.toLocaleDateString()}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            ${entry.priceInput.toFixed(2)}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            ${entry.priceOutput.toFixed(2)}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            )
+        }
+
+        <div
+            class="bg-gradient-to-r from-blue-900/40 to-purple-900/40 p-8 rounded-xl border border-blue-500/20 text-center"
+        >
+            <h2 class="text-2xl font-bold text-white mb-4">
+                Building with {model.name}?
+            </h2>
+            <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+                Estimate your total monthly bill based on your expected traffic
+                and usage patterns. Our advanced calculator handles complex
+                scenarios like RAG and agentic workflows.
+            </p>
+            <a
+                href="/calculator"
+                class="inline-flex items-center gap-2 bg-white text-blue-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold transition-colors"
+            >
+                Start Free Calculation
+            </a>
+        </div>
+    </main>
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>

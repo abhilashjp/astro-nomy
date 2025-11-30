@@ -29,6 +29,7 @@ export const footerLinks: SidebarNavItem[] = [
       { title: "Customization", href: "#" },
       { title: "Customers", href: "#" },
       { title: "Changelog", href: "#" },
+      { title: "AI Token Price Tracker", href: "/ai-token-pricing" },
     ],
   },
   {

@@ -1,0 +1,88 @@
+---
+import { db, Model, Provider, eq } from "astro:db";
+import ModelComparison from "../../../components/ModelComparison";
+import Layout from "../../../layouts/main-layout.astro";
+
+export const prerender = false;
+
+export async function getStaticPaths() {
+    const models = await db
+        .select({
+            id: Model.id,
+            name: Model.name,
+            slug: Model.slug,
+            provider: { name: Provider.name },
+            inputPrice: Model.inputPrice,
+            outputPrice: Model.outputPrice,
+            contextWindow: Model.contextWindow,
+        })
+        .from(Model)
+        .innerJoin(Provider, eq(Model.providerId, Provider.id));
+
+    const paths = [];
+    for (let i = 0; i < models.length; i++) {
+        for (let j = 0; j < models.length; j++) {
+            if (i !== j) {
+                paths.push({
+                    params: { slug: `${models[i].slug}-vs-${models[j].slug}` },
+                    props: { modelA: models[i], modelB: models[j] },
+                });
+            }
+        }
+    }
+    return paths;
+}
+
+const { modelA, modelB } = Astro.props;
+
+const title = `${modelA.name} vs ${modelB.name}: Which is Cheaper? (Cost Analysis)`;
+const description = `Head-to-head pricing comparison. ${modelA.name} costs $${modelA.inputPrice}/1M input tokens vs $${modelB.inputPrice} for ${modelB.name}. See the full breakdown.`;
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Table",
+    name: `${modelA.name} vs ${modelB.name} Pricing`,
+    about: [
+        { "@type": "Product", name: modelA.name },
+        { "@type": "Product", name: modelB.name },
+    ],
+};
+---
+
+<Layout title={title} description={description}>
+    <main class="container mx-auto px-4 py-12 max-w-4xl">
+        <div class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-white mb-4">
+                {modelA.name} vs {modelB.name}
+            </h1>
+            <p class="text-xl text-gray-400">
+                Detailed pricing comparison and cost analysis.
+            </p>
+        </div>
+
+        <div class="mb-12">
+            <ModelComparison client:load modelA={modelA} modelB={modelB} />
+        </div>
+
+        <div class="prose prose-invert max-w-none">
+            <h2>Verdict</h2>
+            <p>
+                When comparing <strong>{modelA.name}</strong> and <strong
+                    >{modelB.name}</strong
+                >,
+                {
+                    modelA.inputPrice < modelB.inputPrice
+                        ? modelA.name
+                        : modelB.name
+                } is the cheaper option for input tokens. However, you should also
+                consider the context window and output costs.
+            </p>
+            <p>
+                Use the calculator above to simulate your specific workload and
+                find the break-even point.
+            </p>
+        </div>
+    </main>
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>

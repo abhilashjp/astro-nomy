@@ -41,11 +41,7 @@ export default defineConfig({
     }),
     simpleStackForm(),
     partytown({ config: { forward: ["dataLayer.push"] } }),
-    db({
-      adapter: "turso",
-      dbUrl: import.meta.env.DB_URL,
-      authToken: import.meta.env.DB_AUTH_TOKEN,
-    }),
+    db(),
   ],
   output: "server",
   adapter: vercel({
@@ -57,6 +53,6 @@ export default defineConfig({
     server: {
       hmr: false,
     },
-    
+
   },
 });

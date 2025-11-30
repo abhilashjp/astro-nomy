@@ -1,0 +1,91 @@
+---
+import { db, Provider, Model, eq } from "astro:db";
+import TokenPriceTracker from "../../../components/TokenPriceTracker";
+import Layout from "../../../layouts/main-layout.astro";
+
+export const prerender = false;
+
+// Get provider slug from URL
+const providerSlug = Astro.params.provider;
+
+// Fetch provider data
+const [provider] = await db
+    .select()
+    .from(Provider)
+    .where(eq(Provider.slug, providerSlug || ""));
+
+if (!provider) {
+    return Astro.redirect("/ai-token-pricing");
+}
+
+const models = await db
+    .select({
+        id: Model.id,
+        name: Model.name,
+        slug: Model.slug,
+        inputPrice: Model.inputPrice,
+        outputPrice: Model.outputPrice,
+        contextWindow: Model.contextWindow,
+        description: Model.description,
+        provider: {
+            name: Provider.name,
+            slug: Provider.slug,
+        },
+    })
+    .from(Model)
+    .innerJoin(Provider, eq(Model.providerId, Provider.id))
+    .where(eq(Provider.id, provider.id));
+
+const title = `${provider.name} Token Pricing & Cost History | UsagePricing.com`;
+const description = `Complete pricing list for all ${provider.name} models. Compare input/output costs per 1M tokens for ${models
+    .map((m) => m.name)
+    .slice(0, 3)
+    .join(", ")} and more.`;
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    name: provider.name,
+    url: provider.website,
+    description: description,
+    owns: models.map((model) => ({
+        "@type": "Product",
+        name: model.name,
+        url: `https://usagepricing.com/ai-token-pricing/${provider.slug}/${model.slug}`,
+    })),
+};
+---
+
+<Layout title={title} description={description}>
+    <main class="container mx-auto px-4 py-12 max-w-6xl">
+        <div class="mb-8">
+            <a
+                href="/ai-token-pricing"
+                class="text-sm text-gray-400 hover:text-white mb-4 inline-block"
+                >&larr; Back to All Providers</a
+            >
+            <h1 class="text-4xl font-bold text-white mb-4">
+                {provider.name} API Pricing
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl">
+                Track and compare the latest token costs for all {provider.name}
+                models.
+            </p>
+        </div>
+
+        <div class="mb-16">
+            <TokenPriceTracker client:load initialData={models} />
+        </div>
+
+        <div class="prose prose-invert max-w-none">
+            <h2>About {provider.name}</h2>
+            <p>
+                {provider.name} is a leading AI provider offering a range of Large
+                Language Models (LLMs). This page tracks the official API pricing
+                for input and output tokens, updated daily.
+            </p>
+        </div>
+    </main>
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>
