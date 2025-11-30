@@ -93,15 +93,15 @@ export default function TokenPriceTracker({ initialData }: TokenPriceTrackerProp
     return (
         <div className="w-full space-y-6">
             {/* Calculator Inputs */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/5 p-6 rounded-xl border border-white/10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-50 dark:bg-white/5 p-6 rounded-xl border border-gray-200 dark:border-white/10">
                 <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-300">Input Tokens</label>
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Input Tokens</label>
                     <div className="relative">
                         <input
                             type="number"
                             value={inputTokens}
                             onChange={(e) => setInputTokens(Number(e.target.value))}
-                            className="w-full pl-4 pr-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                            className="w-full pl-4 pr-4 py-3 bg-white dark:bg-black/40 border border-gray-200 dark:border-white/10 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
                         />
                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500">
                             tokens
@@ -109,13 +109,13 @@ export default function TokenPriceTracker({ initialData }: TokenPriceTrackerProp
                     </div>
                 </div>
                 <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-300">Output Tokens</label>
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Output Tokens</label>
                     <div className="relative">
                         <input
                             type="number"
                             value={outputTokens}
                             onChange={(e) => setOutputTokens(Number(e.target.value))}
-                            className="w-full pl-4 pr-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+                            className="w-full pl-4 pr-4 py-3 bg-white dark:bg-black/40 border border-gray-200 dark:border-white/10 rounded-lg text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
                         />
                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-500">
                             tokens
@@ -131,7 +131,7 @@ export default function TokenPriceTracker({ initialData }: TokenPriceTrackerProp
                     <input
                         type="text"
                         placeholder="Search models (e.g. gpt-4, claude)..."
-                        className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-500"
+                        className="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
                     />
@@ -141,7 +141,7 @@ export default function TokenPriceTracker({ initialData }: TokenPriceTrackerProp
                     <div className="relative">
                         <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-3 h-3" />
                         <select
-                            className="pl-9 pr-8 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer hover:bg-white/10 transition-colors"
+                            className="pl-9 pr-8 py-2.5 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer hover:bg-gray-50 dark:hover:bg-white/10 transition-colors"
                             value={selectedProvider}
                             onChange={(e) => setSelectedProvider(e.target.value)}
                         >
@@ -155,52 +155,52 @@ export default function TokenPriceTracker({ initialData }: TokenPriceTrackerProp
             </div>
 
             {/* Table */}
-            <div className="overflow-x-auto rounded-xl border border-white/10 bg-black/20 backdrop-blur-sm">
-                <table className="w-full text-sm text-left text-gray-300">
-                    <thead className="text-xs text-gray-400 uppercase bg-white/5 border-b border-white/10">
+            <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black/20 backdrop-blur-sm shadow-sm dark:shadow-none">
+                <table className="w-full text-sm text-left text-gray-600 dark:text-gray-300">
+                    <thead className="text-xs text-gray-500 dark:text-gray-400 uppercase bg-gray-50 dark:bg-white/5 border-b border-gray-200 dark:border-white/10">
                         <tr>
-                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-white transition-colors" onClick={() => requestSort('name')}>
+                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors" onClick={() => requestSort('name')}>
                                 <div className="flex items-center gap-1">Model <ArrowUpDown className="w-3 h-3" /></div>
                             </th>
-                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-white transition-colors" onClick={() => requestSort('provider')}>
+                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors" onClick={() => requestSort('provider')}>
                                 <div className="flex items-center gap-1">Provider <ArrowUpDown className="w-3 h-3" /></div>
                             </th>
-                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-white transition-colors text-right" onClick={() => requestSort('inputPrice')}>
+                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors text-right" onClick={() => requestSort('inputPrice')}>
                                 <div className="flex items-center gap-1 justify-end">Input / 1M <ArrowUpDown className="w-3 h-3" /></div>
                             </th>
-                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-white transition-colors text-right" onClick={() => requestSort('outputPrice')}>
+                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors text-right" onClick={() => requestSort('outputPrice')}>
                                 <div className="flex items-center gap-1 justify-end">Output / 1M <ArrowUpDown className="w-3 h-3" /></div>
                             </th>
-                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-white transition-colors text-right bg-blue-500/10" onClick={() => requestSort('inputCost')}>
-                                <div className="flex items-center gap-1 justify-end text-blue-300">Est. Input Cost <ArrowUpDown className="w-3 h-3" /></div>
+                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors text-right bg-blue-50 dark:bg-blue-500/10" onClick={() => requestSort('inputCost')}>
+                                <div className="flex items-center gap-1 justify-end text-blue-600 dark:text-blue-300">Est. Input Cost <ArrowUpDown className="w-3 h-3" /></div>
                             </th>
-                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-white transition-colors text-right bg-purple-500/10" onClick={() => requestSort('outputCost')}>
-                                <div className="flex items-center gap-1 justify-end text-purple-300">Est. Output Cost <ArrowUpDown className="w-3 h-3" /></div>
+                            <th scope="col" className="px-6 py-4 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-colors text-right bg-purple-50 dark:bg-purple-500/10" onClick={() => requestSort('outputCost')}>
+                                <div className="flex items-center gap-1 justify-end text-purple-600 dark:text-purple-300">Est. Output Cost <ArrowUpDown className="w-3 h-3" /></div>
                             </th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5">
+                    <tbody className="divide-y divide-gray-200 dark:divide-white/5">
                         {sortedData.map((model) => (
-                            <tr key={model.id} className="hover:bg-white/5 transition-colors group">
-                                <td className="px-6 py-4 font-medium text-white">
+                            <tr key={model.id} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group">
+                                <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
                                     <div className="flex flex-col">
-                                        <a href={`/ai-token-pricing/${model.provider.slug}/${model.slug}`} className="hover:text-blue-400 transition-colors">
+                                        <a href={`/ai-token-pricing/${model.provider.slug}/${model.slug}`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                             {model.name}
                                         </a>
                                         <span className="text-xs text-gray-500 mt-0.5">{model.contextWindow.toLocaleString()} ctx</span>
                                     </div>
                                 </td>
                                 <td className="px-6 py-4">
-                                    <a href={`/ai-token-pricing/${model.provider.slug}`} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/10 text-gray-300 hover:bg-white/20 transition-colors">
+                                    <a href={`/ai-token-pricing/${model.provider.slug}`} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors">
                                         {model.provider.name}
                                     </a>
                                 </td>
-                                <td className="px-6 py-4 text-right font-mono text-gray-400">${model.inputPrice.toFixed(2)}</td>
-                                <td className="px-6 py-4 text-right font-mono text-gray-400">${model.outputPrice.toFixed(2)}</td>
-                                <td className="px-6 py-4 text-right font-mono font-medium text-blue-400 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors">
+                                <td className="px-6 py-4 text-right font-mono text-gray-600 dark:text-gray-400">${model.inputPrice.toFixed(2)}</td>
+                                <td className="px-6 py-4 text-right font-mono text-gray-600 dark:text-gray-400">${model.outputPrice.toFixed(2)}</td>
+                                <td className="px-6 py-4 text-right font-mono font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/5 group-hover:bg-blue-100 dark:group-hover:bg-blue-500/10 transition-colors">
                                     ${calculateCost(model.inputPrice, inputTokens).toFixed(4)}
                                 </td>
-                                <td className="px-6 py-4 text-right font-mono font-medium text-purple-400 bg-purple-500/5 group-hover:bg-purple-500/10 transition-colors">
+                                <td className="px-6 py-4 text-right font-mono font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-500/5 group-hover:bg-purple-100 dark:group-hover:bg-purple-500/10 transition-colors">
                                     ${calculateCost(model.outputPrice, outputTokens).toFixed(4)}
                                 </td>
                             </tr>

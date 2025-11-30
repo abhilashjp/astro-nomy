@@ -61,13 +61,13 @@ const schema = {
         <div class="mb-8">
             <a
                 href="/ai-token-pricing"
-                class="text-sm text-gray-400 hover:text-white mb-4 inline-block"
+                class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-4 inline-block"
                 >&larr; Back to All Providers</a
             >
-            <h1 class="text-4xl font-bold text-white mb-4">
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 {provider.name} API Pricing
             </h1>
-            <p class="text-xl text-gray-400 max-w-2xl">
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
                 Track and compare the latest token costs for all {provider.name}
                 models.
             </p>
@@ -77,8 +77,10 @@ const schema = {
             <TokenPriceTracker client:load initialData={models} />
         </div>
 
-        <div class="prose prose-invert max-w-none">
-            <h2>About {provider.name}</h2>
+        <div
+            class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300"
+        >
+            <h2 class="text-gray-900 dark:text-white">About {provider.name}</h2>
             <p>
                 {provider.name} is a leading AI provider offering a range of Large
                 Language Models (LLMs). This page tracks the official API pricing

@@ -44,11 +44,13 @@ const schema = {
     <main class="container mx-auto px-4 py-12 max-w-6xl">
         <div class="text-center mb-12">
             <h1
-                class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight"
+                class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight"
             >
                 AI Token Price Tracker
             </h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p
+                class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
                 The industry's most accurate live tracker for LLM API costs.
                 Compare input/output prices per 1M tokens across OpenAI,
                 Anthropic, Google, and more.
@@ -59,8 +61,12 @@ const schema = {
             <TokenPriceTracker client:load initialData={models} />
         </div>
 
-        <div class="prose prose-invert max-w-none">
-            <h2>Why Track AI Token Prices?</h2>
+        <div
+            class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300"
+        >
+            <h2 class="text-gray-900 dark:text-white">
+                Why Track AI Token Prices?
+            </h2>
             <p>
                 As AI models evolve, pricing becomes a moving target. Developers
                 and businesses need a reliable source of truth to estimate costs
@@ -69,29 +75,41 @@ const schema = {
             </p>
 
             <div class="grid md:grid-cols-3 gap-8 mt-8 not-prose">
-                <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                    <h3 class="text-lg font-semibold text-white mb-2">
+                <div
+                    class="bg-gray-50 dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10"
+                >
+                    <h3
+                        class="text-lg font-semibold text-gray-900 dark:text-white mb-2"
+                    >
                         Real-time Updates
                     </h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
                         Prices are updated daily to reflect the latest API
                         changes and discounts.
                     </p>
                 </div>
-                <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                    <h3 class="text-lg font-semibold text-white mb-2">
+                <div
+                    class="bg-gray-50 dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10"
+                >
+                    <h3
+                        class="text-lg font-semibold text-gray-900 dark:text-white mb-2"
+                    >
                         Apples-to-Apples
                     </h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
                         Standardized "per 1M tokens" pricing makes comparison
                         easy across different providers.
                     </p>
                 </div>
-                <div class="bg-white/5 p-6 rounded-lg border border-white/10">
-                    <h3 class="text-lg font-semibold text-white mb-2">
+                <div
+                    class="bg-gray-50 dark:bg-white/5 p-6 rounded-lg border border-gray-200 dark:border-white/10"
+                >
+                    <h3
+                        class="text-lg font-semibold text-gray-900 dark:text-white mb-2"
+                    >
                         Historical Trends
                     </h3>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
                         Track price drops and new model launches to time your
                         migrations perfectly.
                     </p>
