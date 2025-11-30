@@ -1,4 +1,4 @@
-import { db, Provider, Model } from "astro:db";
+import { db, Provider, Model, eq } from "astro:db";
 
 export async function GET() {
     // Fetch all providers and models from the database
@@ -9,7 +9,7 @@ export async function GET() {
             providerSlug: Provider.slug,
         })
         .from(Model)
-        .innerJoin(Provider, (Model, Provider) => Model.providerId === Provider.id);
+        .innerJoin(Provider, eq(Model.providerId, Provider.id));
 
     // Generate XML for AI pricing URLs
     const baseUrl = "https://usagepricing.com";
