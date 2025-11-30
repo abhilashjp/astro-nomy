@@ -47,11 +47,19 @@ const schema = {
     "@type": "Brand",
     name: provider.name,
     url: provider.website,
+    image: "https://astro-nomy.vercel.app/og.jpg", // Default OG image
     description: description,
     owns: models.map((model) => ({
         "@type": "Product",
         name: model.name,
         url: `https://usagepricing.com/ai-token-pricing/${provider.slug}/${model.slug}`,
+        image: "https://astro-nomy.vercel.app/og.jpg", // Default OG image
+        offers: {
+            "@type": "Offer",
+            price: model.inputPrice,
+            priceCurrency: "USD",
+            unitText: "per 1M tokens",
+        },
     })),
 };
 ---

@@ -47,6 +47,7 @@ const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: model.name,
+    image: "https://astro-nomy.vercel.app/og.jpg", // Default OG image as fallback
     brand: { "@type": "Brand", name: model.providerName },
     description:
         model.description ||
