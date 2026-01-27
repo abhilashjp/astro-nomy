@@ -5,7 +5,7 @@ export const infos: InfoLdg[] = [
     title: "Transform Complex AI Pricing Into Clear, Interactive Experiences",
     description:
       "UsagePricing.com provides embeddable calculators specifically designed for AI companies using usage-based pricing models. Help prospects understand costs, generate qualified leads, and accelerate your sales cycle",
-    image: "/images/blog/placeholder-about.jpg",
+    image: "/images/examples/ai-pricing-dashboard.png",
     list: [
       {
         title: "Purpose built",
@@ -41,7 +41,7 @@ export const infos: InfoLdg[] = [
     title: "Seamless Integration",
     description:
       "Integrate our open-source SaaS seamlessly into your existing workflows. Effortlessly connect with your favorite tools and services for a streamlined experience.",
-    image: "/images/blog/placeholder-about.jpg",
+    image: "/images/examples/seamless-integration.png",
     list: [
       {
         title: "Flexible",

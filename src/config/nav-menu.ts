@@ -9,14 +9,14 @@ export const navMenuConfig: NavMenuConfig = {
           title: "Pricing calculator",
           href: "/calculator",
           description: "Simplify Usage Based Pricing with Pricing Calculators.",
-          image: "/images/examples/landing.jpg",
+          image: "/images/examples/pricing_calculator_thumb.png",
         },
 
         {
           title: "ROI calculator",
           href: "/calculator",
           description: "Easily communicate the value delivered with ROI calculators",
-          image: "/images/examples/landing.jpg",
+          image: "/images/examples/roi_calculator_thumb.png",
           disabled: true,
         },
       /* {
@@ -38,7 +38,7 @@ export const navMenuConfig: NavMenuConfig = {
           title: "Pricing",
           href: "/pricing",
           description: "Start free. Simple pricing with no hidden fees.",
-          image: "/images/examples/pricing.jpg",
+          image: "/images/examples/pricing_page_thumb.png",
         },
        /* {
           title: "About",
@@ -58,7 +58,7 @@ export const navMenuConfig: NavMenuConfig = {
           href: "#",
           description:
             "Choose from our calculator templates library to get started quickly.",
-          image: "/images/examples/animes.jpg",
+          image: "/images/examples/templates_thumb.png",
           launched: true,
         },
       ],
@@ -72,14 +72,14 @@ export const navMenuConfig: NavMenuConfig = {
           title: "Blog",
           href: "/blog",
           description: "Learn from industry experts.Stay upto date with the latest trends.",
-          image: "/images/examples/static-blog.jpg",
+          image: "/images/examples/blog_thumb.png",
         },
         {
           title: "Guides",
           href: "/guides/introduction-usage-based-pricing",
           description:
             "Learn everything about usage based pricing from our guides.",
-          image: "/images/examples/documentation.jpg",
+          image: "/images/examples/guides_thumb.png",
         },
        /* {
           title: "Anime List",
