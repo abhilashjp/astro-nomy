@@ -1,8 +1,9 @@
 ---
 title: "The Unstoppable Rise of Usage-Based Pricing: Why AI Companies Are Leading the Charge"
 description: "How SaaS pricing is shifting from subscriptions to usage-based models, driven by AI economics."
-pubDate: 2026-01-26
+pubDate: 2026-01-24
 category: "business"
+tags: ["saas", "pricing", "ai"]
 cover: "/images/blog/usage-based-pricing-cover.jpg"
 ---
 

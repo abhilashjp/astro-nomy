@@ -2,8 +2,9 @@ import { getCollection } from "astro:content";
 
 export async function getCategories() {
   const posts = await getCollection("blog");
+  const publishedPosts = posts.filter((post) => !post.data.draft);
   const categories = [
-    ...new Set(posts.map((post) => post.data.category).flat()),
+    ...new Set(publishedPosts.map((post) => post.data.category).flat()),
   ];
 
   return categories;
