@@ -11,8 +11,25 @@ type Props = CollectionEntry<any>;
 
 const slug = Astro.props.slug;
 const { data } = Astro.props;
-const { title, description, pubDate, updatedDate, cover, category, tags } = data || {};
+const { title, description, pubDate, updatedDate, cover, category, tags } =
+  data || {};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description: description,
+  image: new URL(cover || "/og.jpg", Astro.site).toString(),
+  datePublished: pubDate ? new Date(pubDate).toISOString() : undefined,
+  dateModified: updatedDate ? new Date(updatedDate).toISOString() : undefined,
+  author: {
+    "@type": "Organization",
+    name: "UsagePricing",
+  },
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
 <MainLayout title={title} description={description}>
   <div class="relative container max-w-screen-md py-10">
@@ -20,7 +37,7 @@ const { title, description, pubDate, updatedDate, cover, category, tags } = data
       onclick="history.back()"
       class={cn(
         buttonVariants({ variant: "ghost" }),
-        "absolute left-[-200px] top-10 hidden xl:inline-flex text-muted-foreground"
+        "absolute left-[-200px] top-10 hidden xl:inline-flex text-muted-foreground",
       )}
       transition:animate="slide"
     >
@@ -29,40 +46,44 @@ const { title, description, pubDate, updatedDate, cover, category, tags } = data
     </button>
 
     <article class="prose dark:prose-invert max-w-none">
-      {category && (
-        <a
-          href={`/blog/category/${category}`}
-          transition:name={`badge-cat-${slug}`}
-        >
-          <Badge radius="md" className="capitalize">
-            {category}
-          </Badge>
-        </a>
-      )}
-      {cover && (
-        <Image
-          class="rounded-xl overflow-hidden my-6"
-          width={720}
-          height={360}
-          src={cover}
-          alt={title}
-          transition:name={`img-${slug}`}
-        />
-      )}
-      <div class="flex items-center justify-between">
-        {pubDate && (
-          <span
-            class="font-medium text-muted-foreground"
-            transition:name={`date-${slug}`}
+      {
+        category && (
+          <a
+            href={`/blog/category/${category}`}
+            transition:name={`badge-cat-${slug}`}
           >
-            {formatDate(pubDate)}
-            {
-              updatedDate && (
+            <Badge radius="md" className="capitalize">
+              {category}
+            </Badge>
+          </a>
+        )
+      }
+      {
+        cover && (
+          <Image
+            class="rounded-xl overflow-hidden my-6 object-cover w-full h-[360px]"
+            width={1024}
+            height={360}
+            src={cover}
+            alt={title}
+            transition:name={`img-${slug}`}
+          />
+        )
+      }
+      <div class="flex items-center justify-between">
+        {
+          pubDate && (
+            <span
+              class="font-medium text-muted-foreground"
+              transition:name={`date-${slug}`}
+            >
+              {formatDate(pubDate)}
+              {updatedDate && (
                 <span>- Last updated on {formatDate(updatedDate)}</span>
-              )
-            }
-          </span>
-        )}
+              )}
+            </span>
+          )
+        }
       </div>
       <h1 class="font-heading text-4xl my-4" transition:name={`title-${slug}`}>
         {title}
@@ -70,17 +91,19 @@ const { title, description, pubDate, updatedDate, cover, category, tags } = data
       {description && <p>{description}</p>}
       <hr class="my-6" />
       <slot />
-      {tags && (
-        <div class="mt-2 flex flex-wrap gap-2">
-          {tags.map((tag: string) => (
-            <a href={`/topic/${tag}/`}>
-              <Badge variant="secondary" radius="md" className="capitalize">
-                {tag}
-              </Badge>
-            </a>
-          ))}
-        </div>
-      )}
+      {
+        tags && (
+          <div class="mt-2 flex flex-wrap gap-2">
+            {tags.map((tag: string) => (
+              <a href={`/topic/${tag}/`}>
+                <Badge variant="secondary" radius="md" className="capitalize">
+                  {tag}
+                </Badge>
+              </a>
+            ))}
+          </div>
+        )
+      }
     </article>
   </div>
 </MainLayout>
