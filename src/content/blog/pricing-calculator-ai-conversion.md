@@ -1,7 +1,7 @@
 ---
 title: "Building Your Pricing Calculator: The Secret Weapon for Converting AI Product Leads"
 description: "Why pricing calculators are essential for AI products and how to build one that converts leads by solving the usage-based pricing paradox."
-pubDate: 2026-01-28
+pubDate: 2025-12-12
 category: "business"
 tags: ["saas", "pricing", "ai", "calculator", "conversion"]
 cover: "/images/blog/pricing-calculator-cover.jpg"

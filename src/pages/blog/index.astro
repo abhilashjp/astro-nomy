@@ -3,13 +3,31 @@ import BlogHeader from "@/components/blog-header.astro";
 import BlogCard from "@/components/cards/blog-card.astro";
 import MainLayout from "@/layouts/main-layout.astro";
 import { getPosts } from "@/lib/fetchers";
-import { getPublishedPosts } from '@/lib/content.js';
+import { getPublishedPosts } from "@/lib/content.js";
 
 const posts = await getPublishedPosts();
 //const posts = await getPosts();
+
+const title = "UsagePricing Blog - SaaS & AI Monetization Strategies";
+const description =
+  "Expert insights on usage-based pricing, AI value metrics, and monetization strategies for modern SaaS companies.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  headline: title,
+  description: description,
+  url: "https://www.usagepricing.com/blog",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "UsagePricing",
+    url: "https://www.usagepricing.com",
+  },
+};
 ---
 
-<MainLayout title="Static Blog">
+<MainLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <section class="container py-10">
     <BlogHeader title="Blog" />
 
@@ -20,4 +38,3 @@ const posts = await getPublishedPosts();
     </div>
   </section>
 </MainLayout>
-

@@ -27,13 +27,13 @@ const { title, items } = Astro.props;
             href={item.disabled ? undefined : item.href}
             class={cn(
               "group bg-background rounded-xl overflow-hidden card_border",
-              item.disabled && "cursor-default"
+              item.disabled && "cursor-default",
             )}
             {...(item.forceReload ? { "data-astro-reload": true } : {})}
           >
             <div class="relative aspect-[4/2]">
               <Image
-                loading="eager"
+                loading="lazy"
                 width={740}
                 height={350}
                 src={

@@ -1,7 +1,7 @@
 ---
 title: "The Value Metric Problem: Why Your AI Product's Pricing Is Harder to Understand Than It Should Be"
 description: "Why the AI value metric problem is confusing customers and how to solve it with transparent, business-aligned pricing models."
-pubDate: 2026-01-25
+pubDate: 2025-12-09
 category: "business"
 tags: ["saas", "pricing", "ai", "metrics", "value-metrics"]
 cover: "/images/blog/value-metric-problem-cover.jpg"
