@@ -4,7 +4,7 @@ description: "Strategies for pricing AI products when underlying costs are volat
 pubDate: 2026-01-02
 category: "business"
 tags: ["ai", "pricing", "business-model", "strategy", "costs"]
-cover: "/images/blog/pricing-unpredictable-ai-cover.jpg"
+cover: "../../assets/images/blog/pricing-unpredictable-ai-cover.jpg"
 ---
 
 You're building an AI powered product. Your customers want simple, predictable pricing. But your costs fluctuate wildly based on usage patterns, model choices, and unpredictable factors. How do you create a pricing model that works for customers while protecting your margins?

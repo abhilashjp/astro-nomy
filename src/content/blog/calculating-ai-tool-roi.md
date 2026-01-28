@@ -4,7 +4,7 @@ description: "A practical framework for finance and business leaders to calculat
 pubDate: 2026-01-09
 category: "business"
 tags: ["ai", "roi", "finance", "strategy", "cost-management"]
-cover: "/images/blog/calculating-ai-tool-roi-cover.jpg"
+cover: "../../assets/images/blog/calculating-ai-tool-roi-cover.jpg"
 ---
 
 When your CFO asks you to justify that $50,000 you spent on AI tools last quarter, you probably can't just say "it feels like the team is more productive." That might have worked in 2022 when AI was still experimental, but in 2025, with AI budgets often exceeding half a million dollars annually at mid market companies, you need real numbers.

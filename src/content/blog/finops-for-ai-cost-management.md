@@ -4,7 +4,7 @@ description: "Why traditional cloud FinOps frameworks fail for AI workloads and 
 pubDate: 2025-12-26
 category: "business"
 tags: ["ai", "finops", "cost-management", "strategy", "cloud"]
-cover: "/images/blog/ai-finops-cover.jpg"
+cover: "../../assets/images/blog/ai-finops-cover.jpg"
 ---
 
 FinOps worked great for cloud infrastructure. Companies built sophisticated practices around optimizing AWS costs, rightsizing instances, and managing reserved capacity. But now those same companies are discovering that their FinOps playbook doesn't translate to AI workloads. The assumptions are different, the cost drivers are different, and the optimization strategies are different.

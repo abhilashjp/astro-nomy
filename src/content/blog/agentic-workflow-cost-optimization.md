@@ -4,7 +4,7 @@ description: "A comprehensive guide to instrumenting, monitoring, and optimizing
 pubDate: 2026-01-05
 category: "engineering"
 tags: ["ai", "agents", "observability", "finops", "engineering", "optimization"]
-cover: "/images/blog/agentic-workflow-cost-ops-cover.jpg"
+cover: "../../assets/images/blog/agentic-workflow-cost-ops-cover.jpg"
 ---
 
 When you build a simple AI feature that takes a user's question and returns a single LLM response, cost tracking is straightforward. You can see exactly what each API call costs, multiply by volume, and you're done. But modern AI applications aren't that simple anymore. They're built around agentic workflows where an AI system breaks down complex tasks, makes decisions about what to do next, calls multiple tools and services, and orchestrates everything to achieve a goal.

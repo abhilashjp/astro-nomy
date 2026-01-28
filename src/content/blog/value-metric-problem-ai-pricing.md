@@ -4,7 +4,7 @@ description: "Why the AI value metric problem is confusing customers and how to 
 pubDate: 2025-12-09
 category: "business"
 tags: ["saas", "pricing", "ai", "metrics", "value-metrics"]
-cover: "/images/blog/value-metric-problem-cover.jpg"
+cover: "../../assets/images/blog/value-metric-problem-cover.jpg"
 ---
 
 There's a conversation that happens in sales calls and customer meetings at AI companies all the time, and it usually goes something like this. A potential customer looks at your pricing page and asks what seems like a straightforward question about costs. You open your mouth to answer, and then realize you can't give them a simple response. Not because you're trying to be evasive or hide anything, but because translating your pricing units into real-world usage requires mental gymnastics that even you find challenging sometimes.

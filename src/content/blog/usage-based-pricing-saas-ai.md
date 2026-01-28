@@ -4,7 +4,7 @@ description: "How SaaS pricing is shifting from subscriptions to usage-based mod
 pubDate: 2025-12-02
 category: "business"
 tags: ["saas", "pricing", "ai"]
-cover: "/images/blog/usage-based-pricing-cover.jpg"
+cover: "../../assets/images/blog/usage-based-pricing-cover.jpg"
 ---
 
 Something interesting has been happening in the software industry over the past few years, and if you're paying attention to how SaaS companies price their products, you've probably noticed it. Traditional subscription models, where customers pay a fixed monthly or annual fee, are quietly giving way to something more dynamic. Companies across the industry are adopting usage-based pricing, and this shift is accelerating faster than most people realize.

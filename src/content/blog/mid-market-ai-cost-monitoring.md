@@ -4,7 +4,7 @@ description: "Mid-market companies face a unique 'squeeze' in AI cost management
 pubDate: 2026-01-11
 category: "business"
 tags: ["ai", "mid-market", "cost-monitoring", "finance", "strategy"]
-cover: "/images/blog/mid-market-ai-cost-monitoring-cover.jpg"
+cover: "../../assets/images/blog/mid-market-ai-cost-monitoring-cover.jpg"
 ---
 
 Your company just crossed $150 million in annual revenue. You have 800 employees, five AI tools in production, and your CFO is asking pointed questions about why AI spending jumped 180% in the last quarter. When you try to get answers, you discover that nobody in your organization actually knows the total AI spend. Your engineering team tracks some costs in their observability tools. Finance sees vendor invoices. Different departments are buying AI subscriptions independently. And somehow, your actual AI spend is probably double what anyone thinks it is.

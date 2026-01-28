@@ -4,7 +4,7 @@ description: "Why AI product managers must move beyond adoption metrics and trac
 pubDate: 2026-01-08
 category: "business"
 tags: ["ai", "product-management", "metrics", "finance", "strategy"]
-cover: "/images/blog/calculating-gross-margin-per-feature-cover.jpg"
+cover: "../../assets/images/blog/calculating-gross-margin-per-feature-cover.jpg"
 ---
 
 You're about to present your product roadmap to the executive team. You're excited about the three new AI features you want to build. You've validated customer demand through interviews. You've sized the opportunity based on usage projections. You've created beautiful mockups showing how elegant the user experience will be. Then your CFO asks a simple question: "What's the gross margin on these features?" And you realize you have no idea.

@@ -4,7 +4,7 @@ description: "How to manage the growing chaos of disconnected AI tools, inconsis
 pubDate: 2025-12-30
 category: "business"
 tags: ["ai", "tools", "finops", "strategy", "management"]
-cover: "/images/blog/ai-tools-sprawl-cover.jpg"
+cover: "../../assets/images/blog/ai-tools-sprawl-cover.jpg"
 ---
 
 Your engineering team uses Cursor for coding. Your customer support team uses Intercom with AI features. Your sales team uses an AI SDR tool. Your marketing team uses Jasper for content. Your product team uses various AI analysis tools. Finance just discovered you're paying for all of this across multiple vendors, and they have no idea what the total AI spend actually is.

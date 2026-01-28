@@ -4,7 +4,7 @@ description: "Solve the AI cost attribution problem by tracking costs at the fea
 pubDate: 2025-12-23
 category: "engineering"
 tags: ["ai", "costs", "attribution", "engineering", "analytics"]
-cover: "/images/blog/ai-cost-attribution-cover.jpg"
+cover: "../../assets/images/blog/ai-cost-attribution-cover.jpg"
 ---
 
 Your OpenAI bill just hit $50,000 for the month. Your CFO wants to know why. Your engineering team looks at the bill and... they have no idea. They can see the total, but they can't tell you which features drove it, which users consumed the most, or which product areas are the cost culprits.

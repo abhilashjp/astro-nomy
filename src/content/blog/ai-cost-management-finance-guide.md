@@ -4,7 +4,7 @@ description: "A clear, jargon-free guide for finance professionals to understand
 pubDate: 2026-01-07
 category: "business"
 tags: ["ai", "finance", "cost-management", "guide", "strategy"]
-cover: "/images/blog/ai-cost-management-finance-guide-cover.jpg"
+cover: "../../assets/images/blog/ai-cost-management-finance-guide-cover.jpg"
 ---
 
 If you work in finance and find yourself confused by AI costs, you're not alone. Most finance professionals built their careers managing predictable expenses like salaries, rent, and traditional software subscriptions. But AI has introduced an entirely new cost category that behaves differently from anything you've managed before. The bills use unfamiliar terminology. The spending patterns are volatile. And when you ask your engineering team to explain what's driving costs, they dive into technical details that don't help you do your job.

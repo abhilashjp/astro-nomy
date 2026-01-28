@@ -4,7 +4,7 @@ description: "Why AI companies struggle to track true profitability and how to f
 pubDate: 2025-12-18
 category: "business"
 tags: ["saas", "pricing", "ai", "margins", "profitability"]
-cover: "/images/blog/margin-blind-spot-cover.jpg"
+cover: "../../assets/images/blog/margin-blind-spot-cover.jpg"
 ---
 
 You know how much your customers pay you each month. You know your total AI infrastructure bill. But can you answer this simple question: are you actually making money on each customer?

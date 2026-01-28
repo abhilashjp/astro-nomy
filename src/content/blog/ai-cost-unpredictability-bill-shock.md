@@ -4,7 +4,7 @@ description: "Understanding hidden causes of AI cost spikes and how to solve the
 pubDate: 2025-12-20
 category: "business"
 tags: ["saas", "pricing", "ai", "costs", "forecasting"]
-cover: "/images/blog/ai-cost-shock-cover.jpg"
+cover: "../../assets/images/blog/ai-cost-shock-cover.jpg"
 ---
 
 Last month, your AI infrastructure bill was $15,000. This month it jumped to $42,000. When you asked your engineering team what happened, nobody could give you a straight answer. Sound familiar?

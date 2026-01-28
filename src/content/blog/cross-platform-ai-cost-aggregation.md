@@ -4,7 +4,7 @@ description: "How to solve the challenge of tracking AI costs across disjointed 
 pubDate: 2026-01-06
 category: "engineering"
 tags: ["ai", "finops", "data-integration", "cost-management", "engineering"]
-cover: "/images/blog/cross-platform-ai-cost-aggregation-cover.jpg"
+cover: "../../assets/images/blog/cross-platform-ai-cost-aggregation-cover.jpg"
 ---
 
 Your finance team receives the monthly bills. OpenAI: $45,000. Anthropic: $12,000. Pinecone: $8,000. AWS with mysterious AI-related charges: $23,000. Intercom with AI features: $15,000. Jasper for content creation: $6,000. GitHub Copilot: $3,000. The list goes on. Each vendor sends their own invoice with their own format, tracking different metrics, using different units of measurement. Your CFO asks a simple question: "How much are we actually spending on AI?" And nobody can give a confident answer.

@@ -4,7 +4,7 @@ description: "Why standard LLMOps tools fall short of comprehensive AI cost trac
 pubDate: 2026-01-10
 category: "engineering"
 tags: ["ai", "llmops", "finops", "observability", "cost-management"]
-cover: "/images/blog/llmops-cost-tracking-gaps-cover.jpg"
+cover: "../../assets/images/blog/llmops-cost-tracking-gaps-cover.jpg"
 ---
 
 Your engineering team has been using Langfuse for the past six months to monitor your AI application. The dashboard looks great, showing you token usage, latency metrics, and costs for every OpenAI API call. Everything seems under control. Then your CFO walks into your office with a question that stops you cold: "We spent $127,000 on AI last quarter, but your Langfuse dashboard only shows $43,000. Where did the other $84,000 go?"

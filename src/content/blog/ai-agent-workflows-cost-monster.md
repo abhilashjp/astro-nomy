@@ -4,7 +4,7 @@ description: "Why agentic workflows are exponentially more expensive than simple
 pubDate: 2025-12-28
 category: "engineering"
 tags: ["ai", "agents", "costs", "engineering", "finops"]
-cover: "/images/blog/ai-agent-cost-cover.jpg"
+cover: "../../assets/images/blog/ai-agent-cost-cover.jpg"
 ---
 
 You built an AI agent that seemed simple enough. A user asks a question, the agent breaks it down into subtasks, uses a few tools to gather information, synthesizes the results, and delivers an answer. Clean architecture, great user experience. Then the bill came and you realized each user interaction was costing you $2 to $5 or more.

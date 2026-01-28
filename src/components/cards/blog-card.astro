@@ -4,9 +4,11 @@ import { formatDate } from "@/lib/utils";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<"blog"> & {
+  loading?: "eager" | "lazy";
+};
 
-const post = Astro.props;
+const { loading = "lazy", ...post } = Astro.props;
 ---
 
 <article class="group space-y-4">
@@ -15,12 +17,12 @@ const post = Astro.props;
     class="flex h-52 group-hover:-translate-y-2 group-hover:shadow-xl transition duration-300"
   >
     <Image
-      loading="eager"
+      loading={loading}
       class="w-full h-full object-cover rounded-xl overflow-hidden"
       width={720}
       height={360}
       src={post.data.cover}
-      alt="descriptive text"
+      alt={post.data.title}
       transition:name={`img-${post.slug}`}
     />
   </a>

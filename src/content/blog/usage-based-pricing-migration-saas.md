@@ -4,7 +4,7 @@ description: "Why the shift to usage-based pricing is inevitable for SaaS compan
 pubDate: 2025-12-25
 category: "business"
 tags: ["saas", "pricing", "ai", "business-model", "strategy"]
-cover: "/images/blog/saas-migration-cover.jpg"
+cover: "../../assets/images/blog/saas-migration-cover.jpg"
 ---
 
 Something fundamental is changing in how software is sold. In 2018, only 27% of SaaS companies offered usage based pricing. By 2022, that number jumped to 46%. Today, 61% of companies are either using or planning to implement usage based pricing models. This isn't a trend. It's a transformation.

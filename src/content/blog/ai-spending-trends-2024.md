@@ -4,7 +4,7 @@ description: "Enterprise AI spending grew 500% in 2024. Analyzing the shift from
 pubDate: 2026-01-03
 category: "business"
 tags: ["ai", "spending", "trends", "enterprise", "strategy", "finops"]
-cover: "/images/blog/ai-spending-trends-cover.jpg"
+cover: "../../assets/images/blog/ai-spending-trends-cover.jpg"
 ---
 
 Enterprise AI spending grew 500% from 2023 to 2024. Let that sink in for a moment. Companies went from spending $2.3 billion on AI in 2023 to $13.8 billion in 2024. And projections show this accelerating to $337 billion by 2025. This isn't incremental growth. This is a fundamental shift in how companies allocate their technology budgets.

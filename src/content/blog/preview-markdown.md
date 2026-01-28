@@ -2,7 +2,7 @@
 title: "Preview Markdown"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 11 2022"
-cover: "/images/blog/placeholder-about.jpg"
+cover: "../../assets/images/blog/placeholder-about.jpg"
 category: "engineering"
 draft: true
 ---

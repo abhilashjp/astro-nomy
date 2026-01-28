@@ -4,7 +4,7 @@ description: "Why pricing calculators are essential for AI products and how to b
 pubDate: 2025-12-12
 category: "business"
 tags: ["saas", "pricing", "ai", "calculator", "conversion"]
-cover: "/images/blog/pricing-calculator-cover.jpg"
+cover: "../../assets/images/blog/pricing-calculator-cover.jpg"
 ---
 
 When people talk about pricing strategy for AI products, the conversation typically centers on mechanics. You discuss choosing the right value metric, setting competitive price points, structuring tiers effectively. These conversations matter, and they generate plenty of heat in strategy meetings and board rooms. But there's something else that can make or break your conversion rates, and it tends to get overlooked in all those strategic discussions. The question isn't just what you charge, but whether potential customers can actually figure out what they'll end up paying before they commit.

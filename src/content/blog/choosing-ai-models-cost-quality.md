@@ -4,7 +4,7 @@ description: "Navigating the quality-cost tradeoff in AI model selection and imp
 pubDate: 2025-12-21
 category: "engineering"
 tags: ["ai", "models", "cost-optimization", "engineering", "strategy"]
-cover: "/images/blog/model-selection-cost-quality.jpg"
+cover: "../../assets/images/blog/model-selection-cost-quality.jpg"
 ---
 
 Not every problem needs GPT 4. But how do you know when to use an expensive model versus a cheaper one? And how much money are you leaving on the table by defaulting to the most powerful model for every task?

@@ -4,7 +4,7 @@ description: "Why SaaS is shifting from subscriptions to usage-based models and 
 pubDate: 2026-01-04
 category: "business"
 tags: ["saas", "pricing", "finance", "strategy", "usage-based"]
-cover: "/images/blog/usage-based-pricing-finance-cover.jpg"
+cover: "../../assets/images/blog/usage-based-pricing-finance-cover.jpg"
 ---
 
 Five years ago, if you told a SaaS CFO that half their industry would abandon pure subscription pricing, they would have thought you were crazy. Subscription models were the gold standard. Predictable revenue, easy forecasting, and simple to explain to investors. But walk into a finance team meeting at any growing SaaS company today, and you'll hear a very different conversation. Usage based pricing is no longer a niche experiment. It's becoming the dominant model, and finance teams that don't adapt are going to struggle.
