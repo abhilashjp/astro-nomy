@@ -35,14 +35,14 @@ const { title, description, mainClass, tags } = Astro.props;
     />
 
     <div class="flex items-center gap-x-4" slot="right-header">
-      <a
+      <!-- <a
         href={siteConfig.links.github}
         target="_blank"
         rel="noreferrer"
         aria-label="github"
       >
         <Icon name="github" class="size-[22px]" />
-      </a>
+      </a> -->
       <ThemeToggle client:load />
     </div>
   </Header>

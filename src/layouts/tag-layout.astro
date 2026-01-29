@@ -25,38 +25,53 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TRLH7RV8');</script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TRLH7RV8");
+    </script>
     <!-- End Google Tag Manager -->
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M09E9Y0K1X"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M09E9Y0K1X"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-M09E9Y0K1X');
+      gtag("config", "G-M09E9Y0K1X");
     </script>
   </head>
   <body class={cn("flex flex-col min-h-screen")}>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRLH7RV8"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TRLH7RV8"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
     <!-- End Google Tag Manager (noscript) -->
     <Header className="border-b">
       <MainNavigationMenu slot="left-header" client:load />
       <div class="flex items-center gap-x-4" slot="right-header">
-        <a
+        <!-- <a
           href={siteConfig.links.github}
           target="_blank"
           rel="noreferrer"
           aria-label="github"
         >
           <Icon name="github" class="size-[22px]" />
-        </a>
+        </a> -->
         <ThemeToggle client:load />
       </div>
     </Header>

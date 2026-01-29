@@ -13,11 +13,14 @@ import { getTableOfContents } from "@/lib/toc";
 import { Icon } from "astro-icon/components";
 import { getCollection, type CollectionEntry } from "astro:content";
 
-import { getPublishedGuides } from '@/lib/content.js'; // New function for guides
+import { getPublishedGuides } from "@/lib/content.js"; // New function for guides
 
 export async function getStaticPaths() {
   const guides = await getPublishedGuides(); // Get guides instead of docs
-  console.log("Guides entries in getStaticPaths:", guides.map(g => g.slug)); // Add this line for debugging
+  console.log(
+    "Guides entries in getStaticPaths:",
+    guides.map((g) => g.slug),
+  ); // Add this line for debugging
   return guides.map((guide) => ({
     params: { slug: guide.slug },
     props: { guide },
@@ -39,9 +42,51 @@ if (!slug || !guide) {
 const toc = await getTableOfContents(guide.body);
 
 const { Content } = await guide.render();
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: guide.data.title,
+  description: guide.data.description,
+  datePublished: guide.data.pubDate?.toISOString(),
+  author: {
+    "@type": "Person",
+    name: guide.data.author || "Abhilash John",
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: Astro.site?.toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Guides",
+      item: new URL("/guides", Astro.site).toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: guide.data.title,
+      item: new URL(Astro.url.pathname, Astro.site).toString(),
+    },
+  ],
+};
 ---
 
-<DocsLayout title={guide.data.title} description={guide.data.description} tags={guide.data.tags}>
+<DocsLayout
+  title={guide.data.title}
+  description={guide.data.description}
+  tags={guide.data.tags}
+  image={guide.data.image}
+>
   <div class="container flex-1">
     <div
       class="flex-1 md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10"
@@ -57,8 +102,11 @@ const { Content } = await guide.render();
         class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]"
       >
         <div class="mx-auto w-full min-w-0">
-          <div class="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
-            <div class="truncate">Guides</div> <!-- Changed from "Docs" to "Guides" -->
+          <div
+            class="mb-4 flex items-center space-x-1 text-sm text-muted-foreground"
+          >
+            <div class="truncate">Guides</div>
+            <!-- Changed from "Docs" to "Guides" -->
             <Icon name="lucide:chevron-right" class="size-4" />
             <div class="font-medium text-foreground">{guide.data.title}</div>
           </div>
@@ -66,6 +114,7 @@ const { Content } = await guide.render();
           <DocsPageHeader
             heading={guide.data.title}
             text={guide.data.description}
+            pubDate={guide.data.pubDate}
           />
 
           <Content components={MdxComponents} />
@@ -83,4 +132,14 @@ const { Content } = await guide.render();
       </main>
     </div>
   </div>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+  />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbSchema)}
+  />
 </DocsLayout>

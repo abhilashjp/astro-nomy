@@ -1,0 +1,47 @@
+---
+import { cn, formatDate } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  sourceUrl?: string;
+  lastVerified?: Date;
+  className?: string;
+}
+
+const { sourceUrl, lastVerified, className } = Astro.props;
+
+if (!sourceUrl && !lastVerified) {
+  return null;
+}
+---
+
+<div
+  class={cn(
+    "flex flex-col sm:flex-row gap-4 mt-8 pt-6 border-t text-sm text-muted-foreground",
+    className,
+  )}
+>
+  {
+    lastVerified && (
+      <div class="flex items-center gap-2">
+        <Icon name="lucide:calendar-check" class="size-4" />
+        <span>Last Updated: {formatDate(lastVerified)}</span>
+      </div>
+    )
+  }
+  {
+    sourceUrl && (
+      <div class="flex items-center gap-2">
+        <Icon name="lucide:link" class="size-4" />
+        <a
+          href={sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-foreground transition-colors"
+        >
+          View Source
+        </a>
+      </div>
+    )
+  }
+</div>

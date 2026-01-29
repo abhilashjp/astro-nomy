@@ -1,0 +1,56 @@
+---
+import { cn } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+
+interface TimelineEvent {
+  date: Date;
+  title: string;
+  summary: string;
+  type?: "major" | "minor" | "adjustment";
+  image?: string;
+}
+
+interface Props {
+  history: TimelineEvent[];
+}
+
+const { history } = Astro.props;
+
+const sortedHistory = history.sort(
+  (a, b) => b.date.getTime() - a.date.getTime(),
+);
+---
+
+<div
+  class="relative pl-8 space-y-12 before:absolute before:left-[11px] before:top-2 before:h-full before:w-[2px] before:bg-border/50"
+>
+  {
+    sortedHistory.map((event, index) => (
+      <div class="relative group">
+        <div
+          class={cn(
+            "absolute -left-[29px] mt-1.5 size-4 rounded-full border-2 border-background ring-2 ring-border group-hover:ring-primary/50 transition-all",
+            event.type === "major" ? "bg-primary" : "bg-muted-foreground/30",
+          )}
+        />
+        <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4 mb-2">
+          <h3 class="font-heading text-lg font-semibold tracking-tight text-foreground">
+            {event.title}
+          </h3>
+          <time class="text-xs font-medium text-muted-foreground uppercase tracking-wider bg-muted px-2 py-0.5 rounded-md border">
+            {event.date.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+            })}
+          </time>
+        </div>
+        <p class="text-muted-foreground leading-relaxed">{event.summary}</p>
+        {event.image && (
+          <div class="mt-4 rounded-lg overflow-hidden border">
+            <img src={event.image} alt={event.title} class="w-full h-auto" />
+          </div>
+        )}
+      </div>
+    ))
+  }
+</div>

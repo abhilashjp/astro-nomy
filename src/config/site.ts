@@ -16,29 +16,24 @@ export const footerLinks: SidebarNavItem[] = [
   {
     title: "Company",
     items: [
-      { title: "About", href: "#" },
-      { title: "Enterprise", href: "#" },
-      { title: "Partners", href: "#" },
-      { title: "Jobs", href: "#" },
+      { title: "About", href: "/about" },
+      { title: "Blog", href: "/blog" },
+     // { title: "Careers", href: "#" },
     ],
   },
   {
-    title: "Product",
+    title: "Resources",
     items: [
-      { title: "Security", href: "#" },
-      { title: "Customization", href: "#" },
-      { title: "Customers", href: "#" },
-      { title: "Changelog", href: "#" },
+      { title: "Guides", href: "/guides/introduction-usage-based-pricing" },
+      { title: "Pricing Explained", href: "/explained" },
       { title: "AI Token Price Tracker", href: "/ai-token-pricing" },
     ],
   },
   {
-    title: "Docs",
+    title: "Social",
     items: [
-      { title: "Introduction", href: "#" },
-      { title: "Installation", href: "#" },
-      { title: "Components", href: "#" },
-      { title: "Code Blocks", href: "#" },
+      { title: "Twitter", href: siteConfig.links.twitter },
+      // { title: "GitHub", href: siteConfig.links.github },
     ],
   },
 ];

@@ -10,10 +10,60 @@ import { Badge } from "@/components/ui/badge";
 
 type Props = CollectionEntry<any>;
 
+import PricingTimeline from "@/components/pricing-timeline.astro";
+import ContentAttribution from "@/components/content-attribution.astro";
+import ContentAttribution from "@/components/content-attribution.astro";
+
 const guide = Astro.props;
 const slug = guide.slug;
-const { title, description, pubDate } = guide.data;
+const { title, description, pubDate, pricingHistory } = guide.data;
 const toc = await getTableOfContents(guide.body);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description: description,
+  image: guide.data.pricingHistory?.find((h) => h.image)?.image
+    ? new URL(
+        guide.data.pricingHistory.find((h) => h.image)!.image!,
+        Astro.site,
+      ).toString()
+    : undefined,
+  datePublished: pubDate.toISOString(),
+  dateModified: guide.data.lastVerified
+    ? new Date(guide.data.lastVerified).toISOString()
+    : pubDate.toISOString(),
+  author: {
+    "@type": "Person",
+    name: "Abhilash John",
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: Astro.site?.toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Guides",
+      item: new URL("/guides", Astro.site).toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: title,
+      item: new URL(Astro.url.pathname, Astro.site).toString(),
+    },
+  ],
+};
 ---
 
 <DocsLayout title={title} description={description}>
@@ -33,15 +83,49 @@ const toc = await getTableOfContents(guide.body);
       <p class="text-muted-foreground" transition:name={"desc-" + slug}>
         {description}
       </p>
+
+      {
+        pricingHistory && (
+          <div class="mt-4 mb-6">
+            <a
+              href="#pricing-evolution"
+              class={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "gap-2 not-prose",
+              )}
+            >
+              <Icon name="lucide:history" class="size-4" />
+              View Pricing Evolution
+            </a>
+          </div>
+        )
+      }
+
       <hr class="my-6" />
 
       <slot />
+
+      {
+        pricingHistory && (
+          <div id="pricing-evolution" class="mt-12 not-prose border-t pt-8">
+            <h2 class="font-heading text-2xl font-semibold mb-6">
+              Pricing Evolution
+            </h2>
+            <PricingTimeline history={pricingHistory} />
+          </div>
+        )
+      }
+
+      <ContentAttribution
+        sourceUrl={guide.data.sourceUrl}
+        lastVerified={guide.data.lastVerified}
+      />
 
       <hr class="flex md:hidden my-4" />
       <div class="flex md:hidden justify-start py-6 lg:py-10">
         <a href="/guides" class={cn(buttonVariants({ variant: "ghost" }))}>
           <Icon name="lucide:chevron-left" class="mr-2 size-4" />
-           See all guides
+          See all guides
         </a>
       </div>
     </article>
@@ -53,5 +137,15 @@ const toc = await getTableOfContents(guide.body);
         <DashboardTableOfContents toc={toc} client:load />
       </div>
     </div>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(breadcrumbSchema)}
+    />
   </main>
 </DocsLayout>

@@ -1,47 +1,68 @@
 ---
-title: Introduction to usage based pricing
-description: what is usage based pricing.
-draft: false
-published: true
-tags: ["pricing", "usage based pricing", "ubb"] 
+title: "What is Usage Based Pricing: A Complete Guide for SaaS and AI Companies"
+description: "Understanding how to price your product based on actual consumption rather than fixed subscriptions can transform your business model and align your revenue with customer value."
+pubDate: 2025-06-29
+tags: ["Usage Based Pricing", "SaaS", "AI", "Pricing Strategy"]
 ---
 
+Usage based pricing has emerged as one of the most effective pricing strategies for modern software companies, particularly in the AI era where computational costs directly correlate with customer usage.
 
+## Understanding Usage Based Pricing Fundamentals
 
+Usage based pricing represents a billing model where customers pay according to their actual consumption of a product or service. Instead of paying a flat monthly or annual fee regardless of how much they use, customers are charged proportionally to their usage. This creates a direct relationship between the value customers receive and the amount they pay.
 
+Think about how Stripe operates its payment processing business. Rather than charging merchants a fixed monthly fee, Stripe takes a percentage of each transaction processed through their platform. When a business processes $10,000 in payments, they pay more than when they process $1,000. This alignment ensures that Stripe's revenue grows alongside their customers' success.
 
-<div className="docs-grid-cols-2 mt-6">
+Similarly, OpenAI charges customers based on the number of tokens consumed when using their API. Each API call that processes text consumes a certain number of input tokens and generates output tokens. The total cost depends entirely on how much text the customer processes through the AI models. This means a developer building a small prototype pays far less than an enterprise running thousands of requests per hour.
 
-<Card href="/docs/" disabled>
+## The Historical Context of Consumption Based Billing
 
-### Documentation
+While usage based pricing feels innovative in the software world, this model has existed for decades in traditional industries. Most of us grew up experiencing this pricing structure through utilities and telecommunications services.
 
-This documentation site built using Contentlayer.
+Consider your monthly electricity bill. The power company charges you based on kilowatt hours consumed during the billing period. If you use more energy running air conditioning during summer months, your bill increases accordingly. The same principle applies to water utilities, where consumption directly determines your monthly charges.
 
-</Card>
+Phone companies pioneered similar models in telecommunications. Early mobile plans charged per minute for calls, per message for texts, and per megabyte for data consumed. These consumption based models made perfect sense because the infrastructure costs scaled with usage.
 
-<Card  href="/docs/marketing" disabled>
+The software industry truly embraced usage pricing with the advent of cloud computing. Amazon Web Services revolutionized how companies think about infrastructure by introducing pay as you go pricing for compute, storage, and networking services. Instead of purchasing physical servers upfront, businesses could spin up virtual machines and pay only for the hours they used them. This model removed enormous capital expenditure barriers and allowed startups to scale elastically with demand.
 
-### Marketing
+## Why Usage Based Pricing Matters More Than Ever
 
-The marketing site with landing pages.
+The rise of artificial intelligence has made usage based pricing not just attractive but often necessary for sustainable business operations. Traditional SaaS companies typically enjoy gross margins around 80%, meaning their cost of goods sold represents about 20% of revenue. AI companies face dramatically different economics.
 
-</Card>
+Training and running AI models requires significant computational resources. Companies must invest heavily in GPU infrastructure, model training, and inference costs. These expenses can consume anywhere from 30% to 60% of revenue, drastically impacting profit margins. Unlike traditional software where serving additional users costs almost nothing, every AI inference has real computational costs.
 
-<Card  href="/docs/app" disabled>
+This fundamental shift forces AI companies to measure and price consumption carefully. A customer making 100 AI requests per day has vastly different infrastructure costs than one making 100,000 requests. Treating both customers identically under a flat subscription model would either overcharge light users or hemorrhage money on heavy users.
 
-### App
+Usage based pricing solves this challenge by creating pricing fairness. Light users pay less because they consume fewer resources. Heavy users pay more, but they also derive proportionally more value. This alignment removes the friction of customers hesitating to upgrade because they might not use all the features of a higher tier.
 
-The dashboard with auth and subscriptions.
+Furthermore, usage pricing creates better growth dynamics. As customers find more value in your product and increase usage, your revenue automatically grows without requiring formal upsells or plan changes. This organic revenue expansion happens naturally as customer success drives increased consumption.
 
-</Card>
+The model also reduces customer acquisition friction. New customers can start small, testing your product with minimal financial commitment. As they validate the value proposition, their usage and payments naturally increase. This try before you buy approach removes psychological barriers that prevent customers from signing up for expensive annual contracts upfront.
 
-<Card  href="/docs/blog" disabled>
+## Real World Examples of Usage Pricing Success
 
-### Blog
+Examining how successful companies implement usage based pricing reveals the versatility and power of this model across different industries and use cases.
 
-The blog built using Contentlayer and MDX.
+Stripe built their entire business on transaction based pricing. Every payment processed through their platform incurs a percentage fee plus a small fixed amount. This model scales perfectly with merchant success. When a small business grows from processing $5,000 monthly to $500,000 monthly, Stripe's revenue increases proportionally without any manual intervention or tier changes.
 
-</Card>
+Twilio revolutionized cloud communications by charging based on actual usage of their messaging, voice, and video APIs. When developers send SMS messages through Twilio, they pay per message sent. For voice calls, charges accrue per minute of call duration. This granular pricing allows developers to predict costs accurately and scale applications from prototype to production seamlessly.
 
-</div>
+Snowflake transformed data warehousing by separating storage costs from compute costs. Customers pay for data storage based on the amount of data stored, while compute charges accrue based on the processing power consumed when running queries. This decoupling means customers can store vast amounts of data cheaply, only paying for expensive compute when they actually analyze that data.
+
+Amazon Web Services offers perhaps the most comprehensive usage based pricing across hundreds of services. EC2 instances charge by the hour or second of runtime. S3 storage charges by gigabyte stored. Data transfer, API calls, and virtually every interaction with AWS infrastructure has clear per unit pricing. This transparency and granularity give customers complete control over their cloud spending.
+
+These examples demonstrate that usage pricing works across different value metrics. Some companies charge by transaction count, others by time duration, some by data volume, and others by computational resources consumed. The key is identifying which metric best represents the value customers receive and the costs you incur to deliver that value.
+
+## The Three Foundational Pillars
+
+Successfully implementing usage based pricing requires excellence across three interconnected domains. Each pillar must function correctly for the entire system to work effectively.
+
+The first pillar involves tracking and metering consumption. Your systems must accurately capture every usage event, whether that's API calls, messages sent, compute hours consumed, or any other billable action. This tracking needs to be reliable, real time, and auditable. Customers need confidence that they're being billed accurately for what they actually used.
+
+The second pillar encompasses pricing strategy and packaging. You must decide how to charge for usage, whether through simple per unit pricing, tiered rates that decrease with volume, or hybrid models combining subscriptions with usage components. You also need to determine entitlements, setting limits or allowances that govern how much customers can consume under different plans.
+
+The third pillar covers billing and revenue recognition. Once you've tracked usage and applied pricing, you need systems to generate accurate invoices, collect payments, and recognize revenue according to accounting standards. This gets complex when dealing with prepaid credits, usage allowances, overages, and different billing cycles.
+
+These three pillars work together to create a complete usage based pricing system. Weak execution in any area undermines the entire model. Excellent tracking means nothing if your pricing strategy doesn't align with customer value. Perfect pricing fails without reliable billing systems to collect revenue. Success requires orchestrating all three elements harmoniously.
+
+Understanding these foundational concepts prepares you to dive deeper into each pillar, exploring the technical and strategic details that make usage based pricing work effectively at scale. The following guides in this series will explore each area comprehensively, providing practical frameworks and examples you can apply to your own business.
