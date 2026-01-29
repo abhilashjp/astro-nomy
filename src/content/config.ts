@@ -23,6 +23,8 @@ const blog = defineCollection({
       excludeFromBuild: z.boolean().optional(),
       devOnly: z.boolean().optional(),
       tags: z.array(z.string()).optional(),
+      author: z.string().optional().default("Abhilash John"),
+      authorImage: image().optional(),
     }),
 });
 

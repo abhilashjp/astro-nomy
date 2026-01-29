@@ -6,13 +6,26 @@ import MainLayout from "@/layouts/main-layout.astro";
 import HeroLanding from "@/components/sections/community-landing.astro";
 import NewsletterModal from "@/components/newsletter-modal.astro";
 
+import { getCollection } from "astro:content";
+import { formatDate } from "@/lib/utils";
+
 const examples = navMenuConfig.examplesNav[0].items;
-const pages = navMenuConfig.pagesNav[0].items;
+// const pages = navMenuConfig.pagesNav[0].items; // Commented out as we are replacing it
+
+const blogPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3)
+  .map((post) => ({
+    title: post.data.title,
+    href: `/blog/${post.slug}`,
+    description: formatDate(post.data.pubDate),
+    image: post.data.cover,
+  }));
 ---
 
 <MainLayout title="">
-    <HeroLanding />
-    <NewsletterModal />
+  <HeroLanding />
+  <NewsletterModal />
   <div class="bg-background-200">
     <section class="container py-12">
       <PageHeader
@@ -20,7 +33,7 @@ const pages = navMenuConfig.pagesNav[0].items;
         text="Monetization strategies, Industry trends, Latest tools. Stay updated with the latest in AI pricing and monetization."
       />
       <ExampleGrid title="Trending" items={examples} />
-      <ExampleGrid title="Guides" items={pages} />
+      <ExampleGrid title="Latest Blog Posts" items={blogPosts} />
     </section>
   </div>
 </MainLayout>

@@ -27,7 +27,7 @@ const { title, description, mainClass, tags } = Astro.props;
     <SheetMobileNav
       mainNavItems={[...navMenuConfig.links]}
       sidebarNavItems={[
-        ...navMenuConfig.pagesNav,
+        // ...navMenuConfig.pagesNav,
         ...navMenuConfig.examplesNav,
       ]}
       slot="mobile-nav-header"
@@ -51,17 +51,19 @@ const { title, description, mainClass, tags } = Astro.props;
     <slot />
   </main>
 
-  {tags && (
-    <div class="mt-4 flex flex-wrap gap-2">
-      {tags.map((tag: string) => (
-        <a href={`/topic/${slugify(tag)}/`}>
-          <Badge variant="secondary" radius="md" className="capitalize">
-            {tag}
-          </Badge>
-        </a>
-      ))}
-    </div>
-  )}
+  {
+    tags && (
+      <div class="mt-4 flex flex-wrap gap-2">
+        {tags.map((tag: string) => (
+          <a href={`/topic/${slugify(tag)}/`}>
+            <Badge variant="secondary" radius="md" className="capitalize">
+              {tag}
+            </Badge>
+          </a>
+        ))}
+      </div>
+    )
+  }
 
   <Footer />
 </BaseLayout>

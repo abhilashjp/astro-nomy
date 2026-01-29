@@ -1,152 +1,127 @@
 ---
 import MainLayout from "@/layouts/main-layout.astro";
-import { Image } from "astro:assets";
-import { hobbies } from "@/config/about.ts";
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 import { Icon } from "astro-icon/components";
 ---
 
-<MainLayout title="About" description="Simplifying usage pricing for AI companies">
-  <section class="space-y-5">
-    <section
-      class="relative container max-w-screen-md mb-28 mt-16 sm:mt-20 lg:mt-28"
-    >
-      <div class="flex h-full flex-col justify-between">
-        <div class="grid gap-8 sm:grid-cols-2">
-          <div>
-            <h1 class="text-4xl font-heading text-foreground">UsagePricing</h1>
-            <p class="text-base text-muted-foreground mt-0.5">
-              Simplifying usage pricing for AI companies
-            </p>
-          </div>
-          <div>
-            <p class="mb-12 text-base text-muted-foreground">
-             
-              <br />
-              
-            </p>
-            <div class="flex items-center gap-3">
-              <Button className="rounded-xl">
-                <Icon name="lucide:mail" class="mr-2 size-4" />
-                <a href="mailto:">Subscribe newsletter</a>
-              </Button>
+<MainLayout
+  title="About"
+  description="Simplifying usage pricing for AI companies"
+>
+  <section class="container max-w-screen-lg mx-auto py-12 md:py-16">
+    <div class="grid gap-12 lg:grid-cols-[1.5fr_1fr] items-start">
+      <div class="space-y-6">
+        <h1 class="text-4xl font-heading text-foreground">
+          Hi, I'm Abhilash John
+        </h1>
 
-              <Button variant="outline" className="rounded-xl">
-                <Icon name="lucide:briefcase" class="mr-2.5 size-4" />
-                <a href="" target="_blank">Products</a>
-              </Button>
-            </div>
+        <div class="prose prose-lg dark:prose-invert text-muted-foreground">
+          <p>
+            I'm a product management professional passionate about helping
+            businesses design better pricing and monetization strategies.
+          </p>
+
+          <h3 class="text-xl font-semibold text-foreground pt-4">
+            Why Usage-Based Pricing?
+          </h3>
+          <p>
+            Over the past several years, I've had the privilege of building
+            products at the intersection of pricing, billing, and revenue
+            management. Most recently, I led Chargebee's Usage-Based Billing
+            product from the ground up—building an event streaming platform that
+            enables pricing agility and flexible monetization for modern SaaS
+            and AI companies.
+          </p>
+          <p>
+            I've also worked extensively on taxation, invoicing, compliance, and
+            payment systems across multiple companies. Through this work, I've
+            seen firsthand how the right pricing model can transform a business,
+            and how the wrong one can hold it back.
+          </p>
+          <p>
+            Usage-based pricing is fundamentally changing how software companies
+            monetize their products. But despite its growing importance, there's
+            a gap in accessible, practical resources for product managers,
+            founders, and business leaders trying to navigate this shift.
+          </p>
+
+          <h3 class="text-xl font-semibold text-foreground pt-4">
+            What is UsagePricing.com?
+          </h3>
+          <p>This site is my attempt to fill that gap. Here, I share:</p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong class="text-foreground">Educational content</strong> on usage-based
+              pricing models, strategies, and implementation
+            </li>
+            <li>
+              <strong class="text-foreground">Practical frameworks</strong> and tools
+              to help you design and optimize your pricing
+            </li>
+            <li>
+              <strong class="text-foreground">Analysis and opinions</strong> on trends
+              in SaaS monetization and billing
+            </li>
+            <li>
+              <strong class="text-foreground">Real-world examples</strong> and case
+              studies
+            </li>
+          </ul>
+          <p>
+            My goal is to eventually compile this into a comprehensive
+            resource—think of it as a practical handbook for usage-based
+            pricing, similar to what deeplearningbook.org did for deep learning.
+          </p>
+
+          <h3 class="text-xl font-semibold text-foreground pt-4">
+            Important Disclosures
+          </h3>
+          <p>
+            <strong class="text-foreground">This is a personal project.</strong> All
+            views, opinions, and recommendations expressed on this site are my own
+            and do not represent the views of my current or past employers.
+          </p>
+          <p>
+            <strong class="text-foreground">Educational focus.</strong> The content
+            here is meant to be educational and informative. While I draw from my
+            professional experience, I don't share confidential information or proprietary
+            strategies from any company I've worked with.
+          </p>
+          <p>
+            <strong class="text-foreground">Not professional advice.</strong> The
+            information provided on this site is for general educational purposes.
+            It should not be considered professional consulting advice for your specific
+            business situation.
+          </p>
+
+          <h3 class="text-xl font-semibold text-foreground pt-4">
+            Let's Connect
+          </h3>
+          <p>
+            I'm always interested in learning from others working on pricing and
+            monetization challenges. Feel free to reach out:
+          </p>
+          <div class="flex items-center gap-4 pt-2">
+            <a
+              href="https://www.linkedin.com/in/abhilashjohnphilip"
+              target="_blank"
+              class={cn(buttonVariants({ variant: "outline" }), "rounded-xl")}
+            >
+              <Icon name="lucide:linkedin" class="mr-2 size-4" />
+              Connect with me
+            </a>
           </div>
         </div>
       </div>
-    </section>
 
-    <div
-      class="relative z-10 flex flex-col justify-center overflow-hidden lg:overflow-visible pb-16"
-    >
-      <div
-        class="mx-auto flex w-max -translate-x-[15%] justify-center lg:w-full lg:translate-x-0"
-      >
-        <div
-          class="relative z-10 mx-auto max-w-4xl px-4 md:max-w-6xl md:px-12 lg:max-w-5xl lg:px-6 xl:max-w-[80rem] xl:px-6 2xl:px-0"
-        >
-          <div class="grid grid-cols-4 items-center gap-4 md:gap-6">
-            {/* First Column */}
-            <div class="space-y-4 md:space-y-6">
-              <Image
-                class="h-full w-auto object-cover overflow-hidden rounded-xl"
-                src={hobbies[0].image}
-                alt={hobbies[0].alt}
-                width={800}
-                height={1226}
-                loading="eager"
-              />
-              <div class="h-52 overflow-hidden rounded-xl">
-                <Image
-                  class="w-full h-full object-cover"
-                  src={hobbies[1].image}
-                  alt={hobbies[1].alt}
-                  width={800}
-                  height={1334}
-                />
-              </div>
-            </div>
-
-            {/* Second Column */}
-            <div class="space-y-4 md:space-y-6">
-              <div class="h-48 overflow-hidden rounded-xl">
-                <Image
-                  class="w-full h-full object-cover"
-                  src={hobbies[2].image}
-                  alt={hobbies[2].alt}
-                  width={800}
-                  height={983}
-                  loading="eager"
-                />
-              </div>
-              <Image
-                class="rounded-xl"
-                src={hobbies[3].image}
-                alt={hobbies[3].alt}
-                width={800}
-                height={1108}
-                loading="eager"
-              />
-              <div class="relative h-48 overflow-hidden rounded-xl">
-                <Image
-                  class="w-full h-full object-cover"
-                  src={hobbies[4].image}
-                  alt={hobbies[4].alt}
-                  width={1260}
-                  height={750}
-                />
-              </div>
-            </div>
-
-            {/* Third Column */}
-            <div class="space-y-4 md:space-y-6">
-              <div class="h-56 overflow-hidden rounded-xl">
-                <Image
-                  class="w-full h-full object-cover"
-                  src={hobbies[5].image}
-                  alt={hobbies[5].alt}
-                  width={800}
-                  height={1334}
-                  loading="eager"
-                />
-              </div>
-              <div class="h-80 w-full overflow-hidden rounded-xl xl:h-[28rem]">
-                <Image
-                  class="w-full h-full object-cover"
-                  src={hobbies[6].image}
-                  alt={hobbies[6].alt}
-                  width={801}
-                  height={2477}
-                />
-              </div>
-            </div>
-
-            {/* Fourth Column */}
-            <div class="space-y-4 md:space-y-6">
-              <div class="overflow-hidden rounded-xl bg-white">
-                <Image
-                  src={hobbies[7].image}
-                  alt={hobbies[7].alt}
-                  width={800}
-                  height={900}
-                  loading="eager"
-                />
-              </div>
-              <div class="overflow-hidden rounded-xl bg-white">
-                <Image
-                  src={hobbies[8].image}
-                  alt={hobbies[8].alt}
-                  width={800}
-                  height={900}
-                />
-              </div>
-            </div>
-          </div>
+      <div class="order-first lg:order-last">
+        <div class="overflow-hidden rounded-2xl border bg-muted/50 max-w-md">
+          <img
+            src="/images/abhilash-profile.jpg"
+            alt="Abhilash John Philip"
+            class="w-full h-auto object-cover aspect-[3/4] lg:aspect-auto"
+          />
         </div>
       </div>
     </div>

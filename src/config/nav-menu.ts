@@ -5,12 +5,14 @@ export const navMenuConfig: NavMenuConfig = {
     {
       title: "Products",
       items: [
+/*
         {
           title: "Pricing calculator",
           href: "/calculator",
           description: "Simplify Usage Based Pricing with Pricing Calculators.",
           image: "/images/examples/pricing_calculator_thumb.png",
         },
+        */
 
         {
           title: "ROI calculator",
@@ -34,12 +36,14 @@ export const navMenuConfig: NavMenuConfig = {
           forceReload: true,
         },
         */
+/*
         {
           title: "Pricing",
           href: "/pricing",
           description: "Start free. Simple pricing with no hidden fees.",
           image: "/images/examples/pricing_page_thumb.png",
         },
+        */
        /* {
           title: "About",
           href: "/about",

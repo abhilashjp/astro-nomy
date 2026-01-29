@@ -9,10 +9,22 @@ import MainLayout from "./main-layout.astro";
 
 type Props = CollectionEntry<any>;
 
+import defaultAuthorImage from "@/assets/abhilash-profile.jpg";
+
 const slug = Astro.props.slug;
 const { data } = Astro.props;
-const { title, description, pubDate, updatedDate, cover, category, tags } =
-  data || {};
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  cover,
+  category,
+  tags,
+  author,
+} = data || {};
+
+const authorImage = data?.authorImage || defaultAuthorImage;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -23,8 +35,11 @@ const articleSchema = {
   datePublished: pubDate ? new Date(pubDate).toISOString() : undefined,
   dateModified: updatedDate ? new Date(updatedDate).toISOString() : undefined,
   author: {
-    "@type": "Organization",
-    name: "UsagePricing",
+    "@type": "Person",
+    name: author,
+    image: authorImage
+      ? new URL(authorImage.src, Astro.site).toString()
+      : undefined,
   },
 };
 ---
@@ -71,6 +86,22 @@ const articleSchema = {
         )
       }
       <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          {
+            authorImage && (
+              <Image
+                src={authorImage}
+                alt={author}
+                width={40}
+                height={40}
+                class="rounded-full w-10 h-10 object-cover object-top my-0"
+              />
+            )
+          }
+          <span class="font-medium text-foreground">
+            {author}
+          </span>
+        </div>
         {
           pubDate && (
             <span
