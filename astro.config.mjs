@@ -20,21 +20,7 @@ export default defineConfig({
       gfm: true,
     }),
     icon(),
-    sitemap({
-      filter: (page) => {
-        if (
-          page.includes("/blog/") ||
-          page.includes("/docs/") ||
-          page.includes("/guides/") ||
-          page.includes("/explained/") ||
-          page.includes("/releases/") ||
-          page.includes("/newsletter")
-        ) {
-          return false; // rely on getStaticPaths to skip drafts
-        }
-        return true;
-      },
-    }),
+    sitemap(),
     react(),
     tailwind({
       applyBaseStyles: false,
