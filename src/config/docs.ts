@@ -19,6 +19,46 @@ export const docsConfig: DocsConfig = {
           title: "Introduction",
           href: "/guides/introduction-usage-based-pricing",
         },
+        {
+          title: "Tracking & Metering",
+          href: "/guides/tracking-metering-usage-events",
+        },
+        {
+          title: "Pricing Models",
+          href: "/guides/understanding-usage-based-pricing-models",
+        },
+        {
+          title: "Entitlements & Grants",
+          href: "/guides/understanding-entitlements-usage-grants",
+        },
+        {
+          title: "Invoicing & Billing Cycles",
+          href: "/guides/usage-invoicing-billing-cycles",
+        },
+        {
+          title: "Revenue Recognition",
+          href: "/guides/revenue-recognition-usage-based-pricing",
+        },
+        {
+          title: "Aggregation Strategies",
+          href: "/guides/aggregation-methods-patterns-usage-based-billing",
+        },
+        {
+          title: "Choosing Usage Metrics",
+          href: "/guides/choosing-right-usage-metric",
+        },
+        {
+          title: "Prepaid Credits Models",
+          href: "/guides/understanding-prepaid-credits-models",
+        },
+        {
+          title: "Thresholding & Alerting",
+          href: "/guides/thresholding-alerting-usage-based-pricing",
+        },
+        {
+          title: "Implementation Best Practices",
+          href: "/guides/implementation-best-practices-usage-based-pricing",
+        },
       ],
     },
    /* {
