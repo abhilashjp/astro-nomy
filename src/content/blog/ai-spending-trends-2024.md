@@ -1,7 +1,7 @@
 ---
 title: "AI Spending Trends 2024: The Numbers Behind the Enterprise AI Revolution"
 description: "Enterprise AI spending grew 500% in 2024. Analyzing the shift from experimentation to production and what it means for your budget."
-pubDate: 2026-01-03
+pubDate: 2025-06-03
 category: "business"
 tags: ["ai", "spending", "trends", "enterprise", "strategy", "finops"]
 cover: "../../assets/images/blog/ai-spending-trends-cover.jpg"
