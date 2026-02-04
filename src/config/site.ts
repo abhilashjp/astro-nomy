@@ -5,7 +5,7 @@ export const siteConfig: SiteConfig = {
   description:
     "The Ultimate One-Stop Resource Hub for Everything You Need to Know About Usage Based Pricing Models.",
   url: "https://usagepricing.com/",
-  ogImage: "https://astro-nomy.vercel.app/og.jpg",
+  ogImage: "https://usagepricing.com/og.jpg",
   links: {
     twitter: "https://x.com/usagepricing",
     github: "",
@@ -18,7 +18,7 @@ export const footerLinks: SidebarNavItem[] = [
     items: [
       { title: "About", href: "/about" },
       { title: "Blog", href: "/blog" },
-     // { title: "Careers", href: "#" },
+      // { title: "Careers", href: "#" },
     ],
   },
   {

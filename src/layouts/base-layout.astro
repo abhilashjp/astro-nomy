@@ -9,52 +9,70 @@ import { Badge } from "@/components/ui/badge";
 type Props = {
   title: string;
   description?: string;
+  image?: string;
   bodyClass?: string;
   tags?: string[];
 };
 
-const { title, description, bodyClass, tags } = Astro.props;
+const { title, description, image, bodyClass, tags } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} image={image} />
 
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TRLH7RV8');</script>
-<!-- End Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TRLH7RV8");
+    </script>
+    <!-- End Google Tag Manager -->
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M09E9Y0K1X"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M09E9Y0K1X"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-M09E9Y0K1X');
-</script>
+      gtag("config", "G-M09E9Y0K1X");
+    </script>
   </head>
   <body class={cn("flex flex-col min-h-screen", bodyClass)}>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TRLH7RV8"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TRLH7RV8"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
     <slot />
-    {tags && (
-      <div class="mt-4 flex flex-wrap gap-2 p-4">
-        {tags.map((tag: string) => (
-          <a href={`/topic/${slugify(tag)}/`}>
-            <Badge variant="secondary" radius="md" className="capitalize">
-              {tag}
-            </Badge>
-          </a>
-        ))}
-      </div>
-    )}
+    {
+      tags && (
+        <div class="mt-4 flex flex-wrap gap-2 p-4">
+          {tags.map((tag: string) => (
+            <a href={`/topic/${slugify(tag)}/`}>
+              <Badge variant="secondary" radius="md" className="capitalize">
+                {tag}
+              </Badge>
+            </a>
+          ))}
+        </div>
+      )
+    }
     <TailwindIndicator />
     <Toaster richColors client:only="react" />
   </body>

@@ -46,7 +46,7 @@ const articleSchema = {
 
 <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
-<MainLayout title={title} description={description}>
+<MainLayout title={title} description={description} image={cover?.src}>
   <div class="relative container max-w-screen-md py-10">
     <button
       onclick="history.back()"
