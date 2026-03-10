@@ -11,6 +11,7 @@ import partytown from "@astrojs/partytown";
 
 export default defineConfig({
   site: "https://usagepricing.com",
+  trailingSlash: "never",
   integrations: [
     mdx({
       syntaxHighlight: "shiki",
@@ -39,6 +40,5 @@ export default defineConfig({
     server: {
       hmr: false,
     },
-
   },
 });

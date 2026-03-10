@@ -13,7 +13,7 @@ const { loading = "lazy", ...post } = Astro.props;
 
 <article class="group space-y-4">
   <a
-    href={`/blog/${post.slug}/`}
+    href={`/blog/${post.slug}`}
     class="flex h-52 group-hover:-translate-y-2 group-hover:shadow-xl transition duration-300"
   >
     <Image
@@ -45,7 +45,7 @@ const { loading = "lazy", ...post } = Astro.props;
   </div>
 
   <div>
-    <a href={`/blog/${post.slug}/`} class="group-hover:underline">
+    <a href={`/blog/${post.slug}`} class="group-hover:underline">
       <h2
         class="font-heading text-xl md:text-2xl leading-snug line-clamp-3"
         transition:name={"title-" + post.slug}
