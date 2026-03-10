@@ -25,7 +25,7 @@ Most AI companies cannot answer this question. Not because they lack data they h
 
 The architecture required to answer this question properly looks very specific. And most cost visibility tools being built today don't have it. Let's walk through what the right architecture looks like layer by layer and why each design decision matters.
 
-![Cost Intelligence Architecture](../../assets/architecture-diagram.png)
+![Cost Intelligence Architecture](../../assets/cost-intelligence-architecture.png)
 
 ---
 
@@ -149,3 +149,4 @@ That is the architecture the moment demands. And it is, finally, being built.
 ---
 
 _usagepricing.com covers the infrastructure, pricing models, and commercial architecture of the AI economy. If you're thinking about cost intelligence, pricing agility, or usage-based billing, I'd like to hear from you._
+
