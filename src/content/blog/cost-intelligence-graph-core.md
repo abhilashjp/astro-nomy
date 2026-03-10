@@ -13,11 +13,7 @@ tags:
     "Cost Graph Engine",
   ]
 author: "Abhilash John"
----
 
-_A walkthrough of the architecture that the AI economy actually demands, and why most platforms aren't built this way_
-
----
 
 There's a question that should be keeping every AI company's leadership team up at night, but mostly doesn't yet.
 
