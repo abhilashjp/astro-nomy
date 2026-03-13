@@ -1,0 +1,164 @@
+---
+import { db, Provider, Model, eq } from "astro:db";
+import Layout from "../../../layouts/main-layout.astro";
+import PricingCalculator from "../../../components/PricingCalculator";
+import {
+  tokenBasedConfigs,
+  useCaseConfigs,
+  getCalculatorBySlug,
+} from "../../../config/calculators";
+import type { CalculatorConfig, PlanConfig } from "../../../config/calculator-types";
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect("/tools/pricing-calculator");
+}
+
+// Try to find a use-case config first (fully self-contained)
+let config: CalculatorConfig | undefined = useCaseConfigs.find(
+  (c) => c.companySlug === slug
+);
+
+// If not found, try token-based (needs DB data)
+if (!config) {
+  const tokenConfig = tokenBasedConfigs.find((c) => c.companySlug === slug);
+  if (tokenConfig) {
+    // Fetch provider from DB
+    const [provider] = await db
+      .select()
+      .from(Provider)
+      .where(eq(Provider.slug, slug));
+
+    if (provider) {
+      // Fetch models for this provider
+      const models = await db
+        .select({
+          id: Model.id,
+          name: Model.name,
+          slug: Model.slug,
+          inputPrice: Model.inputPrice,
+          outputPrice: Model.outputPrice,
+          contextWindow: Model.contextWindow,
+        })
+        .from(Model)
+        .where(eq(Model.providerId, provider.id));
+
+      // Populate plans from DB models
+      const plans: PlanConfig[] = models.map((m) => ({
+        id: m.slug,
+        name: m.name,
+        description: `${m.contextWindow.toLocaleString()} context window`,
+        priceParams: {
+          inputPrice: m.inputPrice,
+          outputPrice: m.outputPrice,
+        },
+      }));
+
+      config = {
+        ...tokenConfig,
+        plans,
+      };
+    }
+  }
+}
+
+if (!config || config.plans.length === 0) {
+  return Astro.redirect("/tools/pricing-calculator");
+}
+
+// SEO
+const title = `${config.companyName} Pricing Calculator | Estimate Your Monthly Costs — UsagePricing`;
+const description = config.description;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: `${config.companyName} Pricing Calculator`,
+  description: description,
+  url: `https://usagepricing.com/tools/pricing-calculator/${slug}`,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  creator: {
+    "@type": "Organization",
+    name: "UsagePricing",
+    url: "https://usagepricing.com",
+  },
+};
+
+// Serialize config for client-side (functions can't be serialized directly)
+// We pass the full config object; Astro handles React component hydration
+---
+
+<Layout title={title} description={description}>
+  <main class="container mx-auto px-4 py-8 md:py-12 max-w-6xl">
+    {/* Breadcrumb */}
+    <nav class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
+      <a
+        href="/tools/pricing-calculator"
+        class="hover:text-gray-900 dark:hover:text-white transition-colors"
+      >
+        Pricing Calculator
+      </a>
+      <span>/</span>
+      <span class="text-gray-900 dark:text-white font-medium">
+        {config.companyName}
+      </span>
+    </nav>
+
+    {/* Header */}
+    <div class="mb-8">
+      <h1
+        class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight"
+      >
+        {config.companyName} Pricing Calculator
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+        {config.description}
+      </p>
+    </div>
+
+    {/* Calculator */}
+    <div class="mb-16">
+      <PricingCalculator client:load config={config} />
+    </div>
+
+    {/* About section */}
+    <div
+      class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300"
+    >
+      <h2 class="text-gray-900 dark:text-white">
+        About this calculator
+      </h2>
+      <p>
+        This calculator provides estimates based on publicly available pricing
+        information. Actual costs may vary based on your specific agreement,
+        volume discounts, and usage patterns. Always verify with the provider's
+        official pricing page for the most current rates.
+      </p>
+      {
+        config.pricingPageUrl && (
+          <p>
+            <a
+              href={config.pricingPageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              View {config.companyName}'s official pricing page →
+            </a>
+          </p>
+        )
+      }
+    </div>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>

@@ -18,7 +18,7 @@ author: "Abhilash John"
 
 ## The Scale That Broke Traditional Billing
 
-When OpenAI crossed $20 billion ARR in 2025—tripling from $6 billion in a single year—it wasn't just a growth story. It was evidence that we've entered a fundamentally new billing regime where monthly token volumes are measured in trillions, where individual enterprise customers process billions of tokens weekly, and where the traditional metering, rating, and revenue recognition systems that powered SaaS for two decades simply weren't architected for this magnitude.
+When OpenAI crossed $20 billion ARR in 2025 tripling from $6 billion in a single year it wasn't just a growth story. It was evidence that we've entered a fundamentally new billing regime where monthly token volumes are measured in trillions, where individual enterprise customers process billions of tokens weekly, and where the traditional metering, rating, and revenue recognition systems that powered SaaS for two decades simply weren't architected for this magnitude.
 
 Consider the technical reality: a single large enterprise customer running autonomous AI workflows might consume 500 billion tokens monthly across coding assistance, document analysis, customer support, and research applications. At current API pricing of $2-10 per million tokens, that's $1-5 million in monthly variable charges from a single account. Your billing system isn't processing thousands of line items. It's processing billions of micro-transactions that need to be metered accurately, rated correctly, aggregated efficiently, recognized appropriately for revenue, and presented intelligibly to both your finance team and your customer's CFO.
 

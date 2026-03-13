@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//mnt/c/Users/abhil/projects/**)",
+      "Read(//c/Users/abhil/projects/**)",
+      "mcp__filesystem__list_allowed_directories",
+      "mcp__filesystem__directory_tree",
+      "WebSearch",
+      "WebFetch(domain:www.intercom.com)",
+      "WebFetch(domain:www.salesforce.com)",
+      "WebFetch(domain:signoz.io)",
+      "WebFetch(domain:www.withorb.com)",
+      "WebFetch(domain:fin.ai)",
+      "Bash(pnpm add:*)",
+      "Bash(npm install:*)",
+      "Bash(wsl bash:*)",
+      "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && npm install @radix-ui/react-slider --legacy-peer-deps 2>&1 | tail -10\")",
+      "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && pnpm add @radix-ui/react-slider 2>&1\")",
+      "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && npx astro dev --port 4321 2>&1\")",
+      "WebFetch(domain:localhost)",
+      "Bash(wsl -e bash -ic \"curl -s -o /dev/null -w ''%{http_code}'' http://localhost:4321/tools/pricing-calculator\")",
+      "Bash(wsl -e bash -ic \"curl -s -o /dev/null -w ''%{http_code}'' http://localhost:4321/tools/pricing-calculator/openai\")",
+      "Bash(wsl -e bash -ic \"curl -s -o /dev/null -w ''%{http_code}'' http://localhost:4321/tools/pricing-calculator/intercom\")",
+      "Bash(wsl -e bash -ic \"for slug in openai anthropic google mistral meta intercom elevenlabs gorgias cursor vercel; do echo -n \"\"$slug: \"\"; curl -s -o /dev/null -w ''%{http_code}'' http://localhost:4321/tools/pricing-calculator/$slug; echo; done\")",
+      "Bash(wsl -e bash -c 'curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/anthropic && echo \"\" anthropic\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/google && echo \"\" google\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/elevenlabs && echo \"\" elevenlabs\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/gorgias && echo \"\" gorgias\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/cursor && echo \"\" cursor\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/vercel && echo \"\" vercel\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/mistral && echo \"\" mistral\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/meta && echo \"\" meta\"\"')",
+      "Bash(wsl -e bash -c 'curl -s http://localhost:4321/tools/pricing-calculator/intercom | grep -o \"\"PricingCalculator\\\\|CostBreakdown\\\\|Monthly support\\\\|resolution rate\\\\|Monthly Estimate\\\\|astro-island\"\" | head -10')",
+      "Bash(wsl -e bash -c 'curl -s http://localhost:4321/tools/pricing-calculator/intercom 2>&1 | grep -i \"\"error\\\\|cannot\\\\|failed\\\\|undefined\"\" | head -5')",
+      "Bash(wsl -e bash -c 'curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/openai && echo \"\" ok\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator/intercom && echo \"\" ok\"\" && curl -s -o /dev/null -w \"\"%{http_code}\"\" http://localhost:4321/tools/pricing-calculator && echo \"\" ok\"\"')",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && pnpm run build 2>&1 | tail -40\")"
+    ]
+  }
+}

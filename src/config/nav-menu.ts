@@ -5,17 +5,15 @@ export const navMenuConfig: NavMenuConfig = {
     {
       title: "Products",
       items: [
-/*
         {
-          title: "Pricing calculator",
-          href: "/calculator",
-          description: "Simplify Usage Based Pricing with Pricing Calculators.",
+          title: "AI Pricing Calculator",
+          href: "/tools/pricing-calculator",
+          description: "Free calculators to estimate AI costs for APIs and applications.",
           image: "/images/examples/pricing_calculator_thumb.png",
+          launched: true,
         },
-        */
-
         {
-          title: "ROI calculator",
+          title: "ROI Calculator",
           href: "/calculator",
           description: "Easily communicate the value delivered with ROI calculators",
           image: "/images/examples/roi_calculator_thumb.png",
