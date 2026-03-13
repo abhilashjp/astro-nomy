@@ -1,69 +1,23 @@
 ---
-import { db, Provider, Model, eq } from "astro:db";
 import Layout from "../../../layouts/main-layout.astro";
 import PricingCalculator from "../../../components/PricingCalculator";
 import {
-  tokenBasedConfigs,
-  useCaseConfigs,
   getCalculatorBySlug,
 } from "../../../config/calculators";
-import type { CalculatorConfig, PlanConfig } from "../../../config/calculator-types";
+import type { CalculatorConfig } from "../../../config/calculator-types";
 
-export const prerender = false;
+export const prerender = true;
+
+// Pre-generate all calculator pages at build time
+import { allCalculatorConfigs } from "../../../config/calculators";
+export function getStaticPaths() {
+  return allCalculatorConfigs.map((c) => ({
+    params: { slug: c.companySlug },
+  }));
+}
 
 const { slug } = Astro.params;
-
-if (!slug) {
-  return Astro.redirect("/tools/pricing-calculator");
-}
-
-// Try to find a use-case config first (fully self-contained)
-let config: CalculatorConfig | undefined = useCaseConfigs.find(
-  (c) => c.companySlug === slug
-);
-
-// If not found, try token-based (needs DB data)
-if (!config) {
-  const tokenConfig = tokenBasedConfigs.find((c) => c.companySlug === slug);
-  if (tokenConfig) {
-    // Fetch provider from DB
-    const [provider] = await db
-      .select()
-      .from(Provider)
-      .where(eq(Provider.slug, slug));
-
-    if (provider) {
-      // Fetch models for this provider
-      const models = await db
-        .select({
-          id: Model.id,
-          name: Model.name,
-          slug: Model.slug,
-          inputPrice: Model.inputPrice,
-          outputPrice: Model.outputPrice,
-          contextWindow: Model.contextWindow,
-        })
-        .from(Model)
-        .where(eq(Model.providerId, provider.id));
-
-      // Populate plans from DB models
-      const plans: PlanConfig[] = models.map((m) => ({
-        id: m.slug,
-        name: m.name,
-        description: `${m.contextWindow.toLocaleString()} context window`,
-        priceParams: {
-          inputPrice: m.inputPrice,
-          outputPrice: m.outputPrice,
-        },
-      }));
-
-      config = {
-        ...tokenConfig,
-        plans,
-      };
-    }
-  }
-}
+const config = getCalculatorBySlug(slug!) as CalculatorConfig;
 
 if (!config || config.plans.length === 0) {
   return Astro.redirect("/tools/pricing-calculator");
