@@ -1,5 +1,4 @@
 ---
-import { db, Provider, Model, eq } from "astro:db";
 import Layout from "../../../layouts/main-layout.astro";
 import PricingCalculatorCard from "../../../components/PricingCalculatorCard";
 import {
@@ -7,49 +6,7 @@ import {
   useCaseConfigs,
 } from "../../../config/calculators";
 
-export const prerender = false;
-
-// Fetch providers from DB for infrastructure cards
-const providers = await db
-  .select({
-    id: Provider.id,
-    name: Provider.name,
-    slug: Provider.slug,
-  })
-  .from(Provider);
-
-// For each provider, get model count
-const providerCards = await Promise.all(
-  providers.map(async (provider) => {
-    const models = await db
-      .select({
-        name: Model.name,
-        inputPrice: Model.inputPrice,
-      })
-      .from(Model)
-      .where(eq(Model.providerId, provider.id));
-
-    const cheapest = models.reduce(
-      (min, m) => (m.inputPrice < min.inputPrice ? m : min),
-      models[0]
-    );
-
-    const config = tokenBasedConfigs.find(
-      (c) => c.companySlug === provider.slug
-    );
-
-    return {
-      companyName: provider.name,
-      slug: provider.slug,
-      description: config?.description ?? `Estimate costs for ${provider.name} AI models.`,
-      modelCount: models.length,
-      cheapestModel: cheapest?.name ?? "",
-      startingPrice: cheapest
-        ? `From $${cheapest.inputPrice.toFixed(2)}/1M tokens`
-        : "",
-    };
-  })
-);
+export const prerender = true;
 
 const title =
   "Free AI Pricing Calculator | Estimate Costs for OpenAI, Claude, Intercom & More";
@@ -121,19 +78,16 @@ const schema = {
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {
-          providerCards
-            .filter((p) => p.modelCount > 0)
-            .map((card) => (
-              <PricingCalculatorCard
-                client:load
-                companyName={card.companyName}
-                slug={card.slug}
-                description={card.description}
-                category="infrastructure"
-                inputPreview="Input tokens, Output tokens, Requests/day"
-                badge={card.startingPrice}
-              />
-            ))
+          tokenBasedConfigs.map((config) => (
+            <PricingCalculatorCard
+              client:load
+              companyName={config.companyName}
+              slug={config.companySlug}
+              description={config.description}
+              category="infrastructure"
+              inputPreview={config.inputs.map((i) => i.label).join(", ")}
+            />
+          ))
         }
       </div>
     </section>
