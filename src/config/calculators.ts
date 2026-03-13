@@ -74,35 +74,35 @@ function createTokenConfig(
 export const openaiConfig = createTokenConfig(
   "OpenAI",
   "openai",
-  "Estimate costs for GPT-4o, GPT-4o mini, and other OpenAI models based on your token usage.",
+  "Estimate costs for GPT-4.1, GPT-4.1 mini, o3, o4-mini, and other OpenAI models based on your token usage.",
   "https://openai.com/api/pricing/"
 );
 
 export const anthropicConfig = createTokenConfig(
   "Anthropic",
   "anthropic",
-  "Calculate costs for Claude 3.5 Sonnet, Claude 3 Haiku, and other Anthropic models.",
+  "Calculate costs for Claude Sonnet 4, Claude Opus 4, Claude Haiku 3.5, and other Anthropic models.",
   "https://www.anthropic.com/pricing"
 );
 
 export const googleConfig = createTokenConfig(
   "Google",
   "google",
-  "Estimate costs for Gemini 1.5 Pro, Gemini 1.5 Flash, and other Google AI models.",
+  "Estimate costs for Gemini 2.5 Pro, Gemini 2.5 Flash, and other Google AI models.",
   "https://ai.google.dev/pricing"
 );
 
 export const mistralConfig = createTokenConfig(
   "Mistral",
   "mistral",
-  "Calculate costs for Mistral Large and other Mistral AI models.",
-  "https://mistral.ai/technology/#pricing"
+  "Calculate costs for Mistral Large 2, Mistral Medium 3, and other Mistral AI models.",
+  "https://mistral.ai/pricing"
 );
 
 export const metaConfig = createTokenConfig(
   "Meta",
   "meta",
-  "Estimate hosting costs for Llama 3 70B and other Meta open-source models.",
+  "Estimate API costs for Llama 4 Maverick, Llama 4 Scout, and other Meta open-weight models.",
   "https://ai.meta.com/llama/"
 );
 

@@ -3,65 +3,29 @@ import type { NavMenuConfig } from "@/types";
 export const navMenuConfig: NavMenuConfig = {
   pagesNav: [
     {
-      title: "Products",
+      title: "Free Tools",
       items: [
         {
           title: "AI Pricing Calculator",
           href: "/tools/pricing-calculator",
-          description: "Free calculators to estimate AI costs for APIs and applications.",
+          description: "Estimate costs for OpenAI, Anthropic, Google, and more — free, no signup.",
           image: "/images/examples/pricing_calculator_thumb.png",
           launched: true,
         },
         {
           title: "ROI Calculator",
           href: "/calculator",
-          description: "Easily communicate the value delivered with ROI calculators",
+          description: "Easily communicate the value delivered with ROI calculators.",
           image: "/images/examples/roi_calculator_thumb.png",
           disabled: true,
         },
-      /* {
-          title: "Changelog",
-          href: "/releases",
-          description: "A reproduction of Starlog template with Tailwind CSS.",
-          image: "/images/examples/changelog.jpg",
-        },
-        {
-          title: "Waitlist",
-          href: "/waitlist",
-          description:
-            "A waitlist form using Astro DB, React Hook Form & Sonner. Static page.",
-          image: "/images/examples/waitlist.jpg",
-          forceReload: true,
-        },
-        */
-/*
-        {
-          title: "Pricing",
-          href: "/pricing",
-          description: "Start free. Simple pricing with no hidden fees.",
-          image: "/images/examples/pricing_page_thumb.png",
-        },
-        */
-       /* {
-          title: "About",
-          href: "/about",
-          description: "A simple page with a masonry gallery and little text.",
-          image: "/images/examples/about.jpg",
-        },
-        {
-          title: "Newsletter",
-          href: "/newsletter",
-          description:
-            "A newsletter form using Astro DB & Simple Stack Form. Counter display!",
-          image: "/images/examples/newsletter.jpg",
-        },*/
         {
           title: "Templates",
           href: "#",
           description:
             "Choose from our calculator templates library to get started quickly.",
           image: "/images/examples/templates_thumb.png",
-          launched: true,
+          disabled: true,
         },
       ],
     },
