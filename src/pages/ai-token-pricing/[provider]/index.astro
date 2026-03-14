@@ -36,24 +36,35 @@ const models = await db
     .innerJoin(Provider, eq(Model.providerId, Provider.id))
     .where(eq(Provider.id, provider.id));
 
-const title = `${provider.name} Token Pricing & Cost History | UsagePricing.com`;
-const description = `Complete pricing list for all ${provider.name} models. Compare input/output costs per 1M tokens for ${models
+const year = new Date().getFullYear();
+const updatedMonth = new Date().toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+});
+
+// Find cheapest model for content
+const sortedByInput = [...models].sort((a, b) => a.inputPrice - b.inputPrice);
+const cheapestModel = sortedByInput[0];
+const featuredModels = models.slice(0, 3);
+
+const title = `${provider.name} API Pricing ${year} — All Models | UsagePricing`;
+const description = `${provider.name} API pricing for all models: compare ${models
     .map((m) => m.name)
     .slice(0, 3)
-    .join(", ")} and more.`;
+    .join(", ")} and more. Input/output costs per 1M tokens. Updated ${updatedMonth}.`;
 
-const schema = {
+const brandSchema = {
     "@context": "https://schema.org",
     "@type": "Brand",
     name: provider.name,
     url: provider.website,
-    image: "https://astro-nomy.vercel.app/og.jpg", // Default OG image
+    image: "https://usagepricing.com/og.jpg",
     description: description,
     owns: models.map((model) => ({
         "@type": "Product",
         name: model.name,
         url: `https://usagepricing.com/ai-token-pricing/${provider.slug}/${model.slug}`,
-        image: "https://astro-nomy.vercel.app/og.jpg", // Default OG image
+        image: "https://usagepricing.com/og.jpg",
         offers: {
             "@type": "Offer",
             price: model.inputPrice,
@@ -61,6 +72,31 @@ const schema = {
             unitText: "per 1M tokens",
         },
     })),
+};
+
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://usagepricing.com",
+        },
+        {
+            "@type": "ListItem",
+            position: 2,
+            name: "AI Token Pricing",
+            item: "https://usagepricing.com/ai-token-pricing",
+        },
+        {
+            "@type": "ListItem",
+            position: 3,
+            name: provider.name,
+            item: `https://usagepricing.com/ai-token-pricing/${provider.slug}`,
+        },
+    ],
 };
 ---
 
@@ -75,10 +111,26 @@ const schema = {
             <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
                 {provider.name} API Pricing
             </h1>
-            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
-                Track and compare the latest token costs for all {provider.name}
-                models.
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mb-2">
+                {provider.name} API pricing for all {models.length} models,
+                updated {updatedMonth}. Compare input and output token costs per
+                1M tokens across the full {provider.name} model range.
             </p>
+            {
+                cheapestModel && (
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Cheapest model:{" "}
+                        <a
+                            href={`/ai-token-pricing/${provider.slug}/${cheapestModel.slug}`}
+                            class="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                        >
+                            {cheapestModel.name}
+                        </a>{" "}
+                        at ${cheapestModel.inputPrice.toFixed(2)}/1M input
+                        tokens
+                    </p>
+                )
+            }
         </div>
 
         <div class="mb-16">
@@ -86,16 +138,76 @@ const schema = {
         </div>
 
         <div
-            class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300"
+            class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 mb-12"
         >
-            <h2 class="text-gray-900 dark:text-white">About {provider.name}</h2>
+            <h2 class="text-gray-900 dark:text-white">
+                About {provider.name} API Pricing
+            </h2>
             <p>
-                {provider.name} is a leading AI provider offering a range of Large
-                Language Models (LLMs). This page tracks the official API pricing
-                for input and output tokens, updated daily.
+                {provider.name} offers {models.length} API models tracked on
+                UsagePricing. All prices shown are standard pay-as-you-go rates
+                per 1 million tokens — input tokens (your prompt) and output
+                tokens (the model's response) are billed separately. Prices are
+                reviewed daily and reflect the latest published rates from {
+                    provider.name
+                }.
             </p>
+
+            {
+                featuredModels.length > 0 && (
+                    <div class="not-prose mt-8">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                            Featured {provider.name} Models
+                        </h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            {featuredModels.map((model) => (
+                                <a
+                                    href={`/ai-token-pricing/${provider.slug}/${model.slug}`}
+                                    class="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-4 hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+                                >
+                                    <div class="font-semibold text-gray-900 dark:text-white text-sm mb-2">
+                                        {model.name}
+                                    </div>
+                                    <div class="text-xs text-gray-500 dark:text-gray-400">
+                                        <span class="text-emerald-600 dark:text-emerald-400 font-medium">
+                                            ${model.inputPrice.toFixed(2)}
+                                        </span>{" "}
+                                        in /{" "}
+                                        <span class="text-emerald-600 dark:text-emerald-400 font-medium">
+                                            ${model.outputPrice.toFixed(2)}
+                                        </span>{" "}
+                                        out per 1M tokens
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+
+            <div class="not-prose mt-8 flex flex-wrap gap-4">
+                <a
+                    href={`/tools/pricing-calculator/${provider.slug}`}
+                    class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium transition-colors text-sm"
+                >
+                    Calculate {provider.name} Costs &rarr;
+                </a>
+                <a
+                    href="/ai-token-pricing"
+                    class="inline-flex items-center gap-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/15 text-gray-900 dark:text-white px-5 py-2.5 rounded-lg font-medium transition-colors text-sm"
+                >
+                    Compare All Providers &rarr;
+                </a>
+            </div>
         </div>
     </main>
 
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(brandSchema)}
+    />
+    <script
+        type="application/ld+json"
+        set:html={JSON.stringify(breadcrumbSchema)}
+    />
 </Layout>
