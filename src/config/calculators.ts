@@ -57,12 +57,36 @@ export const openaiConfig: CalculatorConfig = {
   companyName: "OpenAI",
   companySlug: "openai",
   description:
-    "Estimate costs for GPT-4.1, GPT-4.1 mini, o3, o4-mini, and other OpenAI models based on your token usage.",
+    "Estimate costs for GPT-5.4, GPT-5.2, GPT-5, GPT-4.1, o3, o4-mini, and other OpenAI models based on your token usage.",
   pricingPageUrl: "https://openai.com/api/pricing/",
   inputs: tokenInputs,
   inputGroups: tokenInputGroups,
   computeId: "token-based",
   plans: [
+    {
+      id: "gpt-5-4",
+      name: "GPT-5.4",
+      description: "1,050,000 context window",
+      priceParams: { inputPrice: 2.50, outputPrice: 15.0 },
+    },
+    {
+      id: "gpt-5-2",
+      name: "GPT-5.2",
+      description: "128,000 context window",
+      priceParams: { inputPrice: 1.75, outputPrice: 14.0 },
+    },
+    {
+      id: "gpt-5",
+      name: "GPT-5",
+      description: "400,000 context window",
+      priceParams: { inputPrice: 1.25, outputPrice: 10.0 },
+    },
+    {
+      id: "gpt-5-mini",
+      name: "GPT-5 mini",
+      description: "128,000 context window",
+      priceParams: { inputPrice: 0.25, outputPrice: 2.0 },
+    },
     {
       id: "gpt-4-1",
       name: "GPT-4.1",
@@ -80,12 +104,6 @@ export const openaiConfig: CalculatorConfig = {
       name: "GPT-4.1 nano",
       description: "1,000,000 context window",
       priceParams: { inputPrice: 0.1, outputPrice: 0.4 },
-    },
-    {
-      id: "gpt-4o",
-      name: "GPT-4o",
-      description: "128,000 context window",
-      priceParams: { inputPrice: 2.5, outputPrice: 10.0 },
     },
     {
       id: "o3",
@@ -107,12 +125,30 @@ export const anthropicConfig: CalculatorConfig = {
   companyName: "Anthropic",
   companySlug: "anthropic",
   description:
-    "Calculate costs for Claude Sonnet 4, Claude Opus 4, Claude Haiku 3.5, and other Anthropic models.",
+    "Calculate costs for Claude Opus 4.6, Claude Sonnet 4.6, Claude Haiku 4.5, and other Anthropic models.",
   pricingPageUrl: "https://www.anthropic.com/pricing",
   inputs: tokenInputs,
   inputGroups: tokenInputGroups,
   computeId: "token-based",
   plans: [
+    {
+      id: "claude-opus-4-6",
+      name: "Claude Opus 4.6",
+      description: "1,000,000 context window",
+      priceParams: { inputPrice: 5.0, outputPrice: 25.0 },
+    },
+    {
+      id: "claude-sonnet-4-6",
+      name: "Claude Sonnet 4.6",
+      description: "1,000,000 context window",
+      priceParams: { inputPrice: 3.0, outputPrice: 15.0 },
+    },
+    {
+      id: "claude-sonnet-4-5",
+      name: "Claude Sonnet 4.5",
+      description: "200,000 context window",
+      priceParams: { inputPrice: 3.0, outputPrice: 15.0 },
+    },
     {
       id: "claude-sonnet-4",
       name: "Claude Sonnet 4",
@@ -120,10 +156,10 @@ export const anthropicConfig: CalculatorConfig = {
       priceParams: { inputPrice: 3.0, outputPrice: 15.0 },
     },
     {
-      id: "claude-haiku-3-5",
-      name: "Claude Haiku 3.5",
+      id: "claude-haiku-4-5",
+      name: "Claude Haiku 4.5",
       description: "200,000 context window",
-      priceParams: { inputPrice: 0.8, outputPrice: 4.0 },
+      priceParams: { inputPrice: 1.0, outputPrice: 5.0 },
     },
     {
       id: "claude-opus-4",
@@ -139,12 +175,24 @@ export const googleConfig: CalculatorConfig = {
   companyName: "Google",
   companySlug: "google",
   description:
-    "Estimate costs for Gemini 2.5 Pro, Gemini 2.5 Flash, and other Google AI models.",
+    "Estimate costs for Gemini 3.1 Pro, Gemini 3 Flash, Gemini 2.5 Pro, and other Google AI models.",
   pricingPageUrl: "https://ai.google.dev/pricing",
   inputs: tokenInputs,
   inputGroups: tokenInputGroups,
   computeId: "token-based",
   plans: [
+    {
+      id: "gemini-3-1-pro",
+      name: "Gemini 3.1 Pro",
+      description: "1,000,000 context window",
+      priceParams: { inputPrice: 2.0, outputPrice: 12.0 },
+    },
+    {
+      id: "gemini-3-flash",
+      name: "Gemini 3 Flash",
+      description: "1,000,000 context window",
+      priceParams: { inputPrice: 0.50, outputPrice: 3.0 },
+    },
     {
       id: "gemini-2-5-pro",
       name: "Gemini 2.5 Pro",
@@ -155,13 +203,19 @@ export const googleConfig: CalculatorConfig = {
       id: "gemini-2-5-flash",
       name: "Gemini 2.5 Flash",
       description: "1,000,000 context window",
-      priceParams: { inputPrice: 0.15, outputPrice: 0.6 },
+      priceParams: { inputPrice: 0.30, outputPrice: 2.50 },
+    },
+    {
+      id: "gemini-2-5-flash-lite",
+      name: "Gemini 2.5 Flash-Lite",
+      description: "1,000,000 context window",
+      priceParams: { inputPrice: 0.10, outputPrice: 0.40 },
     },
     {
       id: "gemini-2-0-flash",
       name: "Gemini 2.0 Flash",
       description: "1,000,000 context window",
-      priceParams: { inputPrice: 0.1, outputPrice: 0.4 },
+      priceParams: { inputPrice: 0.10, outputPrice: 0.40 },
     },
   ],
 };
@@ -171,23 +225,29 @@ export const mistralConfig: CalculatorConfig = {
   companyName: "Mistral",
   companySlug: "mistral",
   description:
-    "Calculate costs for Mistral Large 2, Mistral Medium 3, and other Mistral AI models.",
+    "Calculate costs for Mistral Large 3, Mistral Medium 3, Mistral Small 3, and other Mistral AI models.",
   pricingPageUrl: "https://mistral.ai/pricing",
   inputs: tokenInputs,
   inputGroups: tokenInputGroups,
   computeId: "token-based",
   plans: [
     {
-      id: "mistral-large-2",
-      name: "Mistral Large 2",
-      description: "128,000 context window",
-      priceParams: { inputPrice: 2.0, outputPrice: 6.0 },
+      id: "mistral-large-3",
+      name: "Mistral Large 3",
+      description: "262,000 context window",
+      priceParams: { inputPrice: 0.50, outputPrice: 1.50 },
     },
     {
       id: "mistral-medium-3",
       name: "Mistral Medium 3",
-      description: "128,000 context window",
-      priceParams: { inputPrice: 0.4, outputPrice: 2.0 },
+      description: "131,000 context window",
+      priceParams: { inputPrice: 0.40, outputPrice: 2.00 },
+    },
+    {
+      id: "mistral-small-3",
+      name: "Mistral Small 3",
+      description: "33,000 context window",
+      priceParams: { inputPrice: 0.03, outputPrice: 0.11 },
     },
   ],
 };
@@ -214,6 +274,70 @@ export const metaConfig: CalculatorConfig = {
       name: "Llama 4 Scout",
       description: "10,000,000 context window",
       priceParams: { inputPrice: 0.15, outputPrice: 0.5 },
+    },
+  ],
+};
+
+export const deepseekConfig: CalculatorConfig = {
+  type: "token-based",
+  companyName: "DeepSeek",
+  companySlug: "deepseek",
+  description:
+    "Calculate costs for DeepSeek V3.2 and DeepSeek R1 — high-quality models at a fraction of proprietary pricing.",
+  pricingPageUrl: "https://api-docs.deepseek.com/quick_start/pricing",
+  inputs: tokenInputs,
+  inputGroups: tokenInputGroups,
+  computeId: "token-based",
+  plans: [
+    {
+      id: "deepseek-v3-2",
+      name: "DeepSeek V3.2",
+      description: "128,000 context window",
+      priceParams: { inputPrice: 0.28, outputPrice: 0.42 },
+    },
+    {
+      id: "deepseek-r1",
+      name: "DeepSeek R1",
+      description: "64,000 context window",
+      priceParams: { inputPrice: 0.55, outputPrice: 2.19 },
+    },
+  ],
+};
+
+export const xaiConfig: CalculatorConfig = {
+  type: "token-based",
+  companyName: "xAI",
+  companySlug: "xai",
+  description:
+    "Estimate costs for Grok 4, Grok 4 Fast, Grok 4.1 Fast, and other xAI models based on your token usage.",
+  pricingPageUrl: "https://docs.x.ai/developers/models",
+  inputs: tokenInputs,
+  inputGroups: tokenInputGroups,
+  computeId: "token-based",
+  plans: [
+    {
+      id: "grok-4",
+      name: "Grok 4",
+      description: "256,000 context window",
+      priceParams: { inputPrice: 3.00, outputPrice: 15.00 },
+    },
+    {
+      id: "grok-4-fast",
+      name: "Grok 4 Fast",
+      description: "2,000,000 context window",
+      priceParams: { inputPrice: 0.20, outputPrice: 0.50 },
+    },
+    {
+      id: "grok-4-1-fast",
+      name: "Grok 4.1 Fast",
+      description: "2,000,000 context window",
+      priceParams: { inputPrice: 0.20, outputPrice: 0.50 },
+    },
+    {
+      id: "grok-3",
+      name: "Grok 3",
+      description: "131,000 context window",
+      priceParams: { inputPrice: 3.00, outputPrice: 15.00 },
     },
   ],
 };
@@ -546,6 +670,8 @@ export const tokenBasedConfigs = [
   openaiConfig,
   anthropicConfig,
   googleConfig,
+  deepseekConfig,
+  xaiConfig,
   mistralConfig,
   metaConfig,
 ];

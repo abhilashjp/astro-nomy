@@ -1,18 +1,68 @@
 import { db, Provider, Model, PriceHistory } from 'astro:db';
 
 export default async function seed() {
+  // ── Providers ────────────────────────────────────────────
   await db.insert(Provider).values([
     { id: 1, name: 'OpenAI', slug: 'openai', website: 'https://openai.com' },
     { id: 2, name: 'Anthropic', slug: 'anthropic', website: 'https://anthropic.com' },
     { id: 3, name: 'Google', slug: 'google', website: 'https://deepmind.google' },
     { id: 4, name: 'Meta', slug: 'meta', website: 'https://ai.meta.com' },
     { id: 5, name: 'Mistral', slug: 'mistral', website: 'https://mistral.ai' },
+    { id: 6, name: 'DeepSeek', slug: 'deepseek', website: 'https://deepseek.com' },
+    { id: 7, name: 'xAI', slug: 'xai', website: 'https://x.ai' },
   ]);
 
+  // ── Models ───────────────────────────────────────────────
+  // Prices are per 1M tokens (input / output)
+  // Sources: official pricing pages, verified March 2026
   await db.insert(Model).values([
-    // ── OpenAI ──────────────────────────────────────────────
+    // ── OpenAI ─────────────────────────────────────────────
+    {
+      id: 29,
+      providerId: 1,
+      name: 'GPT-5.4',
+      slug: 'gpt-5-4',
+      description: 'Latest flagship — unifies Codex and GPT lines, 1M+ context, strongest reasoning.',
+      contextWindow: 1_050_000,
+      knowledgeCutoff: '2025-09',
+      inputPrice: 2.50,
+      outputPrice: 15.00,
+    },
     {
       id: 1,
+      providerId: 1,
+      name: 'GPT-5.2',
+      slug: 'gpt-5-2',
+      description: 'Latest flagship model — top performance in reasoning and agentic tasks.',
+      contextWindow: 128_000,
+      knowledgeCutoff: '2025-06',
+      inputPrice: 1.75,
+      outputPrice: 14.00,
+    },
+    {
+      id: 2,
+      providerId: 1,
+      name: 'GPT-5',
+      slug: 'gpt-5',
+      description: 'Previous flagship with 400K context — strong reasoning and coding.',
+      contextWindow: 400_000,
+      knowledgeCutoff: '2025-03',
+      inputPrice: 1.25,
+      outputPrice: 10.00,
+    },
+    {
+      id: 3,
+      providerId: 1,
+      name: 'GPT-5 mini',
+      slug: 'gpt-5-mini',
+      description: 'Smaller, cheaper model for well-defined tasks.',
+      contextWindow: 128_000,
+      knowledgeCutoff: '2025-03',
+      inputPrice: 0.25,
+      outputPrice: 2.00,
+    },
+    {
+      id: 4,
       providerId: 1,
       name: 'GPT-4.1',
       slug: 'gpt-4-1',
@@ -23,7 +73,7 @@ export default async function seed() {
       outputPrice: 8.00,
     },
     {
-      id: 2,
+      id: 5,
       providerId: 1,
       name: 'GPT-4.1 mini',
       slug: 'gpt-4-1-mini',
@@ -34,7 +84,7 @@ export default async function seed() {
       outputPrice: 1.60,
     },
     {
-      id: 3,
+      id: 6,
       providerId: 1,
       name: 'GPT-4.1 nano',
       slug: 'gpt-4-1-nano',
@@ -45,18 +95,18 @@ export default async function seed() {
       outputPrice: 0.40,
     },
     {
-      id: 4,
+      id: 7,
       providerId: 1,
       name: 'GPT-4o',
       slug: 'gpt-4o',
-      description: 'Previous-generation flagship multimodal model.',
+      description: 'Previous-generation multimodal model — still widely used.',
       contextWindow: 128_000,
       knowledgeCutoff: '2023-10',
       inputPrice: 2.50,
       outputPrice: 10.00,
     },
     {
-      id: 5,
+      id: 8,
       providerId: 1,
       name: 'o3',
       slug: 'o3',
@@ -67,7 +117,7 @@ export default async function seed() {
       outputPrice: 8.00,
     },
     {
-      id: 6,
+      id: 9,
       providerId: 1,
       name: 'o4-mini',
       slug: 'o4-mini',
@@ -78,44 +128,99 @@ export default async function seed() {
       outputPrice: 4.40,
     },
 
-    // ── Anthropic ───────────────────────────────────────────
+    // ── Anthropic ──────────────────────────────────────────
     {
-      id: 7,
+      id: 30,
       providerId: 2,
-      name: 'Claude Sonnet 4',
-      slug: 'claude-sonnet-4',
-      description: 'Balanced model for enterprise workloads — strong reasoning and coding.',
+      name: 'Claude Sonnet 4.6',
+      slug: 'claude-sonnet-4-6',
+      description: 'Latest balanced model — full 1M context at standard pricing, no long-context surcharge.',
+      contextWindow: 1_000_000,
+      knowledgeCutoff: '2025-08',
+      inputPrice: 3.00,
+      outputPrice: 15.00,
+    },
+    {
+      id: 10,
+      providerId: 2,
+      name: 'Claude Opus 4.6',
+      slug: 'claude-opus-4-6',
+      description: 'Most capable Claude model — 1M context, frontier reasoning and analysis.',
+      contextWindow: 1_000_000,
+      knowledgeCutoff: '2025-08',
+      inputPrice: 5.00,
+      outputPrice: 25.00,
+    },
+    {
+      id: 11,
+      providerId: 2,
+      name: 'Claude Sonnet 4.5',
+      slug: 'claude-sonnet-4-5',
+      description: 'Balanced enterprise model — strong reasoning, coding, and creativity.',
       contextWindow: 200_000,
       knowledgeCutoff: '2025-03',
       inputPrice: 3.00,
       outputPrice: 15.00,
     },
     {
-      id: 8,
+      id: 12,
       providerId: 2,
-      name: 'Claude Haiku 3.5',
-      slug: 'claude-haiku-3-5',
-      description: 'Fast and cost-efficient for high-volume tasks like triage and classification.',
+      name: 'Claude Sonnet 4',
+      slug: 'claude-sonnet-4',
+      description: 'Previous-generation balanced model — still widely deployed.',
       contextWindow: 200_000,
-      knowledgeCutoff: '2024-07',
-      inputPrice: 0.80,
-      outputPrice: 4.00,
+      knowledgeCutoff: '2025-03',
+      inputPrice: 3.00,
+      outputPrice: 15.00,
     },
     {
-      id: 9,
+      id: 13,
+      providerId: 2,
+      name: 'Claude Haiku 4.5',
+      slug: 'claude-haiku-4-5',
+      description: 'Fastest and most affordable Claude — high-volume triage and classification.',
+      contextWindow: 200_000,
+      knowledgeCutoff: '2025-03',
+      inputPrice: 1.00,
+      outputPrice: 5.00,
+    },
+    {
+      id: 14,
       providerId: 2,
       name: 'Claude Opus 4',
       slug: 'claude-opus-4',
-      description: 'Most capable model for complex analysis, research, and extended reasoning.',
+      description: 'Legacy flagship — complex analysis and extended reasoning.',
       contextWindow: 200_000,
       knowledgeCutoff: '2025-03',
       inputPrice: 15.00,
       outputPrice: 75.00,
     },
 
-    // ── Google ───────────────────────────────────────────────
+    // ── Google ──────────────────────────────────────────────
     {
-      id: 10,
+      id: 32,
+      providerId: 3,
+      name: 'Gemini 3.1 Pro',
+      slug: 'gemini-3-1-pro',
+      description: 'Latest flagship — frontier reasoning, coding, and math with 1M context.',
+      contextWindow: 1_000_000,
+      knowledgeCutoff: '2025-09',
+      inputPrice: 2.00,
+      outputPrice: 12.00,
+    },
+    {
+      id: 31,
+      providerId: 3,
+      name: 'Gemini 3 Flash',
+      slug: 'gemini-3-flash',
+      description: 'Next-gen workhorse — outperforms 2.5 Pro at 3× the speed, configurable reasoning.',
+      contextWindow: 1_000_000,
+      knowledgeCutoff: '2025-09',
+      inputPrice: 0.50,
+      outputPrice: 3.00,
+    },
+    {
+      id: 15,
       providerId: 3,
       name: 'Gemini 2.5 Pro',
       slug: 'gemini-2-5-pro',
@@ -126,18 +231,29 @@ export default async function seed() {
       outputPrice: 10.00,
     },
     {
-      id: 11,
+      id: 16,
       providerId: 3,
       name: 'Gemini 2.5 Flash',
       slug: 'gemini-2-5-flash',
       description: 'Fast hybrid reasoning model — great balance of speed and intelligence.',
       contextWindow: 1_000_000,
       knowledgeCutoff: '2025-01',
-      inputPrice: 0.15,
-      outputPrice: 0.60,
+      inputPrice: 0.30,
+      outputPrice: 2.50,
     },
     {
-      id: 12,
+      id: 17,
+      providerId: 3,
+      name: 'Gemini 2.5 Flash-Lite',
+      slug: 'gemini-2-5-flash-lite',
+      description: 'Most cost-effective Google model — ideal for high-volume simple tasks.',
+      contextWindow: 1_000_000,
+      knowledgeCutoff: '2025-01',
+      inputPrice: 0.10,
+      outputPrice: 0.40,
+    },
+    {
+      id: 18,
       providerId: 3,
       name: 'Gemini 2.0 Flash',
       slug: 'gemini-2-0-flash',
@@ -148,61 +264,178 @@ export default async function seed() {
       outputPrice: 0.40,
     },
 
-    // ── Meta ─────────────────────────────────────────────────
+    // ── Meta ────────────────────────────────────────────────
     {
-      id: 13,
+      id: 19,
       providerId: 4,
       name: 'Llama 4 Maverick',
       slug: 'llama-4-maverick',
-      description: 'MoE model — frontier-class quality at a fraction of proprietary model costs.',
+      description: 'MoE model (400B total, 17B active) — frontier-class quality at open-source pricing.',
       contextWindow: 1_000_000,
       knowledgeCutoff: '2025-03',
       inputPrice: 0.22,
       outputPrice: 0.85,
     },
     {
-      id: 14,
+      id: 20,
       providerId: 4,
       name: 'Llama 4 Scout',
       slug: 'llama-4-scout',
-      description: 'Lightweight MoE model with 10M context window — ultra-affordable.',
+      description: 'Lightweight MoE with 10M context — ultra-affordable for long-context workloads.',
       contextWindow: 10_000_000,
       knowledgeCutoff: '2025-03',
       inputPrice: 0.15,
       outputPrice: 0.50,
     },
 
-    // ── Mistral ──────────────────────────────────────────────
+    // ── Mistral ─────────────────────────────────────────────
     {
-      id: 15,
+      id: 21,
       providerId: 5,
-      name: 'Mistral Large 2',
-      slug: 'mistral-large-2',
-      description: 'Top-tier reasoning model with 128K context window.',
-      contextWindow: 128_000,
-      knowledgeCutoff: '2024-07',
-      inputPrice: 2.00,
-      outputPrice: 6.00,
+      name: 'Mistral Large 3',
+      slug: 'mistral-large-3',
+      description: 'Top-tier reasoning model with 262K context — latest generation.',
+      contextWindow: 262_000,
+      knowledgeCutoff: '2025-06',
+      inputPrice: 0.50,
+      outputPrice: 1.50,
     },
     {
-      id: 16,
+      id: 22,
       providerId: 5,
       name: 'Mistral Medium 3',
       slug: 'mistral-medium-3',
       description: 'GPT-4 class performance at a fraction of the cost.',
-      contextWindow: 128_000,
+      contextWindow: 131_000,
       knowledgeCutoff: '2024-07',
       inputPrice: 0.40,
       outputPrice: 2.00,
     },
+    {
+      id: 23,
+      providerId: 5,
+      name: 'Mistral Small 3',
+      slug: 'mistral-small-3',
+      description: 'Ultra-efficient model for high-volume, cost-sensitive tasks.',
+      contextWindow: 33_000,
+      knowledgeCutoff: '2024-07',
+      inputPrice: 0.03,
+      outputPrice: 0.11,
+    },
+
+    // ── DeepSeek ────────────────────────────────────────────
+    {
+      id: 24,
+      providerId: 6,
+      name: 'DeepSeek V3.2',
+      slug: 'deepseek-v3-2',
+      description: 'Unified chat + reasoning model — fraction of proprietary model costs.',
+      contextWindow: 128_000,
+      knowledgeCutoff: '2025-06',
+      inputPrice: 0.28,
+      outputPrice: 0.42,
+    },
+    {
+      id: 25,
+      providerId: 6,
+      name: 'DeepSeek R1',
+      slug: 'deepseek-r1',
+      description: 'Dedicated reasoning model — 20-50x cheaper than comparable proprietary models.',
+      contextWindow: 64_000,
+      knowledgeCutoff: '2025-01',
+      inputPrice: 0.55,
+      outputPrice: 2.19,
+    },
+
+    // ── xAI ─────────────────────────────────────────────────
+    {
+      id: 26,
+      providerId: 7,
+      name: 'Grok 4',
+      slug: 'grok-4',
+      description: 'Frontier-tier reasoning model with 256K context window.',
+      contextWindow: 256_000,
+      knowledgeCutoff: '2025-06',
+      inputPrice: 3.00,
+      outputPrice: 15.00,
+    },
+    {
+      id: 27,
+      providerId: 7,
+      name: 'Grok 4 Fast',
+      slug: 'grok-4-fast',
+      description: 'Near-frontier capability at exceptional value — 2M context window.',
+      contextWindow: 2_000_000,
+      knowledgeCutoff: '2025-06',
+      inputPrice: 0.20,
+      outputPrice: 0.50,
+    },
+    {
+      id: 28,
+      providerId: 7,
+      name: 'Grok 3',
+      slug: 'grok-3',
+      description: 'Previous-generation flagship — strong reasoning and analysis.',
+      contextWindow: 131_000,
+      knowledgeCutoff: '2025-01',
+      inputPrice: 3.00,
+      outputPrice: 15.00,
+    },
+    {
+      id: 33,
+      providerId: 7,
+      name: 'Grok 4.1 Fast',
+      slug: 'grok-4-1-fast',
+      description: 'Near-frontier capability at exceptional value — 2M context, latest generation.',
+      contextWindow: 2_000_000,
+      knowledgeCutoff: '2025-09',
+      inputPrice: 0.20,
+      outputPrice: 0.50,
+    },
   ]);
 
-  // Seed some history for charts
+  // ── Price History (for charts) ───────────────────────────
   await db.insert(PriceHistory).values([
-    { id: 1, modelId: 4, priceInput: 5.00, priceOutput: 15.00, date: new Date('2024-05-13') },   // GPT-4o launch
-    { id: 2, modelId: 4, priceInput: 2.50, priceOutput: 10.00, date: new Date('2024-08-06') },   // GPT-4o price drop
-    { id: 3, modelId: 7, priceInput: 3.00, priceOutput: 15.00, date: new Date('2025-05-22') },   // Claude Sonnet 4 launch
-    { id: 4, modelId: 1, priceInput: 2.00, priceOutput: 8.00, date: new Date('2025-04-14') },    // GPT-4.1 launch
-    { id: 5, modelId: 10, priceInput: 1.25, priceOutput: 10.00, date: new Date('2025-03-25') },  // Gemini 2.5 Pro launch
+    // OpenAI GPT-4o price drops
+    { id: 1, modelId: 7, priceInput: 5.00, priceOutput: 15.00, date: new Date('2024-05-13') },
+    { id: 2, modelId: 7, priceInput: 2.50, priceOutput: 10.00, date: new Date('2024-08-06') },
+    // GPT-4.1 launch
+    { id: 3, modelId: 4, priceInput: 2.00, priceOutput: 8.00, date: new Date('2025-04-14') },
+    // GPT-5 launch & pricing
+    { id: 4, modelId: 2, priceInput: 1.25, priceOutput: 10.00, date: new Date('2025-08-07') },
+    // GPT-5.2 launch
+    { id: 5, modelId: 1, priceInput: 1.75, priceOutput: 14.00, date: new Date('2026-02-01') },
+    // Claude Sonnet 4 launch
+    { id: 6, modelId: 12, priceInput: 3.00, priceOutput: 15.00, date: new Date('2025-05-22') },
+    // Claude Opus 4.6 launch
+    { id: 7, modelId: 10, priceInput: 5.00, priceOutput: 25.00, date: new Date('2026-02-05') },
+    // Claude Sonnet 4.5 launch
+    { id: 8, modelId: 11, priceInput: 3.00, priceOutput: 15.00, date: new Date('2025-10-22') },
+    // Gemini 2.5 Pro launch
+    { id: 9, modelId: 15, priceInput: 1.25, priceOutput: 10.00, date: new Date('2025-03-25') },
+    // Gemini 2.5 Flash launch
+    { id: 10, modelId: 16, priceInput: 0.15, priceOutput: 0.60, date: new Date('2025-05-20') },
+    // Gemini 2.5 Flash price update
+    { id: 11, modelId: 16, priceInput: 0.30, priceOutput: 2.50, date: new Date('2025-09-01') },
+    // DeepSeek R1 launch
+    { id: 12, modelId: 25, priceInput: 0.55, priceOutput: 2.19, date: new Date('2025-01-20') },
+    // DeepSeek V3.2 launch
+    { id: 13, modelId: 24, priceInput: 0.28, priceOutput: 0.42, date: new Date('2025-12-01') },
+    // Grok 4 launch
+    { id: 14, modelId: 26, priceInput: 3.00, priceOutput: 15.00, date: new Date('2025-07-09') },
+    // Llama 4 Maverick launch
+    { id: 15, modelId: 19, priceInput: 0.22, priceOutput: 0.85, date: new Date('2025-04-05') },
+    // GPT-5.4 launch
+    { id: 16, modelId: 29, priceInput: 2.50, priceOutput: 15.00, date: new Date('2026-03-01') },
+    // Claude Sonnet 4.6 launch (1M context at standard pricing, no surcharge)
+    { id: 17, modelId: 30, priceInput: 3.00, priceOutput: 15.00, date: new Date('2026-03-13') },
+    // Gemini 3 Flash launch
+    { id: 18, modelId: 31, priceInput: 0.50, priceOutput: 3.00, date: new Date('2026-02-15') },
+    // Gemini 3.1 Pro launch
+    { id: 19, modelId: 32, priceInput: 2.00, priceOutput: 12.00, date: new Date('2026-03-01') },
+    // Grok 4.1 Fast launch
+    { id: 20, modelId: 33, priceInput: 0.20, priceOutput: 0.50, date: new Date('2026-01-15') },
+    // DeepSeek R1 price reduction (March 2026)
+    { id: 21, modelId: 25, priceInput: 0.55, priceOutput: 2.19, date: new Date('2026-03-01') },
   ]);
 }
