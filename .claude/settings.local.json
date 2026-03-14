@@ -42,7 +42,14 @@
       "Bash(find /home/abhil/projects/astro-nomy/src/layouts -type f -name *.astro)",
       "Bash(find /home/abhil/projects/astro-nomy/src/pages/blog -type f -name *.astro -o -name *.ts)",
       "Bash(ls -1 ./src/content/blog/*.md)",
-      "Bash(ls -1 ./src/content/guides/*.mdx)"
+      "Bash(ls -1 ./src/content/guides/*.mdx)",
+      "Read(//c/Users/abhil/.claude/plugins/**)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\abhil\\\\.claude\\\\plugins\\\\personal\\\\usagepricing-seo\\\\.claude-plugin\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\abhil\\\\.claude\\\\plugins\\\\personal\\\\usagepricing-seo\\\\skills\\\\usagepricing-seo\")",
+      "WebFetch(domain:www.usagepricing.com)",
+      "WebFetch(domain:www.ringly.io)",
+      "WebFetch(domain:www.kommunicate.io)",
+      "Bash(pnpm run:*)"
     ]
   }
 }

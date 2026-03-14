@@ -37,7 +37,10 @@ const sortedHistory = history.sort(
           <h3 class="font-heading text-lg font-semibold tracking-tight text-foreground">
             {event.title}
           </h3>
-          <time class="text-xs font-medium text-muted-foreground uppercase tracking-wider bg-muted px-2 py-0.5 rounded-md border">
+          <time
+            datetime={event.date.toISOString().split("T")[0]}
+            class="text-xs font-medium text-muted-foreground uppercase tracking-wider bg-muted px-2 py-0.5 rounded-md border"
+          >
             {event.date.toLocaleDateString("en-US", {
               year: "numeric",
               month: "short",
@@ -47,7 +50,12 @@ const sortedHistory = history.sort(
         <p class="text-muted-foreground leading-relaxed">{event.summary}</p>
         {event.image && (
           <div class="mt-4 rounded-lg overflow-hidden border">
-            <img src={event.image} alt={event.title} class="w-full h-auto" />
+            <img
+              src={event.image}
+              alt={`${event.title} - ${event.summary.substring(0, 80)}`}
+              class="w-full h-auto"
+              loading="lazy"
+            />
           </div>
         )}
       </div>
