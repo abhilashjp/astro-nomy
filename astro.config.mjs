@@ -12,6 +12,9 @@ import partytown from "@astrojs/partytown";
 export default defineConfig({
   site: "https://usagepricing.com",
   trailingSlash: "never",
+  redirects: {
+    "/blog/cost-intelligence-graph-core": "/blog/ai-cost-intelligence-architecture",
+  },
   integrations: [
     mdx({
       syntaxHighlight: "shiki",

@@ -24,9 +24,10 @@ export const footerLinks: SidebarNavItem[] = [
   {
     title: "Resources",
     items: [
-      { title: "Guides", href: "/guides/introduction-usage-based-pricing" },
+      { title: "Guides", href: "/guides" },
       { title: "Pricing Explained", href: "/explained" },
       { title: "AI Token Price Tracker", href: "/ai-token-pricing" },
+      { title: "Pricing Calculators", href: "/tools/pricing-calculator" },
     ],
   },
   {

@@ -48,6 +48,16 @@ const { title, description, image, bodyClass, tags } = Astro.props;
 
       gtag("config", "G-M09E9Y0K1X");
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "UsagePricing",
+        "url": "https://usagepricing.com",
+        "description": "The go-to resource for usage-based pricing for AI companies",
+        "sameAs": ["https://x.com/usagepricing"]
+      }
+    </script>
   </head>
   <body class={cn("flex flex-col min-h-screen", bodyClass)}>
     <!-- Google Tag Manager (noscript) -->

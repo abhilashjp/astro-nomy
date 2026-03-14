@@ -1,0 +1,125 @@
+---
+export const prerender = true;
+
+import Layout from "../../layouts/main-layout.astro";
+import { getPublishedGuides } from "@/lib/content.js";
+
+const guides = await getPublishedGuides();
+
+// Sort guides in logical reading order (by pubDate ascending for a series)
+const sortedGuides = guides
+  .filter((g) => !g.slug.startsWith("documentation/") && g.slug !== "in-progress" && g.slug !== "getting-started")
+  .sort((a, b) => new Date(a.data.pubDate).valueOf() - new Date(b.data.pubDate).valueOf());
+
+const title = "Usage-Based Pricing Guides — Complete Implementation Series";
+const description =
+  "Comprehensive guides on implementing usage-based pricing for SaaS and AI companies. From fundamentals to revenue recognition — everything you need to know.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      name: title,
+      description: description,
+      url: "https://usagepricing.com/guides",
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: sortedGuides.map((guide, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: guide.data.title,
+          url: `https://usagepricing.com/guides/${guide.slug}`,
+        })),
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://usagepricing.com" },
+        { "@type": "ListItem", position: 2, name: "Guides", item: "https://usagepricing.com/guides" },
+      ],
+    },
+  ],
+};
+---
+
+<Layout title={title} description={description}>
+  <main class="container mx-auto px-4 py-12 max-w-4xl">
+    {/* Breadcrumb */}
+    <nav class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
+      <a href="/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Home</a>
+      <span>/</span>
+      <span class="text-gray-900 dark:text-white font-medium">Guides</span>
+    </nav>
+
+    {/* Hero */}
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">
+        Usage-Based Pricing Guides
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
+        A comprehensive series covering everything you need to know about implementing usage-based pricing — from choosing your value metric to revenue recognition.
+      </p>
+    </div>
+
+    {/* Guide Series */}
+    <div class="space-y-4">
+      {sortedGuides.map((guide, index) => (
+        <a
+          href={`/guides/${guide.slug}`}
+          class="group flex items-start gap-4 p-5 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/[0.03] hover:border-blue-300 dark:hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-200"
+        >
+          <div class="flex-shrink-0 w-10 h-10 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center font-bold text-sm">
+            {index + 1}
+          </div>
+          <div class="flex-1 min-w-0">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-1">
+              {guide.data.title}
+            </h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+              {guide.data.description}
+            </p>
+            {guide.data.tags && guide.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                {guide.data.tags.slice(0, 3).map((tag: string) => (
+                  <span class="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded-md">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          <div class="flex-shrink-0 text-gray-400 group-hover:text-blue-500 transition-colors mt-1">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {/* Related Resources */}
+    <section class="mt-16 pt-12 border-t border-gray-200 dark:border-white/10">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">
+        Related Resources
+      </h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/tools/pricing-calculator" class="p-5 rounded-xl border border-gray-200 dark:border-white/10 hover:border-blue-300 dark:hover:border-blue-500/30 transition-colors">
+          <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Pricing Calculators</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Free tools to estimate AI costs for 10+ providers.</p>
+        </a>
+        <a href="/ai-token-pricing" class="p-5 rounded-xl border border-gray-200 dark:border-white/10 hover:border-blue-300 dark:hover:border-blue-500/30 transition-colors">
+          <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Token Price Tracker</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Live pricing data for 50+ AI models, updated daily.</p>
+        </a>
+        <a href="/explained" class="p-5 rounded-xl border border-gray-200 dark:border-white/10 hover:border-blue-300 dark:hover:border-blue-500/30 transition-colors">
+          <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Pricing Explained</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Deep analysis of how specific AI companies price their products.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>

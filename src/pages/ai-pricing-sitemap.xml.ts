@@ -1,4 +1,5 @@
 import { db, Provider, Model, eq } from "astro:db";
+import { allCalculatorConfigs } from "../config/calculators";
 
 export async function GET() {
     // Fetch all providers and models from the database
@@ -10,6 +11,14 @@ export async function GET() {
         })
         .from(Model)
         .innerJoin(Provider, eq(Model.providerId, Provider.id));
+
+    // Generate comparison slugs for all model pairs
+    const comparisonSlugs: string[] = [];
+    for (let i = 0; i < models.length; i++) {
+        for (let j = i + 1; j < models.length; j++) {
+            comparisonSlugs.push(`${models[i].slug}-vs-${models[j].slug}`);
+        }
+    }
 
     // Generate XML for AI pricing URLs
     const baseUrl = "https://usagepricing.com";
@@ -43,6 +52,42 @@ export async function GET() {
     <priority>0.8</priority>
   </url>`
         ),
+
+        // Comparison pages (top priority pairs)
+        ...comparisonSlugs.slice(0, 50).map(
+            (slug) => `  <url>
+    <loc>${baseUrl}/ai-token-pricing/compare/${slug}</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`
+        ),
+
+        // Calculator hub
+        `  <url>
+    <loc>${baseUrl}/tools/pricing-calculator</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>`,
+
+        // Individual calculator pages
+        ...allCalculatorConfigs.map(
+            (c) => `  <url>
+    <loc>${baseUrl}/tools/pricing-calculator/${c.companySlug}</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`
+        ),
+
+        // Guides index
+        `  <url>
+    <loc>${baseUrl}/guides</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`,
     ];
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>

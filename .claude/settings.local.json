@@ -30,7 +30,19 @@
       "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && pnpm run build 2>&1 | tail -40\")",
       "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && npx astro db push --force-reset 2>&1 | tail -20\")",
       "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && echo ''y'' | npx astro db push --force-reset 2>&1 | tail -20\")",
-      "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && pnpm run build 2>&1 | tail -15\")"
+      "Bash(wsl -e bash -ic \"cd ~/projects/astro-nomy && pnpm run build 2>&1 | tail -15\")",
+      "Bash(find ./src/content/blog -name *.md -o -name *.mdx)",
+      "Bash(find ./src -name *.ts -type f)",
+      "WebFetch(domain:usagepricing.com)",
+      "Read(///wsl.localhost/Ubuntu/home/**)",
+      "Bash(mkdir -p \".claude/projects/--wsl-localhost-Ubuntu-home-abhil-projects-astro-nomy/memory\")",
+      "Bash(wsl -e bash -c \"mkdir -p /home/abhil/.claude/projects/--wsl-localhost-Ubuntu-home-abhil-projects-astro-nomy/memory\")",
+      "Read(//c/Users/abhil/.claude/projects/**)",
+      "Bash(find /home/abhil/projects/astro-nomy/src/content/blog -name *cost* -o -name *intelligence* -o -name *graph*)",
+      "Bash(find /home/abhil/projects/astro-nomy/src/layouts -type f -name *.astro)",
+      "Bash(find /home/abhil/projects/astro-nomy/src/pages/blog -type f -name *.astro -o -name *.ts)",
+      "Bash(ls -1 ./src/content/blog/*.md)",
+      "Bash(ls -1 ./src/content/guides/*.mdx)"
     ]
   }
 }

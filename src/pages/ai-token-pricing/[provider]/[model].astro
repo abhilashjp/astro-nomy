@@ -99,11 +99,11 @@ const schema = {
                     </p>
                 </div>
                 <a
-                    href="/calculator"
+                    href={`/tools/pricing-calculator/${model.providerSlug}`}
                     class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
                 >
                     <Calculator className="w-5 h-5" />
-                    Calculate ROI
+                    Calculate Cost
                 </a>
             </div>
         </div>
@@ -238,7 +238,7 @@ const schema = {
                 scenarios like RAG and agentic workflows.
             </p>
             <a
-                href="/calculator"
+                href={`/tools/pricing-calculator/${model.providerSlug}`}
                 class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white dark:bg-white dark:text-blue-900 dark:hover:bg-gray-100 px-8 py-3 rounded-lg font-bold transition-colors"
             >
                 Start Free Calculation
