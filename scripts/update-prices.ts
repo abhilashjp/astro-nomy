@@ -18,6 +18,10 @@ const PROVIDER_URLS = {
     openai: 'https://openai.com/api/pricing/',
     anthropic: 'https://www.anthropic.com/pricing',
     google: 'https://ai.google.dev/pricing',
+    mistral: 'https://mistral.ai/pricing',
+    deepseek: 'https://api-docs.deepseek.com/quick_start/pricing',
+    xai: 'https://docs.x.ai/developers/models',
+    meta: 'https://ai.meta.com/llama/',
 };
 
 async function fetchAndExtractPrices(url: string, providerName: string) {

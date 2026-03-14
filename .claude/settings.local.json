@@ -49,7 +49,29 @@
       "WebFetch(domain:www.usagepricing.com)",
       "WebFetch(domain:www.ringly.io)",
       "WebFetch(domain:www.kommunicate.io)",
-      "Bash(pnpm run:*)"
+      "Bash(pnpm run:*)",
+      "Bash(git -C \"\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\abhil\\\\projects\\\\astro-nomy\" diff --stat)",
+      "Bash(wsl git:*)",
+      "Bash(wsl --exec bash -c \"git -C /home/abhil/projects/astro-nomy diff --stat\")",
+      "Bash(wsl --exec bash -c \"git -C /home/abhil/projects/astro-nomy diff src/config/calculators.ts db/seed.ts\")",
+      "Bash(wsl --exec bash -c \"git -C /home/abhil/projects/astro-nomy log --oneline -5\")",
+      "Bash(wsl --exec bash -c \"cd /home/abhil/projects/astro-nomy && pnpm astro db push --remote 2>&1\")",
+      "Bash(wsl --exec bash -c \"cd /home/abhil/projects/astro-nomy && npm run build 2>&1 | head -5\")",
+      "Bash(wsl --exec bash -c \"which pnpm || ls /home/abhil/.local/share/pnpm/pnpm || ls /usr/local/bin/pnpm || find /home/abhil -name pnpm -type f 2>/dev/null | head -3\")",
+      "Bash(wsl --exec bash -lc \"which pnpm 2>&1 && pnpm --version 2>&1\")",
+      "Bash(wsl --exec bash -c \"ls /home/abhil/.nvm/versions/node/*/bin/pnpm 2>/dev/null | head -3; ls /home/abhil/.volta/bin/pnpm 2>/dev/null; ls /home/abhil/.corepack/pnpm* 2>/dev/null | head -3; cat /home/abhil/.bashrc | grep -i pnpm | head -5\")",
+      "Bash(wsl --exec bash -c \"cd /home/abhil/projects/astro-nomy && /home/abhil/.nvm/versions/node/v22.16.0/bin/pnpm astro db push --remote 2>&1\")",
+      "Bash(wsl --exec bash -c \"export PATH=/home/abhil/.nvm/versions/node/v22.16.0/bin:$PATH && cd /home/abhil/projects/astro-nomy && pnpm astro db push --remote 2>&1\")",
+      "Bash(wsl --exec bash -c \"export PATH=/home/abhil/.nvm/versions/node/v22.16.0/bin:$PATH && cd /home/abhil/projects/astro-nomy && pnpm astro db seed --remote 2>&1\")",
+      "Bash(wsl --exec bash -c \"export PATH=/home/abhil/.nvm/versions/node/v22.16.0/bin:$PATH && cd /home/abhil/projects/astro-nomy && pnpm astro db execute db/seed.ts --remote 2>&1\")",
+      "Bash(wsl --exec bash --noprofile --norc -c \"export PATH=/home/abhil/.nvm/versions/node/v22.16.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin && cd /home/abhil/projects/astro-nomy && pnpm astro db execute db/seed.ts --remote 2>&1\")",
+      "mcp__filesystem__read_text_file",
+      "Read(//c/.claude/**)",
+      "Read(///wsl.localhost/Ubuntu//**)",
+      "Bash(wslpath -u wsl.localhostUbuntuhomeabhilprojectsastro-nomy)",
+      "Bash(git -C \"//wsl.localhost/Ubuntu/home/abhil/projects/astro-nomy\" add \"src/pages/ai-token-pricing/index.astro\" \"src/pages/ai-token-pricing/[provider]/index.astro\" \"src/pages/ai-token-pricing/[provider]/[model].astro\" \"src/pages/ai-token-pricing/compare/[...slug].astro\")",
+      "Bash(git -C \"//wsl.localhost/Ubuntu/home/abhil/projects/astro-nomy\" status --short src/pages/ai-token-pricing/)",
+      "Bash(git -C:*)"
     ]
   }
 }
