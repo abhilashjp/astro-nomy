@@ -178,7 +178,7 @@ Notice the freemium aspect — 10 free Copilot conversations per agent monthly c
 
 **Weakness:** Requires users to estimate resolution volume before they understand what a resolution is. Cart before the horse.
 
-Want to estimate your AI costs across providers? Try our [AI pricing calculators](/tools/pricing-calculator) for side-by-side comparisons.
+Want to estimate your Intercom costs? Try our [Intercom Fin AI Pricing Calculator](/tools/pricing-calculator/intercom) to model your monthly bill based on team size and resolution volume.
 
 ### 2. ROI Calculator (Fin Savings Estimator)
 
