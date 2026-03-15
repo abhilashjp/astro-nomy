@@ -3,6 +3,8 @@ import { db, Model, Provider, eq } from "astro:db";
 import TokenPriceTracker from "../../components/TokenPriceTracker";
 import Layout from "../../layouts/main-layout.astro";
 
+export const prerender = true;
+
 const models = await db
     .select({
         id: Model.id,

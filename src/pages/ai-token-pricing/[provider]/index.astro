@@ -3,38 +3,39 @@ import { db, Provider, Model, eq } from "astro:db";
 import TokenPriceTracker from "../../../components/TokenPriceTracker";
 import Layout from "../../../layouts/main-layout.astro";
 
-export const prerender = false;
+export const prerender = true;
 
-// Get provider slug from URL
-const providerSlug = Astro.params.provider;
+export async function getStaticPaths() {
+    const providers = await db.select().from(Provider);
 
-// Fetch provider data
-const [provider] = await db
-    .select()
-    .from(Provider)
-    .where(eq(Provider.slug, providerSlug || ""));
+    const allModels = await db
+        .select({
+            id: Model.id,
+            name: Model.name,
+            slug: Model.slug,
+            inputPrice: Model.inputPrice,
+            outputPrice: Model.outputPrice,
+            contextWindow: Model.contextWindow,
+            description: Model.description,
+            providerId: Model.providerId,
+            provider: {
+                name: Provider.name,
+                slug: Provider.slug,
+            },
+        })
+        .from(Model)
+        .innerJoin(Provider, eq(Model.providerId, Provider.id));
 
-if (!provider) {
-    return Astro.redirect("/ai-token-pricing");
+    return providers.map((provider) => {
+        const models = allModels.filter((m) => m.providerId === provider.id);
+        return {
+            params: { provider: provider.slug },
+            props: { provider, models },
+        };
+    });
 }
 
-const models = await db
-    .select({
-        id: Model.id,
-        name: Model.name,
-        slug: Model.slug,
-        inputPrice: Model.inputPrice,
-        outputPrice: Model.outputPrice,
-        contextWindow: Model.contextWindow,
-        description: Model.description,
-        provider: {
-            name: Provider.name,
-            slug: Provider.slug,
-        },
-    })
-    .from(Model)
-    .innerJoin(Provider, eq(Model.providerId, Provider.id))
-    .where(eq(Provider.id, provider.id));
+const { provider, models } = Astro.props;
 
 const year = new Date().getFullYear();
 const updatedMonth = new Date().toLocaleDateString("en-US", {

@@ -3,60 +3,52 @@ import { db, Provider, Model, PriceHistory, eq, desc } from "astro:db";
 import Layout from "../../../layouts/main-layout.astro";
 import { Calculator } from "lucide-react";
 
-export const prerender = false;
+export const prerender = true;
 
-// Get slugs from URL
-const modelSlug = Astro.params.model;
+export async function getStaticPaths() {
+    // Fetch all models with provider data in one query
+    const allModels = await db
+        .select({
+            id: Model.id,
+            name: Model.name,
+            slug: Model.slug,
+            inputPrice: Model.inputPrice,
+            outputPrice: Model.outputPrice,
+            contextWindow: Model.contextWindow,
+            description: Model.description,
+            knowledgeCutoff: Model.knowledgeCutoff,
+            providerId: Model.providerId,
+            providerName: Provider.name,
+            providerSlug: Provider.slug,
+            providerWebsite: Provider.website,
+        })
+        .from(Model)
+        .innerJoin(Provider, eq(Model.providerId, Provider.id));
 
-// Fetch model with provider data
-const models = await db
-    .select({
-        id: Model.id,
-        name: Model.name,
-        slug: Model.slug,
-        inputPrice: Model.inputPrice,
-        outputPrice: Model.outputPrice,
-        contextWindow: Model.contextWindow,
-        description: Model.description,
-        knowledgeCutoff: Model.knowledgeCutoff,
-        providerId: Model.providerId,
-        providerName: Provider.name,
-        providerSlug: Provider.slug,
-        providerWebsite: Provider.website,
-    })
-    .from(Model)
-    .innerJoin(Provider, eq(Model.providerId, Provider.id))
-    .where(eq(Model.slug, modelSlug || ""));
+    // Fetch all price history in one query (avoid N+1)
+    const allHistory = await db
+        .select()
+        .from(PriceHistory)
+        .orderBy(desc(PriceHistory.date));
 
-if (!models || models.length === 0) {
-    return Astro.redirect("/ai-token-pricing");
+    return allModels.map((model) => {
+        const history = allHistory.filter((h) => h.modelId === model.id);
+
+        const comparisonSuggestions = allModels
+            .filter(
+                (m) =>
+                    m.providerId === model.providerId && m.slug !== model.slug,
+            )
+            .slice(0, 3);
+
+        return {
+            params: { provider: model.providerSlug, model: model.slug },
+            props: { model, history, comparisonSuggestions },
+        };
+    });
 }
 
-const model = models[0];
-
-const history = await db
-    .select()
-    .from(PriceHistory)
-    .where(eq(PriceHistory.modelId, model.id))
-    .orderBy(desc(PriceHistory.date));
-
-// Fetch sibling models from same provider for comparison suggestions
-const siblingModels = await db
-    .select({
-        id: Model.id,
-        name: Model.name,
-        slug: Model.slug,
-        inputPrice: Model.inputPrice,
-        outputPrice: Model.outputPrice,
-    })
-    .from(Model)
-    .innerJoin(Provider, eq(Model.providerId, Provider.id))
-    .where(eq(Model.providerId, model.providerId));
-
-// Pick up to 3 different models for comparison suggestions
-const comparisonSuggestions = siblingModels
-    .filter((m) => m.slug !== model.slug)
-    .slice(0, 3);
+const { model, history, comparisonSuggestions } = Astro.props;
 
 const updatedMonth = new Date().toLocaleDateString("en-US", {
     month: "long",
