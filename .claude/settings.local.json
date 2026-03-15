@@ -71,7 +71,8 @@
       "Bash(wslpath -u wsl.localhostUbuntuhomeabhilprojectsastro-nomy)",
       "Bash(git -C \"//wsl.localhost/Ubuntu/home/abhil/projects/astro-nomy\" add \"src/pages/ai-token-pricing/index.astro\" \"src/pages/ai-token-pricing/[provider]/index.astro\" \"src/pages/ai-token-pricing/[provider]/[model].astro\" \"src/pages/ai-token-pricing/compare/[...slug].astro\")",
       "Bash(git -C \"//wsl.localhost/Ubuntu/home/abhil/projects/astro-nomy\" status --short src/pages/ai-token-pricing/)",
-      "Bash(git -C:*)"
+      "Bash(git -C:*)",
+      "Read(///wsl.localhost/Ubuntu/home/abhil/projects/astro-nomy/**)"
     ]
   }
 }
