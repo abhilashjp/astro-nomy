@@ -13,6 +13,13 @@ export const navMenuConfig: NavMenuConfig = {
           launched: true,
         },
         {
+          title: "AI Token Price Tracker",
+          href: "/ai-token-pricing",
+          description: "Live pricing for 30+ AI models. Compare costs per 1M tokens across providers.",
+          image: "/images/examples/token_tracker_thumb.png",
+          launched: true,
+        },
+        /* {
           title: "ROI Calculator",
           href: "/calculator",
           description: "Easily communicate the value delivered with ROI calculators.",
@@ -26,7 +33,7 @@ export const navMenuConfig: NavMenuConfig = {
             "Choose from our calculator templates library to get started quickly.",
           image: "/images/examples/templates_thumb.png",
           disabled: true,
-        },
+        }, */
       ],
     },
   ],
@@ -42,7 +49,7 @@ export const navMenuConfig: NavMenuConfig = {
         },
         {
           title: "Guides",
-          href: "/guides/introduction-usage-based-pricing",
+          href: "/guides",
           description:
             "Learn everything about usage based pricing from our guides.",
           image: "/images/examples/guides_thumb.png",
@@ -91,7 +98,7 @@ export const navMenuConfig: NavMenuConfig = {
      },*/
       {
       title: "Guides",
-       href: "/guides/introduction-usage-based-pricing",
+       href: "/guides",
        description: "Learn everything about usage based pricing from our guides.",
        image: "/images/examples/image.jpg",
        
